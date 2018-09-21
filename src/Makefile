@@ -10,10 +10,10 @@ INPUT = Input
 debug : before $(OBJ)
 
 before:
-	@(cd $(INIT) && $(MAKE))
-	@(cd $(STAGE) && $(MAKE))
 	@(cd $(GAME) && $(MAKE))
+	@(cd $(INIT) && $(MAKE))
 	@(cd $(INPUT) && $(MAKE))
+	@(cd $(STAGE) && $(MAKE))
 	@(cd $(TEXTURE) && $(MAKE))
 
 $(OBJDIR)%.o : %.cpp

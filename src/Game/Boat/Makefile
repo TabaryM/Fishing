@@ -1,5 +1,5 @@
-OBJ = $(OBJDIR)Initializer.o
-OBJDIR = ../../obj/Initializer/
+OBJ = $(OBJDIR)Boat.o
+OBJDIR = ../../../obj/Game/Boat/
 
 all : $(TARGET)
 

@@ -12,8 +12,17 @@ class Texture {
     Rectangle position;
 
   public:
+    /**
+    * Constructor
+    */
     Texture(Renderer const& r, Surface* s, int const& x, int const& y);
+    /**
+     * Deconstructor
+     */
     ~Texture();
+    /**
+    *Create a texture with an item
+    */
     SDL_Texture* getItem();
     Rectangle const& getPosition() const ;
 
