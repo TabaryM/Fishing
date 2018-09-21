@@ -1,0 +1,20 @@
+OBJ = $(OBJDIR)main.o
+OBJDIR = ../obj/
+
+STAGE = Stage
+GAME = Game
+INIT = Initializer
+TEXTURE = Texture
+INPUT = Input
+
+debug : before $(OBJ)
+
+before:
+	@(cd $(INIT) && $(MAKE))
+	@(cd $(STAGE) && $(MAKE))
+	@(cd $(GAME) && $(MAKE))
+	@(cd $(INPUT) && $(MAKE))
+	@(cd $(TEXTURE) && $(MAKE))
+
+$(OBJDIR)%.o : %.cpp
+	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
