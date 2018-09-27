@@ -12,4 +12,6 @@ class Rectangle {
     ~Rectangle();
     SDL_Rect const& getItem() const;
 
+    void setX(int const& x);
+    void setY(int const& y);
 };

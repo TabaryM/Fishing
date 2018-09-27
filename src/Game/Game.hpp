@@ -15,5 +15,6 @@ class Game{
     Game(Initializer & i);
     ~Game();
     void mainLoop();
+    void updateControl();
 
 };

@@ -24,7 +24,7 @@ void Game::mainLoop(){
     }
     lastTime = actualTime;
 
-    i.update();
+    updateControl();
     s.clear();
 
     s.draw(sky);
@@ -33,4 +33,9 @@ void Game::mainLoop(){
 
     s.update();
   }
+}
+
+void Game::updateControl() {
+  i.update();
+
 }

@@ -7,6 +7,8 @@ class Input {
   private:
     bool quit;
     Event e;
+    bool* keyKB;
+    bool* keyMouse;
 
   public:
     Input();
