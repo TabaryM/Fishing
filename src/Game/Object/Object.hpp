@@ -4,7 +4,7 @@
 #include "../../Texture/Texture.hpp"
 
 class Object {
-  protected:
+  private:
     Texture graphic;
 
 
@@ -19,6 +19,4 @@ class Object {
     ~Object();
 
     Texture& getTexture();
-    void setX(int const& x);
-    void setY(int const& y);
 };
