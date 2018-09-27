@@ -19,4 +19,6 @@ class Object {
     ~Object();
 
     Texture& getTexture();
+    void setX(int const& x);
+    void setY(int const& y);
 };

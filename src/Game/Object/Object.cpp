@@ -10,3 +10,11 @@ Object::~Object(){
 Texture& Object::getTexture(){
   return graphic;
 }
+
+void Object::setX(int const& x){
+  graphic.setX(x);
+}
+
+void Object::setY(int const& y){
+  graphic.setX(y);
+}
