@@ -17,6 +17,7 @@ void Game::mainLoop(){
   objets.push_back(new Object(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180));
   objets.push_back(new Object(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0));
   objets.push_back(new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400));
+  objets.push_back(new Fish(s.getRenderer(),100,100));
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();
@@ -30,13 +31,11 @@ void Game::mainLoop(){
     s.clear();
 
     for (Object* o : objets) {
-      s.draw(*o);
+        s.draw(*o);
     }
-
     s.update();
   }
 }
-
 
 void Game::updateControl() {
   i.update();

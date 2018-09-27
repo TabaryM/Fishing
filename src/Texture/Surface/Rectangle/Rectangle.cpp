@@ -10,6 +10,7 @@ Rectangle::Rectangle(int const& w, int const& h, int const& x, int const& y){
 }
 
 Rectangle::~Rectangle(){
+
 }
 
 void Rectangle::setX(int const& x){

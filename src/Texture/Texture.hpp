@@ -29,5 +29,4 @@ class Texture {
     void setX(int const& x);
     void setY(int const& y);
 
-
 };

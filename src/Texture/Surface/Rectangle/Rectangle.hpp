@@ -10,10 +10,10 @@ class Rectangle {
     Rectangle();
     Rectangle(int const& w, int const& h, int const& x = 0, int const& y = 0);
     ~Rectangle();
-    SDL_Rect const& getItem() const;
-
     int const& getX() const;
     int const& getY() const;
     void setX(int const& x);
     void setY(int const& y);
+    SDL_Rect const& getItem() const;
+
 };

@@ -4,7 +4,7 @@
 #include "../../Texture/Texture.hpp"
 
 class Object {
-  protected:
+  private:
     Texture graphic;
 
 

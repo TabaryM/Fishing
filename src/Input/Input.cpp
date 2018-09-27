@@ -14,10 +14,6 @@ bool const& Input::isQuit() const {
   return quit;
 }
 
-bool const& Input::getKeyKB(SDL_Scancode const& i){
-  return keyKB[i];
-}
-
 void Input::update() {
   e.poll();
   switch(e.getType()) {
@@ -27,13 +23,17 @@ void Input::update() {
     }
     case SDL_KEYDOWN:{
       keyKB[e.getScancode()] = true;
-      break;
-    }
-    case SDL_KEYUP: {
-      keyKB[e.getScancode()] = false;
-      break;
-    }
+     break;
+     }
+     case SDL_KEYUP: {
+       keyKB[e.getScancode()] = false;
+       break;
+     }
     default: {
     }
   }
+}
+
+bool const& Input::getKeyKB(SDL_Scancode const& i){
+  return keyKB[i];
 }
