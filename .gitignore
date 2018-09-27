@@ -1,0 +1,5 @@
+#untracked files :
+*.o
+*.png
+*.dll
+sdl2-config
