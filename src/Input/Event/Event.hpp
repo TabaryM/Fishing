@@ -10,7 +10,6 @@ class Event {
     Event();
     ~Event();
     int const getType() const;
-    SDL_Scancode const getScancode() const;
     void poll();
 
 };
