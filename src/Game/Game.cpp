@@ -18,6 +18,8 @@ void Game::mainLoop(){
   objets.push_back(new Object(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0));
   objets.push_back(new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400));
   objets.push_back(new Fish(s.getRenderer(),100,100));
+  objets.push_back(new Boat(s.getRenderer(),500,500));
+  
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();

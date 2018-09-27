@@ -6,6 +6,7 @@
 #include "../Input/Input.hpp"
 #include "Object/Object.hpp"
 #include "Object/Fish/Fish.hpp"
+#include "Object/Boat/Boat.hpp"
 
 class Game{
   private:
