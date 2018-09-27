@@ -5,16 +5,18 @@ Game::Game(Initializer& i) : s(i) {
 }
 
 Game::~Game() {
-
+  for (Object* o : objets) {
+    delete o;
+  }
 }
 
 void Game::mainLoop(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  Texture sky(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0);
-  Object fish(s.getRenderer(), new Surface("Kappa.png"), 500, 400);
-  Texture ocean(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180);
+  objets.push_back(new Object(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180));
+  objets.push_back(new Object(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0));
+  objets.push_back(new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400));
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();
@@ -27,15 +29,20 @@ void Game::mainLoop(){
     updateControl();
     s.clear();
 
-    s.draw(sky);
-    s.draw(ocean);
-    s.draw(fish);
+    for (Object* o : objets) {
+      s.draw(*o);
+    }
 
     s.update();
   }
 }
 
+
 void Game::updateControl() {
   i.update();
-
+  if (i.getKeyKB(SDL_SCANCODE_A)){
+    if (objets[2]->getTexture().getPosition().getX() > 1){
+      objets[2]->setX(objets[2]->getTexture().getPosition().getX() - 1);
+    }
+  }
 }

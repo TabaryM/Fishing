@@ -26,6 +26,8 @@ class Texture {
     SDL_Texture* getItem();
     Rectangle const& getPosition() const;
     void setPosition(int const& x, int const& y);
+    void setX(int const& x);
+    void setY(int const& y);
 
 
 };

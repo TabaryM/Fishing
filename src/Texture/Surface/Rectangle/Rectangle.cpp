@@ -20,6 +20,13 @@ void Rectangle::setY(int const& y){
   item.y = y;
 }
 
+int const& Rectangle::getX() const {
+  return item.x;
+}
+
+int const& Rectangle::getY() const {
+  return item.y;
+}
 
 SDL_Rect const& Rectangle::getItem() const {
   return item;

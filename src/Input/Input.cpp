@@ -14,6 +14,10 @@ bool const& Input::isQuit() const {
   return quit;
 }
 
+bool const& Input::getKeyKB(SDL_Scancode const& i){
+  return keyKB[i];
+}
+
 void Input::update() {
   e.poll();
   switch(e.getType()) {

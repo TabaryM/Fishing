@@ -15,5 +15,6 @@ class Input {
     ~Input();
     bool const& isQuit() const;
     void update();
+    bool const& getKeyKB(SDL_Scancode const& i);
 
 };
