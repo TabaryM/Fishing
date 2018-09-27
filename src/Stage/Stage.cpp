@@ -16,6 +16,10 @@ void Stage::draw(Texture& t){
   r.draw(t);
 }
 
+void Stage::draw(Object& o) {
+  r.draw(o.getTexture());
+}
+
 void Stage::update() {
   r.update();
 }

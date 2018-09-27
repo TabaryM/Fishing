@@ -1,11 +1,9 @@
 #include "Event.hpp"
 
 Event::Event(){
-
 }
 
 Event::~Event(){
-
 }
 
 int const Event::getType() const {

@@ -12,8 +12,9 @@ void Game::mainLoop(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  Texture sky(s.getRenderer(), new Surface(1280, 180 , 0, 20, 100, 255), 0, 0);
-  Texture fish(s.getRenderer(), new Surface(45, 20, 30, 60, 200, 255), 500, 400);
+  Texture sky(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0);
+  Object fish(s.getRenderer(), new Surface("Kappa.png"), 500, 400);
+  Texture ocean(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180);
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();
@@ -27,6 +28,7 @@ void Game::mainLoop(){
     s.clear();
 
     s.draw(sky);
+    s.draw(ocean);
     s.draw(fish);
 
     s.update();

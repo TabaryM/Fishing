@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../Stage/Stage.hpp"
 #include "../Input/Input.hpp"
+#include "Object/Object.hpp"
 
 class Game{
   private:

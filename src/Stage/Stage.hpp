@@ -3,6 +3,7 @@
 #include "Window/Window.hpp"
 #include "../Texture/Texture.hpp"
 #include "Renderer/Renderer.hpp"
+#include "../Game/Object/Object.hpp"
 
 /**
 * Mise en place et entretient de la scène d'affichage
@@ -27,5 +28,6 @@ class Stage{
     Renderer const& getRenderer() const;
     void clear();
     void draw(Texture & t);
+    void draw(Object& o);
     void update();
 };

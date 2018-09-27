@@ -8,6 +8,11 @@ Surface::Surface(int const& w, int const& h, unsigned char const& r, unsigned ch
   fillRGBA(Rectangle(w, h), r, g, b, a);
 }
 
+Surface::Surface(std::string s){
+  item = IMG_Load(s.c_str());
+  assert (item != 0);
+}
+
 
 Surface::~Surface(){
   SDL_FreeSurface(item);

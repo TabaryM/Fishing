@@ -1,12 +1,12 @@
 OBJ = $(OBJDIR)Game.o
 OBJDIR = ../../obj/Game/
 
-BOAT = Boat
+OBJECT = Object
 
-all : $(TARGET)
+all : before $(TARGET)
 
 before :
-	@(cd $(BOAT) && $(MAKE))
+	@(cd $(OBJECT) && $(MAKE))
 
 debug : $(OBJ)
 

@@ -1,8 +1,10 @@
 #pragma once
 
 #include <cassert>
+#include <string>
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "Rectangle/Rectangle.hpp"
 
 class Surface {
@@ -12,6 +14,7 @@ class Surface {
   public:
     Surface() = delete;
     Surface(int const& w, int const& h, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
+    Surface(std::string s);
     ~Surface();
     SDL_Surface* getItem();
     int const& getW() const;
