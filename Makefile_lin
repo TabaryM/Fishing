@@ -1,14 +1,14 @@
 export CXX = g++
 export LD = g++
 
-export CFLAGS = -Wall -std=gnu++11
+export CFLAGS = -Wall -std=c++14
 export LDFLAGS =
 
 export TARGET = debug
 
-export LIB = -lSDL2
-export LIBDIR =
 export INC =
+export LIBDIR =
+export LIB = -lSDL2 -lSDL2_image
 
 OBJDIR = obj/
 BIN = bin/
@@ -22,7 +22,7 @@ before :
 	@(cd $(SOURCE) && $(MAKE))
 
 out : $(OBJ)
-	@$(LD) -o $(BIN)$(OUT) $^ $(LDFLAGS) $(LIB)
+	@$(LD) $(LIBDIR) -o $(BIN)$(OUT) $^ $(LDFLAGS) $(LIB)
 	@echo "Jobs done."
 
 clean :
@@ -30,7 +30,7 @@ clean :
 	@rm -r obj
 	@mkdir obj
 	@mkdir obj/Game
-	@mkdir obj/Game/Boat
+	@mkdir obj/Game/Object
 	@mkdir obj/Initializer
 	@mkdir obj/Input
 	@mkdir obj/Input/Event
