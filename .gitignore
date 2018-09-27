@@ -1,2 +1,4 @@
 #untracked files :
 *.o
+*.dll
+sdl2-config
