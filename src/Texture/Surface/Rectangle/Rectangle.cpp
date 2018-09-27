@@ -29,6 +29,14 @@ int const& Rectangle::getY() const {
   return item.y;
 }
 
+int const& Rectangle::getW() const {
+  return item.w;
+}
+
+int const& Rectangle::getH() const {
+  return item.h;
+}
+
 SDL_Rect const& Rectangle::getItem() const {
   return item;
 }
