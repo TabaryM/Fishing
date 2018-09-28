@@ -72,6 +72,7 @@ void Game::updateControl() {
   if (i.getKeyKB(SDL_SCANCODE_S)) {
     if (objets["Kappa"]->getY() < (720 - objets["Kappa"]->getH()) - speed) {
       objets["Kappa"]->setY(objets["Kappa"]->getY() + speed);
+    }
   }
   if (i.getKeyKB(SDL_SCANCODE_E)) {
     speed++;
