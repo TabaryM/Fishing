@@ -14,21 +14,13 @@ void Game::mainLoop(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-<<<<<<< HEAD
-  objets.push_back(new Object(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180));
-  objets.push_back(new Object(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0));
-  objets.push_back(new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400));
-  objets.push_back(new Fish(s.getRenderer(),100,100));
-  objets.push_back(new Boat(s.getRenderer(),500,500));
-  
-=======
   objets["Ocean"] = new Object(s.getRenderer(), new Surface(1280, 540, 0, 50, 225, 255), 0, 180, 2);
   objets["Ciel"] = new Object(s.getRenderer(), new Surface(1280, 180 , 20, 80, 150, 255), 0, 0, 1);
   objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400, 4);
   objets["Fish"] = new Fish(s.getRenderer(),100,100, 3);
+  objets["Bateau"] = new Boat(s.getRenderer(), 500, 500, 3);
 
   sortObject();
->>>>>>> Control
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();

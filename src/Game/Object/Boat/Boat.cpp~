@@ -1,8 +1,0 @@
-#include "Boat.hpp"
-
-Boat::Boat(Renderer const& r, int const& x, int const& y) : Object(r, new Surface(100, 100, 255, 255, 255, 255), x, y) {
-  //return imBoat;
-}
-
-Boat::~Boat(){
-}
