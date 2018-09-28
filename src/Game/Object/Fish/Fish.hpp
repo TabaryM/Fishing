@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include <algorithm>
 #include "../Object.hpp"
 
 class Fish : public Object {
@@ -10,11 +11,10 @@ class Fish : public Object {
     /**
     * Constructor
     */
-    Fish(Renderer const& r, int const& x, int const& y);
+    Fish(Renderer const& r, int const& x, int const& y, int const& z);
     /**
      * Deconstructor
      */
     ~Fish();
-    
-};
 
+};

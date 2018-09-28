@@ -27,5 +27,5 @@ void Texture::setX(int const& x) {
 }
 
 void Texture::setY(int const& y) {
-  position.setX(y);
+  position.setY(y);
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 #include <vector>
 #include "../Stage/Stage.hpp"
 #include "../Input/Input.hpp"
@@ -13,12 +14,15 @@ class Game{
     Stage s;
     Input i;
     bool again;
-    std::vector<Object*> objets;
+    std::map<std::string, Object*> objets;
+    std::vector<Object*> draws;
+    int speed;
 
   public:
     Game(Initializer & i);
     ~Game();
     void mainLoop();
     void updateControl();
+    void sortObject();
 
 };
