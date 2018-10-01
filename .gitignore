@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 #untracked files :
 *.o
 Makefile
-=======
-
-*.exe
->>>>>>> SortPoisson
 *.exe
