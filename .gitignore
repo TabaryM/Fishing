@@ -1,10 +1,9 @@
 <<<<<<< HEAD
 #untracked files :
 *.o
-*.dll
-sdl2-config
 Makefile
 =======
 
 *.exe
 >>>>>>> SortPoisson
+*.exe

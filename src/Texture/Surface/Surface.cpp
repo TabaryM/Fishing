@@ -16,12 +16,11 @@ Surface::Surface(std::string s){
 
 Surface::~Surface(){
   SDL_FreeSurface(item);
-
 }
 
 SDL_Surface* Surface::getItem() {
       return item;
-    }
+}
 
 int const& Surface::getW() const {
     return item->w;
