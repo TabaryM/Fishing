@@ -14,7 +14,7 @@ class Surface {
   public:
     Surface() = delete;
     Surface(int const& w, int const& h, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
-    Surface(std::string s);
+    //Surface(std::string s);
     ~Surface();
     SDL_Surface* getItem();
     int const& getW() const;
