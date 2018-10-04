@@ -11,7 +11,7 @@ class Fish : public Object {
     /**
     * Constructor
     */
-    Fish(Renderer const& r, int const& x, int const& y, int const& z);
+    Fish(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */

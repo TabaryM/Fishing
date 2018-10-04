@@ -16,9 +16,13 @@ void Game::mainLoop(){
 
   objets["Ocean"] = new Object(s.getRenderer(), new Surface(1280, 540, 0, 0, 128, 255), 0, 180, 2);
   objets["Ciel"] = new Object(s.getRenderer(), new Surface(1280, 180 , 0, 142, 204, 255), 0, 0, 1);
-  objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400, 4);
-  objets["Fish"] = new Fish(s.getRenderer(),100,100, 3);
-  objets["Bateau"] = new Boat(s.getRenderer(), 500, 500, 3);
+  objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
+  objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+
+  for (int i = 0; i < 10; i++) {
+    objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 0, 200 + 50 * i, i + 10);
+  }
+  objets["Bateau"]->link(objets["Kappa"]);
 
   sortObject();
 
@@ -30,7 +34,7 @@ void Game::mainLoop(){
     }
     lastTime = actualTime;
 
-    updateControl();
+    updateControl(objets["Bateau"]);
     s.clear();
 
     for (Object* o : draws) {
@@ -40,30 +44,33 @@ void Game::mainLoop(){
   }
 }
 
-void Game::updateControl() {
+void Game::updateControl(Object* obj) {
   i.update();
 
+  int depX = 0;
+  int depY = 0;
+
   if (i.getKeyKB(SDL_SCANCODE_A)) {
-    if (objets["Kappa"]->getX() > speed) {
-      objets["Kappa"]->setX(objets["Kappa"]->getX() - speed);
+    if (obj->getX() > speed) {
+      depX -= speed;
     }
   }
 
   if (i.getKeyKB(SDL_SCANCODE_D)) {
-    if (objets["Kappa"]->getX() < (1280 - objets["Kappa"]->getW()) - speed) {
-      objets["Kappa"]->setX(objets["Kappa"]->getX() + speed);
+    if (obj->getX() < (1280 - obj->getW()) - speed) {
+      depX += speed;
     }
   }
 
   if (i.getKeyKB(SDL_SCANCODE_W)) {
-    if (objets["Kappa"]->getY() > speed) {
-      objets["Kappa"]->setY(objets["Kappa"]->getY() - speed);
+    if (obj->getY() > speed) {
+      depY -= speed;
     }
   }
 
   if (i.getKeyKB(SDL_SCANCODE_S)) {
-    if (objets["Kappa"]->getY() < (720 - objets["Kappa"]->getH()) - speed) {
-      objets["Kappa"]->setY(objets["Kappa"]->getY() + speed);
+    if (obj->getY() < (720 - obj->getH()) - speed) {
+      depY += speed;
     }
   }
   if (i.getKeyKB(SDL_SCANCODE_E)) {
@@ -74,6 +81,9 @@ void Game::updateControl() {
       speed--;
     }
   }
+
+  obj->move(depX, depY);
+
 }
 
 void Game::sortObject() {

@@ -10,7 +10,7 @@ class Boat : public Object {
     /**
     * Constructor
     */
-    Boat(Renderer const& r, int const& x, int const& y, int const& z);
+    Boat(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */

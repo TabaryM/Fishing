@@ -1,32 +1,36 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include <vector>
 #include "../../Texture/Texture.hpp"
 
 class Object {
   private:
     Texture graphic;
-    int z;
+    float z;
+    std::vector<Object*> child;
 
 
   public:
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, int const& x, int const& y, int const& z);
+    Object(Renderer const& r, Surface* s, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */
     ~Object();
 
+    void link(Object* c);
     Texture& getTexture();
-    void setX(int const& x);
-    void setY(int const& y);
+    void setZ(float const& v);
     int const& getX() const;
     int const& getY() const;
-    int const& getZ() const;
+    float const& getZ() const;
     int const& getW() const;
     int const& getH() const;
+    float getDepth() const;
+    void move(int const& x, int const& y);
 
   public:
     struct ObjectCompare {
