@@ -16,8 +16,7 @@ void Game::mainLoop(){
 
   objets["Ocean"] = new Object(s.getRenderer(), new Surface(1280, 540, 0, 0, 128, 255), 0, 180, 2);
   objets["Ciel"] = new Object(s.getRenderer(), new Surface(1280, 180 , 0, 142, 204, 255), 0, 0, 1);
-  //objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400, 4);
-  objets["Kappa"] = new Object(s.getRenderer(), new Surface(50, 50, 50, 50, 50, 255), 0, 0, 3);
+  objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), 500, 400, 4);
   objets["Fish"] = new Fish(s.getRenderer(),100,100, 3);
   objets["Bateau"] = new Boat(s.getRenderer(), 500, 500, 3);
 

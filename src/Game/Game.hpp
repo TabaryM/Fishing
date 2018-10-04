@@ -3,6 +3,8 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <stdio.h>
+
 #include "../Stage/Stage.hpp"
 #include "../Input/Input.hpp"
 #include "Object/Object.hpp"
