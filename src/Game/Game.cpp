@@ -11,6 +11,7 @@ Game::~Game() {
 }
 
 void Game::mainLoop(){
+  srand (time(NULL));
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
@@ -20,8 +21,9 @@ void Game::mainLoop(){
   objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
   for (int i = 0; i < 10; i++) {
-    objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 0, 200 + 50 * i, i + 10);
+    objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 500, 200 + 50 * i, i + 10);
   }
+
   objets["Bateau"]->link(objets["Kappa"]);
 
   sortObject();
@@ -36,6 +38,10 @@ void Game::mainLoop(){
 
     updateControl(objets["Bateau"]);
     s.clear();
+
+    for (int i = 0; i < 10; i++) {
+      objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
+    }
 
     for (Object* o : draws) {
         s.draw(*o);

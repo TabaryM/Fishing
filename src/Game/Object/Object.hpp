@@ -30,7 +30,8 @@ class Object {
     int const& getW() const;
     int const& getH() const;
     float getDepth() const;
-    void move(int const& x, int const& y);
+    void move(float const& x, float const& y);
+
 
   public:
     struct ObjectCompare {

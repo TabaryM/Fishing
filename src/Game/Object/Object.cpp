@@ -46,7 +46,7 @@ float Object::getDepth() const {
   return 10.0 * child[0]->getDepth();
 }
 
-void Object::move(int const& x, int const& y) {
+void Object::move(float const& x, float const& y) {
   graphic.setX(getX() + x);
   graphic.setY(getY() + y);
   for (Object* o : child) {
