@@ -66,6 +66,7 @@ void Game::updateControl(Object* obj) {
     if (obj->getX() < (1280 - obj->getW()) - speed) {
       depX += speed;
     }
+    
   }
 
   if (i.getKeyKB(SDL_SCANCODE_W)) {

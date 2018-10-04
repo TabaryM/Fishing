@@ -31,6 +31,7 @@ class Object {
     int const& getH() const;
     float getDepth() const;
     void move(float const& x, float const& y);
+    void borderCollide(Rectangle const& r);
 
 
   public:
