@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& i) : s(i), speed(1) {
+Game::Game(Initializer& i) : s(i), speed(1), borders(1280,720) {
 
 }
 
@@ -15,8 +15,8 @@ void Game::mainLoop(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  objets["Ocean"] = new Object(s.getRenderer(), new Surface(1280, 540, 0, 0, 128, 255), 0, 180, 2);
-  objets["Ciel"] = new Object(s.getRenderer(), new Surface(1280, 180 , 0, 142, 204, 255), 0, 0, 1);
+  objets["Ocean"] = new Object(s.getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 0, 128, 255), 0, borders.getH()*0.2, 2);
+  objets["Ciel"] = new Object(s.getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 0, 142, 204, 255), 0, 0, 1);
   objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
   objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
@@ -66,7 +66,7 @@ void Game::updateControl(Object* obj) {
     if (obj->getX() < (1280 - obj->getW()) - speed) {
       depX += speed;
     }
-    
+
   }
 
   if (i.getKeyKB(SDL_SCANCODE_W)) {

@@ -54,9 +54,10 @@ void Object::move(float const& x, float const& y) {
   }
 }
 
-void Object::borderCollide(Rectangle const& r){
-
+bool Object::borderCollide(Rectangle const& r){
+  bool res = false;
   if(getX() < r.getX() && getX()+getW() < r.getX() + r.getW()){
-    
+    res = true;
   }
+  return res ;
 }

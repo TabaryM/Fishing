@@ -28,7 +28,8 @@ class Renderer {
      */
     SDL_Texture* getTexture(Surface* s) const;
     /**
-     * Draw the texture t with the SDL Library
+     * Draw the texture
+     * @param t with the SDL Library
      */
     void draw(Texture & t);
     /**
