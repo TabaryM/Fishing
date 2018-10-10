@@ -10,6 +10,7 @@
 #include "Object/Object.hpp"
 #include "Object/Fish/Fish.hpp"
 #include "Object/Boat/Boat.hpp"
+#include "Object/Hook/Hook.hpp"
 
 class Game{
   private:
