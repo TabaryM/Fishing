@@ -18,13 +18,16 @@ void Game::mainLoop(){
   objets["Ocean"] = new Object(s.getRenderer(), new Surface(1280, 540, 0, 0, 128, 255), 0, 180, 2);
   objets["Ciel"] = new Object(s.getRenderer(), new Surface(1280, 180 , 0, 142, 204, 255), 0, 0, 1);
   objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
+  objets["Hook"] = new Hook(s.getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
   objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+  
 
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 500, 200 + 50 * i, i + 10);
   }
 
   objets["Bateau"]->link(objets["Kappa"]);
+  objets["Bateau"]->link(objets["Hook"]);
 
   sortObject();
 
