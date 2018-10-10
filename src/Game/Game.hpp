@@ -20,6 +20,7 @@ class Game{
     std::map<std::string, Object*> objets;
     std::vector<Object*> draws;
     int speed;
+    Rectangle borders;
 
   public:
     Game(Initializer & i);
