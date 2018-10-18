@@ -43,6 +43,8 @@ void Game::mainLoop(){
       objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
     }
 
+    // boucle pause
+
     for (Object* o : draws) {
         s.draw(*o);
     }
