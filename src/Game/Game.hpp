@@ -11,21 +11,18 @@
 #include "Object/Fish/Fish.hpp"
 #include "Object/Boat/Boat.hpp"
 #include "Object/Hook/Hook.hpp"
+#include "Manager.hpp"
 
 class Game{
   private:
     Stage s;
     Input i;
-    std::map<std::string, Object*> objets;
-    std::vector<Object*> draws;
-    int speed;
-    Rectangle borders;
+    GameManager gManager;
+    InterfaceManager iManager;
 
   public:
-    Game(Initializer & i);
+    Game(Initializer & init);
     ~Game();
-    void mainLoop();
-    void updateControl(Object* obj);
-    void sortObject();
+    void launch();
 
 };

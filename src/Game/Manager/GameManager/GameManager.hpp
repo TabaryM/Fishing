@@ -7,9 +7,17 @@
 #include "../Manager.hpp"
 
 class GameManager : public Manager {
+  private:
+    int speed;
+    Rectangle borders;
 
   public:
-  GameManager(Stage* s, Input* i);
-  ~GameManager();
+    GameManager(Stage* s, Input* i);
+    ~GameManager();
+    void create() override;
+    void update() override;
+    void render() override;
+    void destroy() override;
+    void updateControl(Object* obj);
 
 };

@@ -11,5 +11,9 @@ class InterfaceManager : public Manager {
   public:
   InterfaceManager(Stage* s, Input* i);
   ~InterfaceManager();
+  void create() override;
+  void update() override;
+  void render() override;
+  void destroy() override;
 
 };

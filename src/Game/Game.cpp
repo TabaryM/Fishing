@@ -1,35 +1,16 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& i) : s(i), speed(1), borders(1280,720) {
+Game::Game(Initializer& init) : s(init), gManager(&s,&i) , iManager(&s, &i) {}
 
-}
+Game::~Game() {}
 
-Game::~Game() {
-  for (auto& o : objets) {
-    delete o.second;
-  }
-}
-
-void Game::mainLoop(){
+void Game::launch(){
   srand (time(NULL));
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  objets["Ocean"] = new Object(s.getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 0, 128, 255), 0, borders.getH()*0.2, 2);
-  objets["Ciel"] = new Object(s.getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 0, 142, 204, 255), 0, 0, 1);
-  objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
-  objets["Hook"] = new Hook(s.getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
-  objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
-  
-
-  for (int i = 0; i < 10; i++) {
-    objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 500, 200 + 50 * i, i + 10);
-  }
-
-  objets["Bateau"]->link(objets["Kappa"]);
-  objets["Bateau"]->link(objets["Hook"]);
-
-  sortObject();
+  gManager.create();
+  iManager.create();
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();
@@ -39,68 +20,14 @@ void Game::mainLoop(){
     }
     lastTime = actualTime;
 
-    updateControl(objets["Bateau"]);
+    i.update();
+    gManager.update()
+
     s.clear();
-
-    for (int i = 0; i < 10; i++) {
-      objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
-    }
-
-    // boucle pause
-
-    for (Object* o : draws) {
-        s.draw(*o);
-    }
+    gManager.render()
     s.update();
   }
-}
 
-void Game::updateControl(Object* obj) {
-  i.update();
-
-  int depX = 0;
-  int depY = 0;
-
-  if (i.getKeyKB(SDL_SCANCODE_A)) {
-    if (obj->getX() > speed) {
-      depX -= speed;
-    }
-  }
-
-  if (i.getKeyKB(SDL_SCANCODE_D)) {
-    if (obj->getX() < (1280 - obj->getW()) - speed) {
-      depX += speed;
-    }
-
-  }
-
-  if (i.getKeyKB(SDL_SCANCODE_W)) {
-    if (obj->getY() > speed) {
-      depY -= speed;
-    }
-  }
-
-  if (i.getKeyKB(SDL_SCANCODE_S)) {
-    if (obj->getY() < (720 - obj->getH()) - speed) {
-      depY += speed;
-    }
-  }
-  if (i.getKeyKB(SDL_SCANCODE_E)) {
-    speed++;
-  }
-  if (i.getKeyKB(SDL_SCANCODE_R)) {
-    if (speed > 1) {
-      speed--;
-    }
-  }
-
-  obj->move(depX, depY);
-
-}
-
-void Game::sortObject() {
-  for (auto& o : objets) {
-      draws.push_back(o.second);
-  }
-  std::sort(draws.begin(), draws.end(), Object::ObjectCompare());
+  gManager.destroy();
+  iManager.destroy();
 }
