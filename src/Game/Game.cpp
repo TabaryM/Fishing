@@ -2,8 +2,6 @@
 
 Game::Game(Initializer& init) : s(init), gManager(&s,&i) , iManager(&s, &i) {}
 
-Game::~Game() {}
-
 void Game::launch(){
   srand (time(NULL));
   double actualTime = SDL_GetTicks();
@@ -21,10 +19,10 @@ void Game::launch(){
     lastTime = actualTime;
 
     i.update();
-    gManager.update()
+    gManager.update();
 
     s.clear();
-    gManager.render()
+    gManager.render();
     s.update();
   }
 

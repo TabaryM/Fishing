@@ -1,17 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include <map>
-#include <vector>
-#include <stdio.h>
 
 #include "../Stage/Stage.hpp"
 #include "../Input/Input.hpp"
-#include "Object/Object.hpp"
-#include "Object/Fish/Fish.hpp"
-#include "Object/Boat/Boat.hpp"
-#include "Object/Hook/Hook.hpp"
-#include "Manager.hpp"
+#include "Manager/GameManager/GameManager.hpp"
+#include "Manager/InterfaceManager/InterfaceManager.hpp"
 
 class Game{
   private:
@@ -22,7 +16,7 @@ class Game{
 
   public:
     Game(Initializer & init);
-    ~Game();
+    ~Game() = default ;
     void launch();
 
 };

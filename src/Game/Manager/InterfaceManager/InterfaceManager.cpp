@@ -3,9 +3,6 @@
 
 InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i) {}
 
-InterfaceManager::~InterfaceManager(){
-}
-
 void InterfaceManager::create(){
   Manager::create();
 }

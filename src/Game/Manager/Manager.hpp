@@ -1,5 +1,11 @@
 #pragma once
 
+#include <vector>
+#include <map>
+#include <string>
+#include <algorithm>
+
+#include "../Object/Object.hpp"
 #include "../../Stage/Stage.hpp"
 #include "../../Input/Input.hpp"
 

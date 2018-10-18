@@ -14,11 +14,11 @@ void Manager::create(){
 
 void Manager::render(){
   for (Object* o : draws) {
-      s.draw(*o);
+      s->draw(*o);
   }
 }
 
-void Game::sortObject() {
+void Manager::sortObject() {
   for (auto& o : objets) {
       draws.push_back(o.second);
   }

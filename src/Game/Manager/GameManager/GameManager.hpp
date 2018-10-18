@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../../Texture/Surface/Rectangle/Rectangle.hpp"
 #include "../../Object/Object.hpp"
 #include "../../Object/Fish/Fish.hpp"
 #include "../../Object/Boat/Boat.hpp"
@@ -13,7 +14,7 @@ class GameManager : public Manager {
 
   public:
     GameManager(Stage* s, Input* i);
-    ~GameManager();
+    ~GameManager() = default;
     void create() override;
     void update() override;
     void render() override;
