@@ -1,15 +1,15 @@
 #pragma once
 
-#include "../Stage/Stage.hpp"
-#include "../Input/Input.hpp"
+#include "../../Stage/Stage.hpp"
+#include "../../Input/Input.hpp"
 
 class Manager {
-  public:
+  protected:
     Stage* s;
     Input* i;
 
   public:
-    Manager();
+    Manager(Stage* s, Input* i);
     ~Manager();
 
-}
+};

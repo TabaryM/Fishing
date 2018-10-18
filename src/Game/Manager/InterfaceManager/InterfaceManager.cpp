@@ -1,8 +1,7 @@
 #include "InterfaceManager.hpp"
 
 
-InterfaceManager(Stage* s){
-}
+InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i) {}
 
 InterfaceManager::~InterfaceManager(){
 }

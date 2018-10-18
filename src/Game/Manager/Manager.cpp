@@ -1,9 +1,6 @@
 #include "Manager.hpp"
 
-Manager::Manager(){
-
-}
-
+Manager::Manager(Stage* s, Input* i) : s(s), i(i) {}
 Manager::~Manager(){
 
 }

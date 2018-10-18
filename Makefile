@@ -13,7 +13,7 @@ export LIB = "C:\MinGW\lib\libmingw32.a" "C:\lib\SDL2-2.0.8\i686-w64-mingw32\lib
 OBJDIR = obj/
 BIN = bin/
 SOURCE = src
-OBJ = $(OBJDIR)main.o $(OBJDIR)Game/Game.o $(OBJDIR)Game/Manager/Manager.o $(OBJDIR)Game/Manager/InterManager/InterManager.o $(OBJDIR)Game/Manager/GamManager/GameManager.o $(OBJDIR)Game/Object/Object.o $(OBJDIR)Game/Object/Fish/Fish.o $(OBJDIR)Game/Object/Boat/Boat.o $(OBJDIR)Game/Object/Hook/Hook.o $(OBJDIR)Initializer/Initializer.o $(OBJDIR)Input/Input.o $(OBJDIR)Input/Event/Event.o $(OBJDIR)Stage/Stage.o $(OBJDIR)Stage/Renderer/Renderer.o $(OBJDIR)Stage/Window/Window.o $(OBJDIR)Texture/Texture.o $(OBJDIR)Texture/Surface/Surface.o $(OBJDIR)Texture/Surface/Rectangle/Rectangle.o
+OBJ = $(OBJDIR)main.o $(OBJDIR)Game/Game.o $(OBJDIR)Game/Manager/Manager.o $(OBJDIR)Game/Manager/InterfaceManager/InterfaceManager.o $(OBJDIR)Game/Manager/GameManager/GameManager.o $(OBJDIR)Game/Object/Object.o $(OBJDIR)Game/Object/Fish/Fish.o $(OBJDIR)Game/Object/Boat/Boat.o $(OBJDIR)Game/Object/Hook/Hook.o $(OBJDIR)Initializer/Initializer.o $(OBJDIR)Input/Input.o $(OBJDIR)Input/Event/Event.o $(OBJDIR)Stage/Stage.o $(OBJDIR)Stage/Renderer/Renderer.o $(OBJDIR)Stage/Window/Window.o $(OBJDIR)Texture/Texture.o $(OBJDIR)Texture/Surface/Surface.o $(OBJDIR)Texture/Surface/Rectangle/Rectangle.o
 OUT = Fish
 
 all : before out
@@ -31,7 +31,7 @@ clean :
 	@mkdir obj
 	@mkdir obj/Game
 	@mkdir obj/Game/Manager
-	@mkdir obj/Game/Manager/InterManager
+	@mkdir obj/Game/Manager/InterfaceManager
 	@mkdir obj/Game/Manager/GameManager
 	@mkdir obj/Game/Object
 	@mkdir obj/Game/Object/Fish

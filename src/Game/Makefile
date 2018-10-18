@@ -8,6 +8,7 @@ all : before $(TARGET)
 
 before :
 	@(cd $(OBJECT) && $(MAKE))
+	@(cd $(MANAGER) && $(MAKE))
 
 debug : $(OBJ)
 

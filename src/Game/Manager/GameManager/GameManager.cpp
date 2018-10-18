@@ -1,8 +1,7 @@
 #include "GameManager.hpp"
 
 
-GameManager(Stage* s){
-}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i) {}
 
 GameManager::~GameManager(){
 }
