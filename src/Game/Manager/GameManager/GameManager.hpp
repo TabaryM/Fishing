@@ -7,17 +7,14 @@
 
 class GameManager : public Manager {
 
+  private:
   std::map<std::string, Object*> objets;
   std::vector<Object*> draws;
   int speed;
   Rectangle borders;
 
-  GameManager::GameManager(){
+  public:
+  GameManager(Stage* s);
+  GameManager::~GameManager();
 
-  }
-
-  GameManager::~GameManager(){
-
-  }
-  
 }

@@ -4,7 +4,12 @@
 #include "../Input/Input.hpp"
 
 class Manager {
-  Stage& s;
-  Input& i;
+  public:
+    Stage* s;
+    Input* i;
+
+  public:
+    Manager();
+    ~Manager();
 
 }
