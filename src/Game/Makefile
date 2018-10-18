@@ -2,6 +2,7 @@ OBJ = $(OBJDIR)Game.o
 OBJDIR = ../../obj/Game/
 
 OBJECT = Object
+MANAGER = Manager
 
 all : before $(TARGET)
 

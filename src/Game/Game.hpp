@@ -16,7 +16,6 @@ class Game{
   private:
     Stage s;
     Input i;
-    bool again;
     std::map<std::string, Object*> objets;
     std::vector<Object*> draws;
     int speed;
