@@ -2,9 +2,9 @@
 
 int main(int argc, char **argv) {
   Initializer i;
-  Game fish(i);
+  Game game(i);
 
-  fish.mainLoop();
-  
+  game.launch();
+
   return 0;
 }
