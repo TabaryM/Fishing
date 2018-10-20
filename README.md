@@ -6,7 +6,6 @@ TODO LIST :
   - Faire une docu
   - ~~réparer deplacements bateau vitesse~~
   - réparer vitesse
-  - Menu (Jouer (mode temps, mode libre), option (musique on/off), quitter)
 
   - Menu pause
   - Dessiner ligne Hameçon-Bateau
@@ -36,7 +35,7 @@ TODO LIST :
   }
 
 
-
+  - Menu (Jouer (mode temps, mode libre), option (musique on/off), quitter)
 
   - Si tout ça fait : {
     - Cinématique d'intro au menu
