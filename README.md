@@ -4,7 +4,7 @@
 TODO LIST :
 
   Faire une docu
-  réparer deplacements bateau vitesse
+  ~~réparer deplacements bateau vitesse~~
   réparer vitesse
   Menu (Jouer (mode temps, mode libre), option (musique on/off), quitter)
 
