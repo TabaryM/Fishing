@@ -26,7 +26,7 @@ TODO LIST :
   }
 
 
-  Mécaniques des poissons : {
+  - Mécaniques des poissons : {
     - poisson classique (vitesse faible et constante) : 1 pts
     - poisson sprinteur (vitesse faible mais qui sprint de manière aléatoire) : 2 pts
     - poisson rapide (vitesse constante mais plus rapide que classique) : 2 pts
@@ -38,8 +38,9 @@ TODO LIST :
 
 
 
-  Si tout ça fait :
+  - Si tout ça fait : {
     - Cinématique d'intro au menu
     - Events con (météors, volcans... etc)
     - Menu option assignation touches
     - Sons ?
+  }
