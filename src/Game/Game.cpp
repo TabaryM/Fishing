@@ -19,7 +19,7 @@ void Game::mainLoop(){
   objets["Ciel"] = new Object(s.getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 0, 142, 204, 255), 0, 0, 1);
   objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
   objets["Hook"] = new Hook(s.getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
-  objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+  objets["Kappa"] = new Object(s.getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
 
   for (int i = 0; i < 10; i++) {

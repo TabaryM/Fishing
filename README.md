@@ -25,7 +25,7 @@ TODO LIST :
     - survie (nb hameçon limité <=> vies)
   }
 
-
+  - ~~Sprites poisson de base~~
   - Mécaniques des poissons : {
     - poisson classique (vitesse faible et constante) : 1 pts
     - poisson sprinteur (vitesse faible mais qui sprint de manière aléatoire) : 2 pts
