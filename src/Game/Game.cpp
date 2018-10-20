@@ -20,7 +20,7 @@ void Game::mainLoop(){
   objets["Bateau"] = new Boat(s.getRenderer(), 500, 130, 3);
   objets["Hook"] = new Hook(s.getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
   objets["Kappa"] = new Object(s.getRenderer(), new Surface("Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
-  
+
 
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s.getRenderer(), 500, 200 + 50 * i, i + 10);
@@ -28,6 +28,7 @@ void Game::mainLoop(){
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Bateau"]->link(objets["Hook"]);
+
 
   sortObject();
 
@@ -62,29 +63,41 @@ void Game::updateControl(Object* obj) {
   int depY = 0;
 
   if (i.getKeyKB(SDL_SCANCODE_A)) {
-    if (obj->getX() > speed) {
+    if (obj->getX() -speed <= 0 ) {
+      depX -= obj->getX();
+    }
+    else{
       depX -= speed;
     }
   }
 
   if (i.getKeyKB(SDL_SCANCODE_D)) {
-    if (obj->getX() < (1280 - obj->getW()) - speed) {
+    if (obj->getX() + obj->getW() + speed >= 1280) {
+      depX += 1280 - obj->getW() - obj->getX();
+    }
+    else{
       depX += speed;
     }
-
   }
 
   if (i.getKeyKB(SDL_SCANCODE_W)) {
-    if (obj->getY() > speed) {
+    if (obj->getY() - speed <= 0 ) {
+      depY -= obj->getY();
+    }
+    else{
       depY -= speed;
     }
   }
 
   if (i.getKeyKB(SDL_SCANCODE_S)) {
-    if (obj->getY() < (720 - obj->getH()) - speed) {
+    if (obj->getY() + obj->getH() + speed >= 720) {
+      depY += 720 - obj->getY() - obj->getH();
+    }
+    else{
       depY += speed;
     }
   }
+
   if (i.getKeyKB(SDL_SCANCODE_E)) {
     speed++;
   }
