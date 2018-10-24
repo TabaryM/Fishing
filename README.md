@@ -5,7 +5,6 @@ TODO LIST :
 
   - Faire une docu
   - ~~réparer deplacements bateau vitesse~~
-  - réparer vitesse
 
   - Menu pause
   - Dessiner ligne Hameçon-Bateau
