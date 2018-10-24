@@ -6,7 +6,7 @@ GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(
 void GameManager::create(){
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 50, 150, 230, 255), 0, borders.getH()*0.2, 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 85, 205, 235, 255), 0, 0, 1);
-  objets["Bateau"] = new Boat(s->getRenderer(), 500, 130, 3);
+  objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
   objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
@@ -24,7 +24,8 @@ void GameManager::update(){
     objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
   }
 
-  updateControl(objets["Bateau"]);
+  updateControlX(objets["Bateau"]);
+  updateControlY(objets["Hook"]);
 }
 
 void GameManager::render(){
@@ -35,7 +36,7 @@ void GameManager::destroy(){
 }
 
 
-void GameManager::updateControl(Object* obj) {
+void GameManager::updateControlX(Object* obj) {
   int depX = 0;
   int depY = 0;
 
@@ -57,6 +58,22 @@ void GameManager::updateControl(Object* obj) {
     }
   }
 
+  if (i->getKeyKB(SDL_SCANCODE_E)) {
+    speed++;
+  }
+  if (i->getKeyKB(SDL_SCANCODE_R)) {
+    if (speed > 1) {
+      speed--;
+    }
+  }
+
+  obj->move(depX, depY);
+
+}
+void GameManager::updateControlY(Object* obj) {
+  int depX = 0;
+  int depY = 0;
+
   if (i->getKeyKB(SDL_SCANCODE_W)) {
     if (obj->getY() - speed <= 0 ) {
       depY -= obj->getY();
@@ -73,7 +90,7 @@ void GameManager::updateControl(Object* obj) {
     else{
       depY += speed;
     }
-}
+  }
   if (i->getKeyKB(SDL_SCANCODE_E)) {
     speed++;
   }
