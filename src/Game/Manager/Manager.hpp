@@ -15,6 +15,7 @@ class Manager {
     Input* i;
     std::vector<Object*> draws;
     std::map<std::string, Object*> objets;
+    bool pause;
 
   public:
     Manager(Stage* s, Input* i);

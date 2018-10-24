@@ -67,6 +67,10 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
+  if (i->getKeyKB(SDL_SCANCODE_P)) {
+    pause = true
+  }
+
   obj->move(depX, depY);
 
 }

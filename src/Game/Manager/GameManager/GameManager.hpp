@@ -11,7 +11,6 @@ class GameManager : public Manager {
   private:
     int speed;
     Rectangle borders;
-    bool pause;
 
   public:
     GameManager(Stage* s, Input* i);
