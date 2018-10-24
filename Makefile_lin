@@ -30,6 +30,9 @@ clean :
 	@rm -r obj
 	@mkdir obj
 	@mkdir obj/Game
+	@mkdir obj/Game/Manager
+	@mkdir obj/Game/Manager/InterfaceManager
+	@mkdir obj/Game/Manager/GameManager
 	@mkdir obj/Game/Object
 	@mkdir obj/Game/Object/Fish
 	@mkdir obj/Game/Object/Boat
