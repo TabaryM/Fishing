@@ -1,6 +1,5 @@
 # Fishing
 
-UTILISATION DE DOXYGENE : 
 
 TODO LIST :
 
