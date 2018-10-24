@@ -7,8 +7,8 @@ void GameManager::create(){
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 50, 150, 230, 255), 0, borders.getH()*0.2, 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 85, 205, 235, 255), 0, 0, 1);
   objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
-  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
-  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
+  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Bateau"]->link(objets["Hook"]);
@@ -79,12 +79,12 @@ void GameManager::updateControlY(Object* obj) {
   int depY = 0;
 
   if (i->getKeyKB(SDL_SCANCODE_W)) {
-    if (obj->getY() - speed <= 0 ) {
-      depY -= obj->getY();
-    }
-    else{
-      depY -= speed;
-    }
+      if (obj->getY() - speed <= 150 ) {
+        depY -= obj-> getY() - 150 ;
+      }
+      else{
+        depY -= speed;
+      }
   }
 
   if (i->getKeyKB(SDL_SCANCODE_S)) {
@@ -93,14 +93,6 @@ void GameManager::updateControlY(Object* obj) {
     }
     else{
       depY += speed;
-    }
-  }
-  if (i->getKeyKB(SDL_SCANCODE_E)) {
-    speed++;
-  }
-  if (i->getKeyKB(SDL_SCANCODE_R)) {
-    if (speed > 1) {
-      speed--;
     }
   }
 
