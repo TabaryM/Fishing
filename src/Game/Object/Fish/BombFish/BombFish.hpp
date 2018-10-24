@@ -6,24 +6,24 @@
 
 #include <SDL2/SDL.h>
 #include <algorithm>
-#include "../Object.hpp"
+#include "../Fish.hpp"
 
-class Fish : public Object {
+class BombFish : public Fish {
   private:
-    float direction;
-    int right;
+    int valeur;
 
   public:
     /**
     * Constructor
     */
-    Fish(Renderer const& r, std::string s, int const& x, int const& y, float const& z);
+    BombFish(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */
-    ~Fish();
+    ~BombFish();
 
     float getDir();
     void setDir(float d);
-
+    int getValue();
+    
 };

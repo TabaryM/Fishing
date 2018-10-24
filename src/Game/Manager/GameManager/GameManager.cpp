@@ -1,33 +1,67 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(1280,720) {}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), nbFish(0), borders(1280,720) {}
 
 void GameManager::create(){
+  
+  using namespace std;
+
+  int const maxX = 50;
+  int const maxY = 100;
+
+  ifstream fichier("niveau_1.txt", ios::in);  // on ouvre en lecture
+  char Fishs[maxY][maxX];
+  for(int i = 0; i < maxY; i++){
+    for(int j = 0; j < maxX;j++){
+      Fishs[i][j] = '0';
+    }
+  }
+  
+  if(fichier){  // si l'ouverture a fonctionné
+    string ligne;
+    int i = 0;
+    while(getline(fichier, ligne)){  // tant que l'on peut mettre la ligne dans "contenu"
+      for(unsigned int j = 0; j < ligne.size();j++){
+	Fishs[i][j] = ligne[j]; //j'assigne chaque caractere de la ligne dans le tableau
+      }
+    i++;  
+    }
+  }else{
+    cerr << "Impossible d'ouvrir le fichier !" << endl;
+  }
+
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 50, 150, 230, 255), 0, borders.getH()*0.2, 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 85, 205, 235, 255), 0, 0, 1);
-  objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
-  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
-  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+  objets["Bateau"] = new Boat(s->getRenderer(), 500, 130, 3);
+  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
+  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 20, objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Bateau"]->link(objets["Hook"]);
-
-  for (int i = 0; i < 10; i++) {
-    objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), 500, 200 + 50 * i, i + 10);
+  
+  for(int i = 0; i < maxX; i++) {
+    for(int j = 0; j < maxY; j++){
+      if(Fishs[i][j] == '1'){
+	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), i*51,190 + 21 * j, nbFish + 10);
+	nbFish++;
+      }
+      if(Fishs[i][j] == '2'){
+	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), j*51,190 + 21 * i, nbFish + 10);
+	nbFish++;
+      }
+    }
   }
+
   Manager::create();
 }
 
 void GameManager::update(){
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < nbFish; i++) {
     objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
   }
 
-  updateControlX(objets["Bateau"]);
-  updateControlY(objets["Hook"]);
-  updatePause();
-
+  updateControl(objets["Bateau"]);
 }
 
 void GameManager::render(){
@@ -38,28 +72,34 @@ void GameManager::destroy(){
 }
 
 
-void GameManager::updateControlX(Object* obj) {
+void GameManager::updateControl(Object* obj) {
   int depX = 0;
   int depY = 0;
 
   if (i->getKeyKB(SDL_SCANCODE_A)) {
-    if (obj->getX() -speed <= 0 ) {
-      depX -= obj->getX();
-    }
-    else{
+    if (obj->getX() > speed) {
       depX -= speed;
     }
   }
 
   if (i->getKeyKB(SDL_SCANCODE_D)) {
-    if (obj->getX() + obj->getW() + speed >= 1280) {
-      depX += 1280 - obj->getW() - obj->getX();
-    }
-    else{
+    if (obj->getX() < (1280 - obj->getW()) - speed) {
       depX += speed;
+    }
+
+  }
+
+  if (i->getKeyKB(SDL_SCANCODE_W)) {
+    if (obj->getY() > speed) {
+      depY -= speed;
     }
   }
 
+  if (i->getKeyKB(SDL_SCANCODE_S)) {
+    if (obj->getY() < (720 - obj->getH()) - speed) {
+      depY += speed;
+    }
+  }
   if (i->getKeyKB(SDL_SCANCODE_E)) {
     speed++;
   }
@@ -71,38 +111,4 @@ void GameManager::updateControlX(Object* obj) {
 
   obj->move(depX, depY);
 
-}
-void GameManager::updateControlY(Object* obj) {
-  int depX = 0;
-  int depY = 0;
-
-  if (i->getKeyKB(SDL_SCANCODE_W)) {
-      if (obj->getY() - speed <= 150 ) {
-        depY -= obj-> getY() - 150 ;
-      }
-      else{
-        depY -= speed;
-      }
-  }
-
-  if (i->getKeyKB(SDL_SCANCODE_S)) {
-    if (obj->getY() + obj->getH() + speed >= 720) {
-      depY += 720 - obj->getY() - obj->getH();
-    }
-    else{
-      depY += speed;
-    }
-  }
-
-  obj->move(depX, depY);
-
-}
-
-void GameManager::updatePause(){
-  Manager::updatePause();
-
-}
-
-bool GameManager::getPause(){
-  return pause;
 }
