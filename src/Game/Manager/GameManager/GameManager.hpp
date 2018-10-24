@@ -11,6 +11,7 @@ class GameManager : public Manager {
   private:
     int speed;
     Rectangle borders;
+    bool pause;
 
   public:
     GameManager(Stage* s, Input* i);
@@ -19,7 +20,6 @@ class GameManager : public Manager {
     void update() override;
     void render() override;
     void destroy() override;
-    void updateControlX(Object* obj);
-    void updateControlY(Object* obj);
+    void updateControl(Object* obj);
 
 };
