@@ -20,9 +20,15 @@ void Game::launch(){
 
     i.update();
     gManager.update();
+    if (gManager.getPause()){
+      iManager.update();
+    }
 
     s.clear();
     gManager.render();
+    if (gManager.getPause()){
+      iManager.render();
+    }
     s.update();
   }
 

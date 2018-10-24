@@ -26,6 +26,8 @@ void GameManager::update(){
 
   updateControlX(objets["Bateau"]);
   updateControlY(objets["Hook"]);
+  updatePause();
+
 }
 
 void GameManager::render(){
@@ -67,10 +69,6 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
-  if (i->getKeyKB(SDL_SCANCODE_P)) {
-    pause = true
-  }
-
   obj->move(depX, depY);
 
 }
@@ -98,4 +96,13 @@ void GameManager::updateControlY(Object* obj) {
 
   obj->move(depX, depY);
 
+}
+
+void GameManager::updatePause(){
+  Manager::updatePause();
+
+}
+
+bool GameManager::getPause(){
+  return pause;
 }

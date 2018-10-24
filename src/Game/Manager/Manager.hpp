@@ -25,4 +25,5 @@ class Manager {
     virtual void render() ;
     virtual void destroy() = 0 ;
     void sortObject();
+    virtual void updatePause() ;
 };

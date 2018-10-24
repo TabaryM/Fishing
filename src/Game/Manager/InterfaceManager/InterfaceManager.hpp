@@ -11,5 +11,6 @@ class InterfaceManager : public Manager {
   void update() override;
   void render() override;
   void destroy() override;
+  void updatePause() override;
 
 };
