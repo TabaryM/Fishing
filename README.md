@@ -1,5 +1,9 @@
 # Fishing
 
+Documentation (via Doxygene) :
+  - Installer la dernière version de Doxygene : https://sourceforge.net/projects/doxygen/files/latest/download
+  - Lancer l'installateur
+  - utilisez les paramètre dans le fichier Doxyfile
 
 TODO LIST :
 
