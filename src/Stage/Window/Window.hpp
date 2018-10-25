@@ -20,4 +20,6 @@ class Window {
     ~Window();
     SDL_Renderer* getRenderer(int const& index, int const& flags) const;
 
+    static int WIDTH;
+    static int HEIGHT;
 };

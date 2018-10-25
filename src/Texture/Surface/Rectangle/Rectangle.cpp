@@ -1,42 +1,33 @@
 #include "Rectangle.hpp"
 
-Rectangle::Rectangle() : Rectangle(0, 0, 0, 0) {
-
+Rectangle::Rectangle(Vector2D<int> const& size, Vector2D<int> const& coord) : size(size), coord(coord) {
 }
 
-Rectangle::Rectangle(int const& w, int const& h, int const& x, int const& y){
-  item.x = x; item.y = y;
-  item.w = w; item.h = h;
+Vector2D<int> const& Rectangle::getCoord() const {
+  return coord;
 }
 
-Rectangle::~Rectangle(){
-
-}
-
-void Rectangle::setX(int const& x){
-  item.x = x;
-}
-
-void Rectangle::setY(int const& y){
-  item.y = y;
-}
-
-int const& Rectangle::getX() const {
-  return item.x;
-}
-
-int const& Rectangle::getY() const {
-  return item.y;
-}
-
-int const& Rectangle::getW() const {
-  return item.w;
+Vector2D<int> const& Rectangle::getSize() const {
+  return size;
 }
 
 int const& Rectangle::getH() const {
-  return item.h;
+  return size.getY();
 }
 
-SDL_Rect const& Rectangle::getItem() const {
-  return item;
+int const& Rectangle::getW() const {
+  return size.getX();
+}
+
+void Rectangle::setCoord(Vector2D<int> const& coord) {
+  this->coord = coord;
+}
+
+SDL_Rect Rectangle::getRect() const {
+  SDL_Rect rect;
+  rect.x = coord.getX();
+  rect.y = coord.getY();
+  rect.w = size.getX();
+  rect.h = size.getY();
+  return rect;
 }
