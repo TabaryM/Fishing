@@ -1,6 +1,6 @@
 #include "Manager.hpp"
 
-Manager::Manager(Stage* s, Input* i) : s(s), i(i), pause(false) {}
+Manager::Manager(Stage* s, Input* i) : s(s), i(i) {}
 
 Manager::~Manager(){
   for (auto& o : objets) {
@@ -10,10 +10,6 @@ Manager::~Manager(){
 
 void Manager::create(){
   sortObject();
-}
-
-void Manager::update() {
-  updatePause();
 }
 
 void Manager::render(){
@@ -27,14 +23,4 @@ void Manager::sortObject() {
       draws.push_back(o.second);
   }
   std::sort(draws.begin(), draws.end(), Object::ObjectCompare());
-}
-
-void Manager::updatePause() {
-  if (i->getKeyKB(SDL_SCANCODE_P)) {
-    pause = !pause ;
-  }
-
-  bool const& getPause() const{
-    return pause;
-  }
 }

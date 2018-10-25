@@ -20,7 +20,6 @@ void GameManager::create(){
 }
 
 void GameManager::update(){
-  Manager::update();
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
   }
@@ -41,7 +40,7 @@ void GameManager::updateControlX(Object* obj) {
   int depX = 0;
   int depY = 0;
 
-  if (i->getKeyKB(SDL_SCANCODE_A)) {
+  if (i->isActive(SDL_SCANCODE_A)) {
     if (obj->getX() -speed <= 0 ) {
       depX -= obj->getX();
     }
@@ -50,7 +49,7 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
-  if (i->getKeyKB(SDL_SCANCODE_D)) {
+  if (i->isActive(SDL_SCANCODE_D)) {
     if (obj->getX() + obj->getW() + speed >= 1280) {
       depX += 1280 - obj->getW() - obj->getX();
     }
@@ -59,10 +58,10 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
-  if (i->getKeyKB(SDL_SCANCODE_E)) {
+  if (i->isActive(SDL_SCANCODE_E)) {
     speed++;
   }
-  if (i->getKeyKB(SDL_SCANCODE_R)) {
+  if (i->isActive(SDL_SCANCODE_R)) {
     if (speed > 1) {
       speed--;
     }
@@ -75,7 +74,7 @@ void GameManager::updateControlY(Object* obj) {
   int depX = 0;
   int depY = 0;
 
-  if (i->getKeyKB(SDL_SCANCODE_W)) {
+  if (i->isActive(SDL_SCANCODE_W)) {
       if (obj->getY() - speed <= 150 ) {
         depY -= obj-> getY() - 150 ;
       }
@@ -84,7 +83,7 @@ void GameManager::updateControlY(Object* obj) {
       }
   }
 
-  if (i->getKeyKB(SDL_SCANCODE_S)) {
+  if (i->isActive(SDL_SCANCODE_S)) {
     if (obj->getY() + obj->getH() + speed >= 720) {
       depY += 720 - obj->getY() - obj->getH();
     }
