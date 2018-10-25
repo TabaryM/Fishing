@@ -18,5 +18,6 @@ class Input {
     bool const& isQuit() const;
     void update();
     bool const& isActive(SDL_Scancode const& i);
+    void isFlip(SDL_Scancode const& i);
 
 };

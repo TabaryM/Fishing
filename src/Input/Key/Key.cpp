@@ -1,6 +1,6 @@
 #include "Key.hpp"
 
-Key::Key() : active(false), switch(false){
+Key::Key() : active(false), flip(false){
 }
 
 bool const& Key::isActive() const{
@@ -12,9 +12,19 @@ void Key::setActive(bool a){
 }
 
 void Key::keyUp(){
-  setActive(false);
+  if (!flip) {
+    setActive(false);
+  }
 }
 
 void Key::keyDown(){
-  setActive(true);
+  if (!flip) {
+    setActive(true);
+  } else {
+    setActive(!active);
+  }
+}
+
+void Key::isFlip(){
+  flip = true;
 }

@@ -9,6 +9,7 @@ void Game::launch(){
 
   gManager.create();
   iManager.create();
+  i.isFlip(SDL_SCANCODE_P)
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();

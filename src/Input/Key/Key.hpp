@@ -3,7 +3,7 @@
 class Key {
   private:
     bool active;
-    bool switch;
+    bool flip;
 
   public:
     Key();
@@ -12,5 +12,6 @@ class Key {
     bool const& isActive() const ;
     void keyUp();
     void keyDown();
+    void isFlip();
 
 };
