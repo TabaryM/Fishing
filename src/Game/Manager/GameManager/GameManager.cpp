@@ -4,8 +4,8 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(1280,720) {}
 
 void GameManager::create(){
-  objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 50, 150, 230, 255), 0, borders.getH()*0.2, 2);
-  objets["Ciel"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.2 , 85, 205, 235, 255), 0, 0, 1);
+  objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 102, 204, 255), 0, borders.getH()*0.2, 2);
+  objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/sky.png"), 0, 0, 1);
   objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
   objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
@@ -30,7 +30,7 @@ void GameManager::update(){
 
 void GameManager::render(){
   Manager::render();
-  s->draw(0, 720, 1280, 0);
+  s->draw(objets["Kappa"]->getX() + objets["Kappa"]->getW()/2, objets["Kappa"]->getY() + objets["Kappa"]->getH(), objets["Hook"]->getX() + objets["Hook"]->getW()/2, objets["Hook"]->getY());
 }
 
 void GameManager::destroy(){
