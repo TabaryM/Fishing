@@ -30,11 +30,11 @@ void GameManager::update(){
 
 void GameManager::render(){
   Manager::render();
+  s->draw(0, 720, 1280, 0);
 }
 
 void GameManager::destroy(){
 }
-
 
 void GameManager::updateControlX(Object* obj) {
   int depX = 0;
