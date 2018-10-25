@@ -10,7 +10,7 @@ TODO LIST :
   - Faire une docu
   - ~~réparer deplacements bateau vitesse~~
 
-  - Menu pause
+  - ~~Menu pause~~
   - Dessiner ligne Hameçon-Bateau
   - Trouver/implémenter images ciel (http://www.coach-susana.com/wp-content/uploads/2018/04/Sue%C3%B1os.jpg), Ocean (https://www.color-hex.com/color-palette/35102), vagues
   - Animations canne-à-peche
