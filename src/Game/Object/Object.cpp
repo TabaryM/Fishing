@@ -8,7 +8,7 @@ Object::~Object(){
 
 void Object::link(Object* c){
   child.push_back(c);
-  c->setZ(z - static_cast <float> (child.size()) / getDepth());
+  c->setZ(z + static_cast <float> (child.size()) / getDepth());
 }
 
 Texture& Object::getTexture(){

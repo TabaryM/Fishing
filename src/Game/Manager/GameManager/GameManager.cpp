@@ -4,17 +4,20 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(1280,720) {}
 
 void GameManager::create(){
-  objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 102, 204, 255), 0, borders.getH()*0.2, 2);
+  objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 102, 204, 255), 0, borders.getH()*0.22, 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), 0, 0, 1);
   objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
-  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
+  objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 60 ,5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 46 , objets["Bateau"]->getZ());
-  objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50 , objets["Kappa"]->getZ());
+  objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50 , objets["Bateau"]->getZ());
 
+  ///////////////////////test wave
+  objets["Wave"] = new Object(s->getRenderer(), new Surface("sprites/Wave.png"), 500, 143, 3.05); //pos y via constante ?
+  ////////////////////////////////////
 
   objets["Bateau"]->link(objets["Kappa"]);
-  objets["Bateau"]->link(objets["Hook"]);
   objets["Kappa"]->link(objets["FishPole"]);
+  objets["FishPole"]->link(objets["Hook"]);
 
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), 500, 200 + 50 * i, i + 10);
@@ -78,8 +81,8 @@ void GameManager::updateControlY(Object* obj) {
   int depY = 0;
 
   if (i->isActive(SDL_SCANCODE_W)) {
-      if (obj->getY() - speed <= 150 ) {
-        depY -= obj-> getY() - 150 ;
+      if (obj->getY() - speed <= 0 ) {
+        depY -= obj-> getY() ;
       }
       else{
         depY -= speed;
