@@ -9,7 +9,7 @@ void InterfaceManager::create(){
 }
 
 void InterfaceManager::update(){
-
+  Manager::update();
 }
 
 void InterfaceManager::render(){

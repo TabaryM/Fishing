@@ -27,7 +27,6 @@ void GameManager::update(){
 
   updateControlX(objets["Bateau"]);
   updateControlY(objets["Hook"]);
-
 }
 
 void GameManager::render(){
@@ -42,7 +41,7 @@ void GameManager::updateControlX(Object* obj) {
   int depX = 0;
   int depY = 0;
 
-  if (i->isActive(SDL_SCANCODE_A)) {
+  if (i->getKeyKB(SDL_SCANCODE_A)) {
     if (obj->getX() -speed <= 0 ) {
       depX -= obj->getX();
     }
@@ -51,7 +50,7 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
-  if (i->isActive(SDL_SCANCODE_D)) {
+  if (i->getKeyKB(SDL_SCANCODE_D)) {
     if (obj->getX() + obj->getW() + speed >= 1280) {
       depX += 1280 - obj->getW() - obj->getX();
     }
@@ -60,10 +59,10 @@ void GameManager::updateControlX(Object* obj) {
     }
   }
 
-  if (i->isActive(SDL_SCANCODE_E)) {
+  if (i->getKeyKB(SDL_SCANCODE_E)) {
     speed++;
   }
-  if (i->isActive(SDL_SCANCODE_R)) {
+  if (i->getKeyKB(SDL_SCANCODE_R)) {
     if (speed > 1) {
       speed--;
     }
@@ -76,7 +75,7 @@ void GameManager::updateControlY(Object* obj) {
   int depX = 0;
   int depY = 0;
 
-  if (i->isActive(SDL_SCANCODE_W)) {
+  if (i->getKeyKB(SDL_SCANCODE_W)) {
       if (obj->getY() - speed <= 150 ) {
         depY -= obj-> getY() - 150 ;
       }
@@ -85,7 +84,7 @@ void GameManager::updateControlY(Object* obj) {
       }
   }
 
-  if (i->isActive(SDL_SCANCODE_S)) {
+  if (i->getKeyKB(SDL_SCANCODE_S)) {
     if (obj->getY() + obj->getH() + speed >= 720) {
       depY += 720 - obj->getY() - obj->getH();
     }

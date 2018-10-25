@@ -9,7 +9,6 @@ void Game::launch(){
 
   gManager.create();
   iManager.create();
-  i.isFlip(SDL_SCANCODE_P);
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();
@@ -20,18 +19,16 @@ void Game::launch(){
     lastTime = actualTime;
 
     i.update();
-    if (i.isActive(SDL_SCANCODE_P)){
+    gManager.update();
+    if (gManager.getPause()){
       iManager.update();
-    } else {
-      gManager.update();
     }
 
     s.clear();
     gManager.render();
-    if (i.isActive(SDL_SCANCODE_P)){
+    if (gManager.getPause()){
       iManager.render();
     }
-
     s.update();
   }
 
