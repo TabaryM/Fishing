@@ -39,5 +39,5 @@ bool const& Input::isActive(SDL_Scancode const& i){
 }
 
 void Input::isFlip(SDL_Scancode const& i){
-  KeyKB[i].isFlip();
+  keyKB[i].isFlip();
 }

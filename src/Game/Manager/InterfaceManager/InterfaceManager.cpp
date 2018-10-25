@@ -9,7 +9,6 @@ void InterfaceManager::create(){
 }
 
 void InterfaceManager::update(){
-  updatePause();
 
 }
 
@@ -18,9 +17,4 @@ void InterfaceManager::render(){
 }
 
 void InterfaceManager::destroy(){
-}
-
-
-void InterfaceManager::updatePause(){
-  Manager::updatePause();
 }
