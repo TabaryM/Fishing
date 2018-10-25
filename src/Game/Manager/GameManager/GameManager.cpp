@@ -30,7 +30,7 @@ void GameManager::update(){
 
 void GameManager::render(){
   Manager::render();
-  s->draw(0, 720, 1280, 0);
+  s->draw(objets["Kappa"]->getX() + objets["Kappa"]->getW()/2, objets["Kappa"]->getY() + objets["Kappa"]->getH(), objets["Hook"]->getX() + objets["Hook"]->getW()/2, objets["Hook"]->getY());
 }
 
 void GameManager::destroy(){
