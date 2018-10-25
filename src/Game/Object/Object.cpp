@@ -8,7 +8,7 @@ Object::~Object(){
 
 void Object::link(Object* c){
   child.push_back(c);
-  c->setZ(z - static_cast <float> (child.size()) / getDepth());
+  c->setZ(z + static_cast <float> (child.size()) / getDepth());
 }
 
 Texture& Object::getTexture(){
@@ -62,35 +62,17 @@ void Object::move(Vector2D<int> const& dep) {
 }
 
 void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
-  /*
-  bool col;
 
-  int gh1X = getX();
-  int gh1Y = getY();
+  bool col = false;
+  Vector2D<int>* corner = graphic.getPosition().getCorner();
 
-  int gb1X = getX;
-  int gb1Y;
+  for (int i = 0; i < 4; i++) {
+    col = col || o->graphic.getPosition().pointIn(corner[i]);
+  }
+  delete[] corner;
 
-  int dh1X;
-  int dh1X;
 
-  int db1X;
-  int db1X;
-
-  int gh2X;
-  int gh2Y;
-
-  int gb2X;
-  int gb2Y;
-
-  int dh2X;
-  int dh2Y;
-
-  int db2X;
-  int db2Y;
-*/
-
-  if (1) {
+  if (col) {
     callback(this, o);
   }
 }

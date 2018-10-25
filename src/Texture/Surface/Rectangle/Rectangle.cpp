@@ -31,3 +31,22 @@ SDL_Rect Rectangle::getRect() const {
   rect.h = size.getY();
   return rect;
 }
+
+Vector2D<int>* Rectangle::getCorner() const {
+  Vector2D<int>* c = new Vector2D<int>[4];
+  Vector2D<int> hd(getCoord() + getSize());
+  Vector2D<int> bg(getCoord());
+  Vector2D<int> hg(hd);
+  hg.setX(bg.getX());
+  Vector2D<int> bd(bg);
+  bd.setX(hd.getX());
+  c[0] = hg;
+  c[1] = hd;
+  c[2] = bg;
+  c[3] = bd;
+  return c;
+}
+
+bool Rectangle::pointIn(Vector2D<int> const& p) const {
+  return !(p.getX() < coord.getX() || p.getX() > coord.getX() + size.getX() || p.getY() > coord.getY() || p.getY() < coord.getY());
+}

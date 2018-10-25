@@ -18,5 +18,7 @@ class Rectangle {
     int const& getW() const;
     void setCoord(Vector2D<int> const& coord);
     SDL_Rect getRect() const;
+    Vector2D<int>* getCorner() const;
+    bool pointIn(Vector2D<int> const& p) const;
 
 };
