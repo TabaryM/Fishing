@@ -18,3 +18,11 @@ void BombFish::setDir(float d){
 int BombFish::getValue(){
   return this->valeur;
 }
+
+void BombFish::setDegre(float d){
+  setDegre(d);
+}
+
+float BombFish::getDegre(){
+  return getDegre();
+}

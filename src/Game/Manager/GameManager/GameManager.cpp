@@ -73,20 +73,25 @@ void GameManager::create(){
 }
 
 void GameManager::update(){
-  int timeDegre = rand() % 30 ;
-  int timeDirection = rand() % 100;
-  int timeSpeed = rand() % 100 + 100;
+  
   
   for (int i = 0; i < nbFish; i++) {
     
-    if(timeDegre == 5){
+    int timeDegre = rand() % 50 ;
+    int timeDirection = rand() % 1000;
+    int timeSpeed = rand() % 1000;
+    
+    if(timeDegre == 20){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre((rand() % 21 - 10)/10);
     }
     
-    if(timeDirection == 10){
+    if(timeDirection == 502){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(rand() % 2 + 1);
     }
     
+    if(timeSpeed == 10){
+      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDir(rand() % 4 + 1);
+    }
     
     objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre());
   }

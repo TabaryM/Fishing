@@ -25,5 +25,7 @@ class JebaiFish : public Fish {
     float getDir();
     void setDir(float d);
     int getValue();
+    void setDegre(float d);
+    float getDegre();
     
 };

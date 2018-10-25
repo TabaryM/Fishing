@@ -18,3 +18,11 @@ void GoldFish::setDir(float d){
 int GoldFish::getValue(){
   return this->valeur;
 }
+
+void GoldFish::setDegre(float d){
+  setDegre(d);
+}
+
+float GoldFish::getDegre(){
+  return getDegre();
+}

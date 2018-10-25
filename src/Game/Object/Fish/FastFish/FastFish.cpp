@@ -18,3 +18,11 @@ void FastFish::setDir(float d){
 int FastFish::getValue(){
   return this->valeur;
 }
+
+void FastFish::setDegre(float d){
+  setDegre(d);
+}
+
+float FastFish::getDegre(){
+  return getDegre();
+}

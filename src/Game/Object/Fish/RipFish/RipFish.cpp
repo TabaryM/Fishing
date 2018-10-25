@@ -18,3 +18,11 @@ void RipFish::setDir(float d){
 int RipFish::getValue(){
   return this->valeur;
 }
+
+void RipFish::setDegre(float d){
+  setDegre(d);
+}
+
+float RipFish::getDegre(){
+  return getDegre();
+}

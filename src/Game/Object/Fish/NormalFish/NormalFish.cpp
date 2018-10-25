@@ -18,3 +18,11 @@ void NormalFish::setDir(float d){
 int NormalFish::getValue(){
   return this->valeur;
 }
+
+void NormalFish::setDegre(float d){
+  setDegre(d);
+}
+
+float NormalFish::getDegre(){
+  return getDegre();
+}

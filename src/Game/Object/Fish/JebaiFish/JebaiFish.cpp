@@ -18,3 +18,11 @@ void JebaiFish::setDir(float d){
 int JebaiFish::getValue(){
   return this->valeur;
 }
+
+void JebaiFish::setDegre(float d){
+  setDegre(d);
+}
+
+float JebaiFish::getDegre(){
+  return getDegre();
+}
