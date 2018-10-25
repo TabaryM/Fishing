@@ -26,7 +26,7 @@ void Manager::sortObject() {
 }
 
 void Manager::updatePause() {
-  if (i->getKeyKB(SDL_SCANCODE_P)) {
+  if (i->isActive(SDL_SCANCODE_P)) {
     pause = !pause ;
   }
 
