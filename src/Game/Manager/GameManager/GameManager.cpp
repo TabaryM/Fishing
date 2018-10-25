@@ -5,13 +5,16 @@ GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(
 
 void GameManager::create(){
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(borders.getW(), borders.getH() *0.8, 0, 102, 204, 255), 0, borders.getH()*0.2, 2);
-  objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/sky.png"), 0, 0, 1);
+  objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), 0, 0, 1);
   objets["Bateau"] = new Boat(s->getRenderer(), 500, 100, 3);
   objets["Hook"] = new Hook(s->getRenderer(), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 50 , objets["Bateau"]->getZ());
-  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 50 , objets["Bateau"]->getZ());
+  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getW(), objets["Bateau"]->getY() - 46 , objets["Bateau"]->getZ());
+  objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50 , objets["Kappa"]->getZ());
+
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Bateau"]->link(objets["Hook"]);
+  objets["Kappa"]->link(objets["FishPole"]);
 
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), 500, 200 + 50 * i, i + 10);
@@ -30,7 +33,7 @@ void GameManager::update(){
 
 void GameManager::render(){
   Manager::render();
-  s->draw(0, 720, 1280, 0);
+  s->draw(objets["Hook"]->getX() + 0.5*objets["Hook"]->getW() , objets["Hook"]->getY() +0.15*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
 }
 
 void GameManager::destroy(){
