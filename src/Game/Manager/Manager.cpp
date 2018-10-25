@@ -12,6 +12,10 @@ void Manager::create(){
   sortObject();
 }
 
+void Manager::update() {
+  updatePause();
+}
+
 void Manager::render(){
   for (Object* o : draws) {
       s->draw(*o);
@@ -30,4 +34,7 @@ void Manager::updatePause() {
     pause = !pause ;
   }
 
+  bool const& getPause() const{
+    return pause;
+  }
 }

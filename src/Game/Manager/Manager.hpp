@@ -21,9 +21,10 @@ class Manager {
     Manager(Stage* s, Input* i);
     virtual ~Manager();
     virtual void create();
-    virtual void update() = 0 ;
+    virtual void update();
     virtual void render() ;
     virtual void destroy() = 0 ;
     void sortObject();
     virtual void updatePause() ;
+    bool const& getPause() const;
 };

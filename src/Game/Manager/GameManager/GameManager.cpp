@@ -20,14 +20,13 @@ void GameManager::create(){
 }
 
 void GameManager::update(){
+  Manager::update();
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
   }
 
   updateControlX(objets["Bateau"]);
   updateControlY(objets["Hook"]);
-  updatePause();
-
 }
 
 void GameManager::render(){
@@ -96,13 +95,4 @@ void GameManager::updateControlY(Object* obj) {
 
   obj->move(depX, depY);
 
-}
-
-void GameManager::updatePause(){
-  Manager::updatePause();
-
-}
-
-bool GameManager::getPause(){
-  return pause;
 }

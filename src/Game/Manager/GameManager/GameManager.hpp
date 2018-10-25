@@ -21,7 +21,5 @@ class GameManager : public Manager {
     void destroy() override;
     void updateControlX(Object* obj);
     void updateControlY(Object* obj);
-    void updatePause() override;
-    bool getPause();
 
 };
