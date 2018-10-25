@@ -10,7 +10,7 @@ void GameManager::create(){
   int const maxX = 50;
   int const maxY = 100;
 
-  ifstream fichier("niveau_1.txt", ios::in);  // on ouvre en lecture
+  ifstream fichier("stages/niveau_1.txt", ios::in);  // on ouvre en lecture
   char Fishs[maxY][maxX];
   for(int i = 0; i < maxY; i++){
     for(int j = 0; j < maxX;j++){
@@ -43,10 +43,26 @@ void GameManager::create(){
   for(int i = 0; i < maxX; i++) {
     for(int j = 0; j < maxY; j++){
       if(Fishs[i][j] == '1'){
-	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), i*51,190 + 21 * j, nbFish + 10);
+	objets["Fish" + std::to_string(nbFish)] = new NormalFish(s->getRenderer(), i*51,190 + 21 * j, nbFish + 10);
 	nbFish++;
       }
       if(Fishs[i][j] == '2'){
+	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), j*51,190 + 21 * i, nbFish + 10);
+	nbFish++;
+      }
+      if(Fishs[i][j] == '3'){
+	objets["Fish" + std::to_string(nbFish)] = new FastFish(s->getRenderer(), i*51,190 + 21 * j, nbFish + 10);
+	nbFish++;
+      }
+      if(Fishs[i][j] == '4'){
+	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), j*51,190 + 21 * i, nbFish + 10);
+	nbFish++;
+      }
+      if(Fishs[i][j] == '5'){
+	objets["Fish" + std::to_string(nbFish)] = new BombFish(s->getRenderer(), i*51,190 + 21 * j, nbFish + 10);
+	nbFish++;
+      }
+      if(Fishs[i][j] == '6'){
 	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), j*51,190 + 21 * i, nbFish + 10);
 	nbFish++;
       }
@@ -57,10 +73,23 @@ void GameManager::create(){
 }
 
 void GameManager::update(){
+  int timeDegre = rand() % 30 ;
+  int timeDirection = rand() % 100;
+  int timeSpeed = rand() % 100 + 100;
+  
   for (int i = 0; i < nbFish; i++) {
-    objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir());
+    
+    if(timeDegre == 5){
+      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre((rand() % 21 - 10)/10);
+    }
+    
+    if(timeDirection == 10){
+      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(rand() % 2 + 1);
+    }
+    
+    
+    objets["Fish" + std::to_string(i)]->move(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre());
   }
-
   updateControl(objets["Bateau"]);
 }
 
