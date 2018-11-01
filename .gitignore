@@ -1,4 +1,5 @@
 #untracked files :
 *.o
+*.exe
 bin/Fish.exe
 bin/Fish
