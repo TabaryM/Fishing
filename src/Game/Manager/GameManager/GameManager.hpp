@@ -5,6 +5,7 @@
 #include "../../Object/Fish/Fish.hpp"
 #include "../../Object/Boat/Boat.hpp"
 #include "../../Object/Hook/Hook.hpp"
+#include "../../Object/Wave/Wave.hpp"
 #include "../Manager.hpp"
 
 class GameManager : public Manager {

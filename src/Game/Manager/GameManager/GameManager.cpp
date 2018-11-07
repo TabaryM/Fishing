@@ -11,9 +11,6 @@ void GameManager::create(){
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , objets["Bateau"]->getZ());
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
 
-  ///////////////////////test wave
-  objets["Wave"] = new Object(s->getRenderer(), new Surface("sprites/Wave.png"), Vector2D<int>(500, 143), 3.05); //pos y via constante ?
-  ////////////////////////////////////
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
@@ -22,12 +19,22 @@ void GameManager::create(){
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), Vector2D<int>(500, 200 + 50 * i), i + 10);
   }
+  for (int i = 0; i < 14; i++) {
+    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), -98.5 + 98.5 * i, 143, 3.05);
+  }
   Manager::create();
 }
 
 void GameManager::update(){
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()));
+  }
+  //the swell
+  for (int i = 0; i < 14; i++) {
+    if(objets["Wave" + std::to_string(i)]->getX() >=1280 ){
+      objets["Wave" + std::to_string(i)]->move(-1280-98.5,0);
+    }
+    objets["Wave" + std::to_string(i)]->move(1,0);
   }
 
   updateControlX(objets["Bateau"]);
