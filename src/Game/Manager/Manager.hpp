@@ -4,6 +4,11 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
 
 #include "../Object/Object.hpp"
 #include "../../Stage/Stage.hpp"
