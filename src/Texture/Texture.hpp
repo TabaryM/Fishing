@@ -15,7 +15,7 @@ class Texture {
     /**
     * Constructor
     */
-    Texture(Renderer const& r, Surface* s, Vector2D<int> const& coords);
+    Texture(Renderer const& r, Surface* s, int const& x, int const& y);
     /**
      * Deconstructor
      */
@@ -25,7 +25,8 @@ class Texture {
     */
     SDL_Texture* getItem();
     Rectangle const& getPosition() const;
-    Vector2D<int> const& getCoord() const;
-    void setCoord(Vector2D<int> const& coord);
+    void setPosition(int const& x, int const& y);
+    void setX(int const& x);
+    void setY(int const& y);
 
 };

@@ -10,11 +10,10 @@ class Boat : public Object {
     /**
     * Constructor
     */
-    Boat(Renderer const& r, Vector2D<int> const& coord, float const& z);
+    Boat(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */
     ~Boat();
-    int getType() override;
 
 };

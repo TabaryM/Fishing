@@ -14,11 +14,12 @@ class Surface {
 
   public:
     Surface() = delete;
-    Surface(Vector2D<int> const& size, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
+    Surface(int const& w, int const& h, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
     Surface(std::string s);
     ~Surface();
     SDL_Surface* getItem();
-    Vector2D<int> getSize();
+    int const& getW() const;
+    int const& getH() const;
     void fillRGBA(Rectangle const& rect, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
 
 

@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
+Object::Object(Renderer const& r, Surface* s, int const& x, int const& y, float const& z) : graphic(r, s, x, y), z(z) {
 }
 
 Object::~Object(){
@@ -8,7 +8,7 @@ Object::~Object(){
 
 void Object::link(Object* c){
   child.push_back(c);
-  c->setZ(z + static_cast <float> (child.size()) / getDepth());
+  c->setZ(z - static_cast <float> (child.size()) / getDepth());
 }
 
 Texture& Object::getTexture(){
@@ -19,32 +19,24 @@ void Object::setZ(float const& v) {
   z = v;
 }
 
-Vector2D<int> const& Object::getCoord() const {
-  return graphic.getPosition().getCoord();
+int const& Object::getX() const{
+  return graphic.getPosition().getX();
 }
 
-int const& Object::getX() const {
-  return graphic.getCoord().getX();
-}
-
-int const& Object::getY() const {
-  return graphic.getCoord().getY();
-}
-
-Vector2D<int> const& Object::getSize() const {
-  return graphic.getPosition().getSize();
-}
-
-int const& Object::getW() const {
-  return graphic.getPosition().getSize().getX();
-}
-
-int const& Object::getH() const {
-  return graphic.getPosition().getSize().getY();
+int const& Object::getY() const{
+  return graphic.getPosition().getY();
 }
 
 float const& Object::getZ() const {
   return z;
+}
+
+int const& Object::getW() const{
+  return graphic.getPosition().getW();
+}
+
+int const& Object::getH() const{
+  return graphic.getPosition().getH();
 }
 
 float Object::getDepth() const {
@@ -54,29 +46,18 @@ float Object::getDepth() const {
   return 10.0 * child[0]->getDepth();
 }
 
-void Object::move(Vector2D<int> const& dep) {
-  graphic.setCoord(graphic.getCoord() + dep);
+void Object::move(float const& x, float const& y) {
+  graphic.setX(getX() + x);
+  graphic.setY(getY() + y);
   for (Object* o : child) {
-    o->move(dep);
+    o->move(x, y);
   }
 }
 
-void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
-
-  bool col = false;
-  Vector2D<int>* corner = graphic.getPosition().getCorner();
-
-  for (int i = 0; i < 4; i++) {
-    col = col || o->graphic.getPosition().pointIn(corner[i]);
+bool Object::borderCollide(Rectangle const& r){
+  bool res = false;
+  if(getX() < r.getX() && getX()+getW() < r.getX() + r.getW()){
+    res = true;
   }
-  delete[] corner;
-
-
-  if (col) {
-    callback(this, o);
-  }
-}
-
-int Object::getType() {
-  return OBJECT;
+  return res ;
 }
