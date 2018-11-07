@@ -1,7 +1,7 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), nbFish(0), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
   using namespace std;

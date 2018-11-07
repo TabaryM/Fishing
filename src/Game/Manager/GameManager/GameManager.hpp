@@ -11,6 +11,7 @@
 class GameManager : public Manager {
   private:
     int speed;
+    int nbFish;
     Rectangle borders;
 
   public:
