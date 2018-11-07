@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include <random>
 
 #include <SDL2/SDL.h>
 #include <algorithm>
@@ -11,14 +10,12 @@
 class Fish : public Object {
   private:
     float direction;
-    int right;
-    float degre;
 
   public:
     /**
     * Constructor
     */
-    Fish(Renderer const& r, std::string s, int const& x, int const& y, float const& z);
+    Fish(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */
@@ -26,8 +23,5 @@ class Fish : public Object {
 
     float getDir();
     void setDir(float d);
-    void setRight(int r);
-    int getRight();
-    void setDegre(float d);
-    float getDegre();
+
 };
