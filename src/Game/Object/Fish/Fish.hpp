@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <random>
-
 #include <SDL2/SDL.h>
 #include <algorithm>
+
 #include "../Object.hpp"
 
 class Fish : public Object {

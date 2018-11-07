@@ -1,7 +1,7 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), nbFish(0), focus(0), profondeur(150), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), focus(0), profondeur(150), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
 
@@ -9,16 +9,18 @@ void GameManager::create(){
 
   int const maxX = 23;
   int const maxY = 100;
+  int nbFish = 50;
 
   ifstream fichier("stages/niveau_1.txt", ios::in);  // on ouvre en lecture
-  char Fishs[20];
+  char Fishs[nbFish];
 
   if(fichier){  // si l'ouverture a fonctionné
     string ligne;
     int i = 0;
+    nbFish = 0 ;
     while(getline(fichier, ligne)){  // tant que l'on peut mettre la ligne dans "contenu"
       for(unsigned int j = 0; j < ligne.size(); j++){
-      	Fishs[i][j] = ligne[j]; //j'assigne chaque caractere de la ligne dans le tableau
+      	Fishs[nbFish] = ligne[j]; //j'assigne chaque caractere de la ligne dans le tableau
       }
     i++;
     }
@@ -39,29 +41,30 @@ void GameManager::create(){
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
 
+  nbFish = 0;
   for(int i = 0; i < maxX; i++) {
     for(int j = 0; j < maxY; j++){
-      if(Fishs[i][j] == '1'){
+      if(Fishs[nbFish] == '1'){
       	objets["Fish" + std::to_string(nbFish)] = new NormalFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
       	nbFish++;
       }
-      if(Fishs[i][j] == '2'){
+      if(Fishs[nbFish] == '2'){
       	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
       	nbFish++;
       }
-      if(Fishs[i][j] == '3'){
+      if(Fishs[nbFish] == '3'){
       	objets["Fish" + std::to_string(nbFish)] = new FastFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
       	nbFish++;
       }
-      if(Fishs[i][j] == '4'){
+      if(Fishs[nbFish] == '4'){
 	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
 	nbFish++;
       }
-      if(Fishs[i][j] == '5'){
+      if(Fishs[nbFish] == '5'){
       	objets["Fish" + std::to_string(nbFish)] = new BombFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
       	nbFish++;
       }
-      if(Fishs[i][j] == '6'){
+      if(Fishs[nbFish] == '6'){
       	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
       	nbFish++;
       }
