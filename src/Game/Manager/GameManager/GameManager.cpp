@@ -20,7 +20,7 @@ void GameManager::create(){
   objets["FishPole"]->link(objets["Hook"]);
 
   for (int i = 0; i < 10; i++) {
-    objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), 500, 200 + 50 * i, i + 10);
+    objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), 500, 200 + 50 * i, 4);
   }
   Manager::create();
 }
