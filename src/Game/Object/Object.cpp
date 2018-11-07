@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, int const& x, int const& y, float const& z) : graphic(r, s, x, y), z(z) {
+Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
 }
 
 Object::~Object(){
@@ -19,24 +19,32 @@ void Object::setZ(float const& v) {
   z = v;
 }
 
-int const& Object::getX() const{
-  return graphic.getPosition().getX();
+Vector2D<int> const& Object::getCoord() const {
+  return graphic.getPosition().getCoord();
 }
 
-int const& Object::getY() const{
-  return graphic.getPosition().getY();
+int const& Object::getX() const {
+  return graphic.getCoord().getX();
+}
+
+int const& Object::getY() const {
+  return graphic.getCoord().getY();
+}
+
+Vector2D<int> const& Object::getSize() const {
+  return graphic.getPosition().getSize();
+}
+
+int const& Object::getW() const {
+  return graphic.getPosition().getSize().getX();
+}
+
+int const& Object::getH() const {
+  return graphic.getPosition().getSize().getY();
 }
 
 float const& Object::getZ() const {
   return z;
-}
-
-int const& Object::getW() const{
-  return graphic.getPosition().getW();
-}
-
-int const& Object::getH() const{
-  return graphic.getPosition().getH();
 }
 
 float Object::getDepth() const {
@@ -46,18 +54,29 @@ float Object::getDepth() const {
   return 10.0 * child[0]->getDepth();
 }
 
-void Object::move(float const& x, float const& y) {
-  graphic.setX(getX() + x);
-  graphic.setY(getY() + y);
+void Object::move(Vector2D<int> const& dep) {
+  graphic.setCoord(graphic.getCoord() + dep);
   for (Object* o : child) {
-    o->move(x, y);
+    o->move(dep);
   }
 }
 
-bool Object::borderCollide(Rectangle const& r){
-  bool res = false;
-  if(getX() < r.getX() && getX()+getW() < r.getX() + r.getW()){
-    res = true;
+void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
+
+  bool col = false;
+  Vector2D<int>* corner = graphic.getPosition().getCorner();
+
+  for (int i = 0; i < 4; i++) {
+    col = col || o->graphic.getPosition().pointIn(corner[i]);
   }
-  return res ;
+  delete[] corner;
+
+
+  if (col) {
+    callback(this, o);
+  }
+}
+
+int Object::getType() {
+  return OBJECT;
 }

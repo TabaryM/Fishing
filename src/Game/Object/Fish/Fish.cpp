@@ -1,6 +1,6 @@
 #include "Fish.hpp"
 
-Fish::Fish(Renderer const& r, int const& x, int const& y, float const& z) : Object(r, new Surface("sprites/fish/Jebaifish.png"), x, y, z), direction(0.0) {
+Fish::Fish(Renderer const& r, Vector2D<int> const& coord, float const& z) : Object(r, new Surface("sprites/fish/Jebaifish.png"), coord, z), direction(0.0) {
   this->direction = rand() % 10 - 5;
 }
 
@@ -13,4 +13,8 @@ float Fish::getDir(){
 
 void Fish::setDir(float d){
   this->direction = d;
+}
+
+int Fish::getType() {
+  return FISH;
 }
