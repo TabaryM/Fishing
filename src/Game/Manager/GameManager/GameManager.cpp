@@ -4,6 +4,32 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
+  using namespace std;
+
+  int const maxX = 50;
+  int const maxY = 100;
+
+  ifstream fichier("stages/niveau_1.txt", ios::in);  // on ouvre en lecture
+  char Fishs[maxY][maxX];
+  for(int i = 0; i < maxY; i++){
+    for(int j = 0; j < maxX;j++){
+      Fishs[i][j] = '0';
+    }
+  }
+
+  if(fichier){  // si l'ouverture a fonctionné
+    string ligne;
+    int i = 0;
+    while(getline(fichier, ligne)){  // tant que l'on peut mettre la ligne dans "contenu"
+      for(unsigned int j = 0; j < ligne.size();j++){
+	Fishs[i][j] = ligne[j]; //j'assigne chaque caractere de la ligne dans le tableau
+      }
+    i++;
+    }
+  }else{
+    cerr << "Impossible d'ouvrir le fichier !" << endl;
+  }
+
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1);
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY() *0.8), (char)0, (char)102, (char)204, (char)255), Vector2D<int>(0, borders.getSize().getY()*0.22), 2);
   objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, 100), 3);
