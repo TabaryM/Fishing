@@ -84,15 +84,12 @@ void GameManager::update(){
     if(timeDegre == 20){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre((rand() % 21 - 10)/10);
     }
-
     if(timeDirection == 502){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(rand() % 2);
     }
-
     if(timeSpeed == 329){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDir(rand() % 4 );
     }
-
     if((objets["Fish" + std::to_string(i)]->getX()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) < 0){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
     }
@@ -102,8 +99,8 @@ void GameManager::update(){
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
     }
+  }
 
-  //the swell
   for (int i = 0; i < 14; i++) {
     if(objets["Wave" + std::to_string(i)]->getX() >=1280 ){
       objets["Wave" + std::to_string(i)]->move(Vector2D<int>(-1280-98.5,0));
@@ -124,7 +121,6 @@ void GameManager::update(){
         }, it2.second);
       }
     }
-  }
 }
 
 
