@@ -1,6 +1,6 @@
 #include "RipFish.hpp"
 
-RipFish::RipFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Ripfish.png" , coord, z) {
+RipFish::RipFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Ripfish.png" , coord, z) {
   this->valeur = 2;
 }
 

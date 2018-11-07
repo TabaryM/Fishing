@@ -16,7 +16,7 @@ class JebaiFish : public Fish {
     /**
     * Constructor
     */
-    JebaiFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z);
+    JebaiFish(Renderer const& r, Vector2D<int> coord, float const& z);
     /**
      * Deconstructor
      */

@@ -16,7 +16,7 @@ class NormalFish : public Fish {
     /**
     * Constructor
     */
-    NormalFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z);
+    NormalFish(Renderer const& r, Vector2D<int> coord, float const& z);
     /**
      * Deconstructor
      */

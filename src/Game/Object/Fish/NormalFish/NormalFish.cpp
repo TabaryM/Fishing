@@ -1,6 +1,6 @@
 #include "NormalFish.hpp"
 
-NormalFish::NormalFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Normalfish.png" , coord, z) {
+NormalFish::NormalFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Normalfish.png" , coord, z) {
   this->valeur = 1;
 }
 

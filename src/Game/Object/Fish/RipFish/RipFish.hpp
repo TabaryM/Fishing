@@ -16,7 +16,7 @@ class RipFish : public Fish {
     /**
     * Constructor
     */
-    RipFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z);
+    RipFish(Renderer const& r, Vector2D<int> coord, float const& z);
     /**
      * Deconstructor
      */

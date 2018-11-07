@@ -1,6 +1,6 @@
 #include "FastFish.hpp"
 
-FastFish::FastFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Fastfish.png" , coord, z) {
+FastFish::FastFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Fastfish.png" , coord, z) {
   this->valeur = 2;
 }
 

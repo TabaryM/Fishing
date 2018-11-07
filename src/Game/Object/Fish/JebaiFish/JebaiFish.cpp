@@ -1,6 +1,6 @@
 #include "JebaiFish.hpp"
 
-JebaiFish::JebaiFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Jebaifish.png" , coord, z) {
+JebaiFish::JebaiFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Jebaifish.png" , coord, z) {
   this->valeur = 2;
 }
 

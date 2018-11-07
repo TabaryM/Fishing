@@ -20,6 +20,7 @@ class GameManager : public Manager {
     int focus;
     int profondeur;
     Rectangle borders;
+    int nbFish;
 
   public:
     GameManager(Stage* s, Input* i);

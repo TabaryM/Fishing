@@ -16,7 +16,7 @@ class FastFish : public Fish {
     /**
     * Constructor
     */
-    FastFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z);
+    FastFish(Renderer const& r, Vector2D<int> coord, float const& z);
     /**
      * Deconstructor
      */
