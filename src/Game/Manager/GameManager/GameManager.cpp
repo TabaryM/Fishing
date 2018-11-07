@@ -20,7 +20,7 @@ void GameManager::create(){
     objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), Vector2D<int>(500, 200 + 50 * i), i + 10);
   }
   for (int i = 0; i < 14; i++) {
-    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), -98.5 + 98.5 * i, 143, 3.05);
+    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(-98.5 + 98.5 * i, 143), 3.05);
   }
   Manager::create();
 }
@@ -32,9 +32,9 @@ void GameManager::update(){
   //the swell
   for (int i = 0; i < 14; i++) {
     if(objets["Wave" + std::to_string(i)]->getX() >=1280 ){
-      objets["Wave" + std::to_string(i)]->move(-1280-98.5,0);
+      objets["Wave" + std::to_string(i)]->move(Vector2D<int>(-1280-98.5,0));
     }
-    objets["Wave" + std::to_string(i)]->move(1,0);
+    objets["Wave" + std::to_string(i)]->move(Vector2D<int>(1,0));
   }
 
   updateControlX(objets["Bateau"]);

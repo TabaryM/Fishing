@@ -10,7 +10,7 @@ class Wave : public Object {
     /**
     * Constructor
     */
-    Wave(Renderer const& r, int const& x, int const& y, float const& z);
+    Wave(Renderer const& r, Vector2D<int> const& coord, float const& z);
     /**
      * Deconstructor
      */
