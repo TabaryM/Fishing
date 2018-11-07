@@ -35,8 +35,15 @@ clean :
 	@mkdir obj/Game/Manager/GameManager
 	@mkdir obj/Game/Object
 	@mkdir obj/Game/Object/Fish
+	@mkdir obj/Game/Object/Fish/NormalFish
+	@mkdir obj/Game/Object/Fish/FastFish
+	@mkdir obj/Game/Object/Fish/GoldFish
+	@mkdir obj/Game/Object/Fish/RipFish
+	@mkdir obj/Game/Object/Fish/BombFish
+	@mkdir obj/Game/Object/Fish/JebaiFish
 	@mkdir obj/Game/Object/Boat
 	@mkdir obj/Game/Object/Hook
+	@mkdir obj/Game/Object/Wave
 	@mkdir obj/Initializer
 	@mkdir obj/Input
 	@mkdir obj/Input/Event

@@ -6,28 +6,26 @@
 
 #include <SDL2/SDL.h>
 #include <algorithm>
-#include "../Object.hpp"
+#include "../Fish.hpp"
 
-class Fish : public Object {
+class JebaiFish : public Fish {
   private:
-    float direction;
-    int right;
-    float degre;
+    int valeur;
 
   public:
     /**
     * Constructor
     */
-    Fish(Renderer const& r, std::string s, Vector2D<int> coord, int const& z);
+    JebaiFish(Renderer const& r, std::string s, Vector2D<int> coord, float const& z);
     /**
      * Deconstructor
      */
-    ~Fish();
+    ~JebaiFish();
 
     float getDir();
     void setDir(float d);
-    void setRight(int r);
-    int getRight();
+    int getValue();
     void setDegre(float d);
     float getDegre();
+
 };

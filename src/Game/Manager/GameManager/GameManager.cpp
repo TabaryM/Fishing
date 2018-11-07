@@ -11,7 +11,6 @@ void GameManager::create(){
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , objets["Bateau"]->getZ());
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
 
-
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
@@ -19,9 +18,11 @@ void GameManager::create(){
   for (int i = 0; i < 10; i++) {
     objets["Fish" + std::to_string(i)] = new Fish(s->getRenderer(), Vector2D<int>(500, 200 + 50 * i), i + 10);
   }
+
   for (int i = 0; i < 14; i++) {
     objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(-98.5 + 98.5 * i, 143), 3.05);
   }
+
   Manager::create();
 }
 
