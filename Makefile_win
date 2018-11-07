@@ -45,8 +45,8 @@ clean :
 	@mkdir obj/Game/Object/Hook
 	@mkdir obj/Initializer
 	@mkdir obj/Input
-	@mkdir obj/Input/Event
 	@mkdir obj/Input/Key
+	@mkdir obj/Input/Event
 	@mkdir obj/Stage
 	@mkdir obj/Stage/Renderer
 	@mkdir obj/Stage/Window

@@ -138,6 +138,7 @@ void GameManager::updateControlX(Object* obj) {
     else{
       depX += speed;
     }
+  }
 
   if (i->isActive(SDL_SCANCODE_E)) {
     speed++;
