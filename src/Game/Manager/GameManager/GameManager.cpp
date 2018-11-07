@@ -4,7 +4,6 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
-  
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getW(), borders.getH() *0.8), 0, 102, 204, 255), Vector2D<int>(0, borders.getH()*0.2), 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/sky.png"), Vector2D<int>(0, 0), 1);
   objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, 100), 3);
@@ -43,6 +42,7 @@ void GameManager::update(){
 
 void GameManager::render(){
   Manager::render();
+  //dessine la ligne
   s->draw(objets["Hook"]->getX() + 0.5*objets["Hook"]->getW() , objets["Hook"]->getY() +0.15*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
 }
 
