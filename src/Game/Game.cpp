@@ -3,6 +3,7 @@
 Game::Game(Initializer& init) : s(init), gManager(&s,&i) , iManager(&s, &i) {}
 
 void Game::launch(){
+  i.isFlip(SDL_SCANCODE_P);
   srand (time(NULL));
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
@@ -19,10 +20,17 @@ void Game::launch(){
     lastTime = actualTime;
 
     i.update();
-    gManager.update();
+    if (i.isActive(SDL_SCANCODE_P)){
+      iManager.update();
+    } else {
+      gManager.update();
+    }
 
     s.clear();
     gManager.render();
+    if (i.isActive(SDL_SCANCODE_P)){
+      iManager.render();
+    }
     s.update();
   }
 

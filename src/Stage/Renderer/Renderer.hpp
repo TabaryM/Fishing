@@ -5,6 +5,7 @@
 
 #include "../Window/Window.hpp"
 #include "../../Texture/Surface/Surface.hpp"
+#include "../../Texture/Texture.hpp"
 
 class Texture;
 
@@ -32,6 +33,11 @@ class Renderer {
      * @param t with the SDL Library
      */
     void draw(Texture & t);
+    /**
+     * Draw the line
+     * @param x1, x2, y1, y2
+     */
+    void draw(int const& x1, int const& y1, int const& x2, int const& y2);
     /**
      * Clear the stage
      */

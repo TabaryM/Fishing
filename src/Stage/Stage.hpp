@@ -28,6 +28,7 @@ class Stage{
     Renderer const& getRenderer() const;
     void clear();
     void draw(Texture & t);
+    void draw(int const& x1, int const& y1, int const& x2, int const& y2);
     void draw(Object& o);
     void update();
 };

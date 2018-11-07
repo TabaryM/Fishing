@@ -1,8 +1,8 @@
 #include "Input.hpp"
 
 Input::Input() : quit(false) {
-  keyKB = new bool[SDL_NUM_SCANCODES]{false};
-  keyMouse = new bool[SDL_BUTTON_X2 + 1]{false};
+  keyKB = new Key[SDL_NUM_SCANCODES];
+  keyMouse = new Key[SDL_BUTTON_X2 + 1];
 }
 
 Input::~Input() {
@@ -22,11 +22,11 @@ void Input::update() {
       break;
     }
     case SDL_KEYDOWN:{
-      keyKB[e.getScancode()] = true;
+      keyKB[e.getScancode()].keyDown();
      break;
      }
      case SDL_KEYUP: {
-       keyKB[e.getScancode()] = false;
+       keyKB[e.getScancode()].keyUp();
        break;
      }
     default: {
@@ -34,6 +34,10 @@ void Input::update() {
   }
 }
 
-bool const& Input::getKeyKB(SDL_Scancode const& i){
-  return keyKB[i];
+bool const& Input::isActive(SDL_Scancode const& i){
+  return keyKB[i].isActive();
+}
+
+void Input::isFlip(SDL_Scancode const& i){
+  keyKB[i].isFlip();
 }

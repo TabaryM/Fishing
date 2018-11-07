@@ -1,14 +1,18 @@
 # Fishing
 
+Documentation (via Doxygene) :
+  - Installer la dernière version de Doxygene : https://sourceforge.net/projects/doxygen/files/latest/download
+  - Lancer l'installateur
+  - utilisez les paramètre dans le fichier Doxyfile
 
 TODO LIST :
 
   - Faire une docu
   - ~~réparer deplacements bateau vitesse~~
 
-  - Menu pause
-  - Dessiner ligne Hameçon-Bateau
-  - Trouver/implémenter images ciel, Ocean, vagues
+  - ~~Menu pause~~
+  - ~~Dessiner ligne Hameçon-Bateau~~
+  - ~~Trouver/implémenter images ciel, Ocean (https://www.color-hex.com/color-palette/35102)~~, vagues
   - Animations canne-à-peche
 
   - Animations poissons

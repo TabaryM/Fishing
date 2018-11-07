@@ -26,6 +26,7 @@ class GameManager : public Manager {
     void update() override;
     void render() override;
     void destroy() override;
-    void updateControl(Object* obj);
+    void updateControlX(Object* obj);
+    void updateControlY(Object* obj);
 
 };
