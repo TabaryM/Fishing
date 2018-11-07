@@ -44,28 +44,28 @@ void GameManager::create(){
   for(int i = 0; i < maxX; i++) {
     for(int j = 0; j < maxY; j++){
       if(Fishs[i][j] == '1'){
-	objets["Fish" + std::to_string(nbFish)] = new NormalFish(s->getRenderer(), i*51,190 + 50 * j, nbFish + 10);
-	nbFish++;
+      	objets["Fish" + std::to_string(nbFish)] = new NormalFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
+      	nbFish++;
       }
       if(Fishs[i][j] == '2'){
-	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), j*51,190 + 50 * i, nbFish + 10);
-	nbFish++;
+      	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
+      	nbFish++;
       }
       if(Fishs[i][j] == '3'){
-	objets["Fish" + std::to_string(nbFish)] = new FastFish(s->getRenderer(), i*51,190 + 50 * j, nbFish + 10);
-	nbFish++;
+      	objets["Fish" + std::to_string(nbFish)] = new FastFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
+      	nbFish++;
       }
       if(Fishs[i][j] == '4'){
-	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), j*51,190 + 50 * i, nbFish + 10);
+	objets["Fish" + std::to_string(nbFish)] = new RipFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
 	nbFish++;
       }
       if(Fishs[i][j] == '5'){
-	objets["Fish" + std::to_string(nbFish)] = new BombFish(s->getRenderer(), i*51,190 + 50 * j, nbFish + 10);
-	nbFish++;
+      	objets["Fish" + std::to_string(nbFish)] = new BombFish(s->getRenderer(), Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
+      	nbFish++;
       }
       if(Fishs[i][j] == '6'){
-	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), j*51,190 + 50 * i, nbFish + 10);
-	nbFish++;
+      	objets["Fish" + std::to_string(nbFish)] = new GoldFish(s->getRenderer(), Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
+      	nbFish++;
       }
     }
   }
