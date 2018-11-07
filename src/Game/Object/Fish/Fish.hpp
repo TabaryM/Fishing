@@ -15,7 +15,7 @@ class Fish : public Object {
     /**
     * Constructor
     */
-    Fish(Renderer const& r, int const& x, int const& y, float const& z);
+    Fish(Renderer const& r, Vector2D<int> const& coord, float const& z);
     /**
      * Deconstructor
      */
@@ -23,5 +23,6 @@ class Fish : public Object {
 
     float getDir();
     void setDir(float d);
+    int getType() override;
 
 };
