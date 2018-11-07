@@ -12,11 +12,9 @@ TODO LIST :
 
   - ~~Menu pause~~
   - ~~Dessiner ligne Hameçon-Bateau~~
-  - ~~Trouver/implémenter images ciel (http://www.coach-susana.com/wp-content/uploads/2018/04/Sue%C3%B1os.jpg), Ocean (https://www.color-hex.com/color-palette/35102), vagues~~
-  - ~~canne a peche~~
-
-  - ~~Animation vague~~
+  - ~~Trouver/implémenter images ciel, Ocean (https://www.color-hex.com/color-palette/35102)~~, vagues
   - Animations canne-à-peche
+
   - Animations poissons
   - Images de courants
   - Mécanique de courants (illogique)
