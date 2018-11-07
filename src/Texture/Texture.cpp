@@ -1,7 +1,7 @@
 #include "Texture.hpp"
 #include "../Stage/Renderer/Renderer.hpp"
 
-Texture::Texture( Renderer const& r, Surface* s, Vector2D<int> const& coord) : item(0), position(s->getSize(), coord) {
+Texture::Texture( Renderer const& r, Surface* s, int const& x, int const& y) : item(0), position(s->getW(), s->getH(), x, y) {
   item = r.getTexture(s);
 }
 
@@ -17,10 +17,15 @@ Rectangle const& Texture::getPosition() const {
   return position;
 }
 
-Vector2D<int> const& Texture::getCoord() const {
-  return position.getCoord();
+void Texture::setPosition(int const& x, int const& y){
+  position.setX(x);
+  position.setY(y);
 }
 
-void Texture::setCoord(Vector2D<int> const& coord){
-  position.setCoord(coord);
+void Texture::setX(int const& x) {
+  position.setX(x);
+}
+
+void Texture::setY(int const& y) {
+  position.setY(y);
 }

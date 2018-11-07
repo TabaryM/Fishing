@@ -19,8 +19,7 @@ SDL_Texture* Renderer::getTexture(Surface* s) const {
 }
 
 void Renderer::draw(Texture & t) {
-  SDL_Rect r = t.getPosition().getRect();
-  int err = SDL_RenderCopy(item, t.getItem(), NULL, &r);
+  int err = SDL_RenderCopy(item, t.getItem(), NULL, &(t.getPosition().getItem()));
   assert(err == 0);
 }
 

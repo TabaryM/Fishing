@@ -10,11 +10,10 @@ class Hook : public Object {
     /**
     * Constructor
     */
-    Hook(Renderer const& r, Vector2D<int> const& coord, float const& z);
+    Hook(Renderer const& r, int const& x, int const& y, float const& z);
     /**
      * Deconstructor
      */
     ~Hook();
-    int getType() override;
 
 };
