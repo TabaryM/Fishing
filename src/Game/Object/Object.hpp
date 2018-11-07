@@ -2,7 +2,15 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
+#include <functional>
 #include "../../Texture/Texture.hpp"
+
+enum ObjectType {
+  OBJECT,
+  FISH,
+  HOOK,
+  BOAT
+};
 
 class Object {
   private:
@@ -15,23 +23,26 @@ class Object {
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, int const& x, int const& y, float const& z);
+    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z);
     /**
      * Deconstructor
      */
-    ~Object();
+    virtual ~Object();
 
     void link(Object* c);
     Texture& getTexture();
     void setZ(float const& v);
+    Vector2D<int> const& getCoord() const;
     int const& getX() const;
     int const& getY() const;
-    float const& getZ() const;
     int const& getW() const;
     int const& getH() const;
+    Vector2D<int> const& getSize() const;
+    float const& getZ() const;
     float getDepth() const;
-    void move(float const& x, float const& y);
-    bool borderCollide(Rectangle const& r);
+    void move(Vector2D<int> const& dep);
+    void collide(std::function<void(Object*, Object*)> callback, Object* o);
+    virtual int getType();
 
 
   public:

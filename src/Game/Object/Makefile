@@ -1,18 +1,16 @@
-OBJ = $(OBJDIR)Object.o
-OBJDIR = ../../../obj/Game/Object/
+OBJ = $(OBJDIR)Game.o
+OBJDIR = ../../obj/Game/
 
-FISH = Fish
-BOAT = Boat
-HOOK = Hook
+OBJECT = Object
+MANAGER = Manager
 
-all : $(TARGET) after
+all : before $(TARGET)
+
+before :
+	@(cd $(OBJECT) && $(MAKE))
+	@(cd $(MANAGER) && $(MAKE))
 
 debug : $(OBJ)
-
-after:
-	@(cd $(FISH) && $(MAKE))
-	@(cd $(BOAT) && $(MAKE))
-	@(cd $(HOOK) && $(MAKE))
 
 $(OBJDIR)%.o : %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
