@@ -7,11 +7,10 @@ Documentation (via Doxygene) :
 
 TODO LIST :
 
-  - PRIORITE POUR CHRISTIAN :
+  - POUR CHRISTIAN : Je m'occupe de tout ça
      - modifier la sauvegarde pour avoir juste les infos des poissons sous forme "x-y-type" avec un set de valeurs par ligne dans le fichier de sauvegarde. Avoir un fichier comme ça permet d'enregistrer une progression et évite d'avoir à gérer un tableau beaucoup trop grand et pas pratique.
      - faire ce syteme de sauvegarde un peu seloncet exemple : https://cdn.discordapp.com/attachments/502465354820354049/509803392114360331/unknown.png
       dans un nouvel objet GameLoad (ranger dans /Game ?)
-      Si t'a des question pour l'exemple tu peux me demander
 
   - Faire une docu
   - ~~réparer deplacements bateau vitesse~~

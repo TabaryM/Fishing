@@ -10,7 +10,7 @@ void GameManager::create(){
   int const maxY = 100;
 
   ifstream fichier("stages/niveau_1.txt", ios::in);  // on ouvre en lecture
-  char Fishs[50];
+
 
   if(fichier){  // si l'ouverture a fonctionné
     string ligne;
