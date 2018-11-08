@@ -10,6 +10,7 @@
 class Fish : public Object {
   private:
     float direction;
+    bool hooked;
 
   public:
     /**
@@ -23,6 +24,8 @@ class Fish : public Object {
 
     float getDir();
     void setDir(float d);
+    void setHook();
+    bool const& isHooked() const ;
     int getType() override;
 
 };
