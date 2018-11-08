@@ -1,12 +1,15 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& init) : s(init), gManager(&s,&i) , iManager(&s, &i) {}
+Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s) {}
 
 void Game::launch(){
   i.isFlip(SDL_SCANCODE_P);
   srand (time(NULL));
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
+
+  sManager.load(gManager.getFishs());
+  gManager.fillFish();
 
   gManager.create();
   iManager.create();

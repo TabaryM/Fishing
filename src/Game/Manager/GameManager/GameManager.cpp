@@ -4,28 +4,6 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
-  using namespace std;
-
-  int const maxX = 23;
-  int const maxY = 100;
-
-  ifstream fichier("stages/niveau_1.txt", ios::in);  // on ouvre en lecture
-
-
-  if(fichier){  // si l'ouverture a fonctionné
-    string ligne;
-    int i = 0;
-    nbFish = 0 ;
-    while(getline(fichier, ligne)){  // tant que l'on peut mettre la ligne dans "contenu"
-      for(unsigned int j = 0; j < ligne.size(); j++){
-      	Fishs[nbFish] = ligne[j]; //j'assigne chaque caractere de la ligne dans le tableau
-      }
-    i++;
-    }
-  }else{
-    cerr << "Impossible d'ouvrir le fichier !" << endl;
-  }
-
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, 0), 1);
   objets["Ocean2"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, borders.getSize().getY() *0.8), 2);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 3);
@@ -39,43 +17,14 @@ void GameManager::create(){
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
 
-  nbFish = 0;
-  for(int i = 0; i < maxX; i++) {
-    for(int j = 0; j < maxY; j++){
-      if(Fishs[nbFish] == '1'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/NormalFish.png" , Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
-      	nbFish++;
-      }
-      if(Fishs[nbFish] == '2'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/GoldFish.png" , Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
-      	nbFish++;
-      }
-      if(Fishs[nbFish] == '3'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/FastFish.png" , Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
-      	nbFish++;
-      }
-      if(Fishs[nbFish] == '4'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/RipFish.png" , Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
-      	nbFish++;
-      }
-      if(Fishs[nbFish] == '5'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/BombFish.png" , Vector2D<int>(i*51,190 + 50 * j), nbFish + 10);
-      	nbFish++;
-      }
-      if(Fishs[nbFish] == '6'){
-      	objets["Fish" + std::to_string(nbFish)] = new Fish(s->getRenderer(),"sprites/fish/Jebaifish.png" , Vector2D<int>(j*51,190 + 50 * i), nbFish + 10);
-      	nbFish++;
-      }
-    }
-    for (int i = 0; i < 14; i++) {
-      objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(-98.5 + 98.5 * i, 143), 3.05);
-    }
-    Manager::create();
+  for (int i = 0; i < 14; i++) {
+    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(-98.5 + 98.5 * i, 143), 3.05);
   }
+  Manager::create();
 }
 
 void GameManager::update(){
-  for (int i = 0; i < nbFish; i++) {
+  for (unsigned int i = 0; i < fishs.size(); i++) {
 
     int timeDegre = rand() % 50 ;
     int timeDirection = rand() % 1000;
@@ -188,5 +137,16 @@ void GameManager::updateControlY(Object* obj) {
   }
 
   obj->move(dep);
+}
 
+std::vector<Fish*>& GameManager::getFishs(){
+  return fishs;
+}
+
+void GameManager::fillFish(){
+  std::cout << fishs.size() << std::endl;
+  for (unsigned int i = 0; i < fishs.size(); i++) {
+    objets["Fish" + std::to_string(i)] = fishs[i];
+  }
+  std::vector<Fish*>().swap(fishs);
 }

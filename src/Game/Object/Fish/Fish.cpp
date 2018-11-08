@@ -1,6 +1,6 @@
 #include "Fish.hpp"
 
-Fish::Fish(Renderer const& r, std::string sprite , Vector2D<int> const& coord, float const& z) : Object(r, new Surface(sprite), coord, z), direction(0.0) {
+Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int type) : Object(r, new Surface(getSprite(type)), coord, z), direction(0.0) {
   this->right = rand() % 2;
   this->direction = rand() % 4 + 1;
   if(right == 1){
@@ -41,4 +41,29 @@ float Fish::getDegre(){
 
 int Fish::getType() {
   return FISH;
+}
+
+std::string Fish::getSprite(int type){
+  std::string res;
+  switch(type){
+    case 1 :
+      res = "sprites/fish/Normalfish.png" ;
+      break ;
+    case 2 :
+      res = "sprites/fish/Goldfish.png" ;
+      break ;
+    case 3 :
+      res = "sprites/fish/Fastfish.png" ;
+      break ;
+    case 4 :
+      res = "sprites/fish/Ripfish.png" ;
+      break ;
+    case 5 :
+      res = "sprites/fish/Bombfish.png" ;
+      break ;
+    case 6 :
+      res = "sprites/fish/Jebaifish.png" ;
+      break ;
+    }
+  return res;
 }

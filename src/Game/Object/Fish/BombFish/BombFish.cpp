@@ -1,6 +1,6 @@
 #include "BombFish.hpp"
 
-BombFish::BombFish(Renderer const& r,  Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Bombfish.png" , coord, z) {
+BombFish::BombFish(Renderer const& r,  Vector2D<int> coord, float const& z) : Fish(r, coord, z, 5) {
   this->valeur = 2;
 }
 

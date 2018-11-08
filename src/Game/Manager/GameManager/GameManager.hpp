@@ -20,7 +20,7 @@ class GameManager : public Manager {
     int focus;
     int profondeur;
     Rectangle borders;
-    int nbFish;
+    std::vector<Fish*> fishs;
 
   public:
     GameManager(Stage* s, Input* i);
@@ -31,5 +31,7 @@ class GameManager : public Manager {
     void destroy() override;
     void updateControlX(Object* obj);
     void updateControlY(Object* obj);
+    std::vector<Fish*>& getFishs();
+    void fillFish();
 
 };

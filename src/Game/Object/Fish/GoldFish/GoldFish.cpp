@@ -1,6 +1,6 @@
 #include "GoldFish.hpp"
 
-GoldFish::GoldFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, "sprites/fish/Goldfish.png" , coord, z) {
+GoldFish::GoldFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, coord, z, 2) {
   this->valeur = 10;
 }
 

@@ -18,7 +18,7 @@ class Fish : public Object {
     /**
     * Constructor
     */
-    Fish(Renderer const& r, std::string sprite, Vector2D<int> const& coord, float const& z);
+    Fish(Renderer const& r, Vector2D<int> const& coord, float const& z, int type);
     /**
      * Deconstructor
      */
@@ -31,5 +31,7 @@ class Fish : public Object {
     void setDegre(float d);
     float getDegre();
     int getType() override;
+    void insert(Fish f);
+    std::string getSprite(int type) ;
 
 };
