@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
+Object::Object(String name,Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
 }
 
 Object::~Object(){
@@ -79,4 +79,8 @@ void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
 
 int Object::getType() {
   return OBJECT;
+}
+
+std::vector<Object*>& Object::getChild(){
+  return child;
 }

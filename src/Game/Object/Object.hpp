@@ -14,6 +14,7 @@ enum ObjectType {
 
 class Object {
   private:
+    String name;
     Texture graphic;
     float z;
     std::vector<Object*> child;
@@ -23,7 +24,7 @@ class Object {
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z);
+    Object(String name, Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z);
     /**
      * Deconstructor
      */
@@ -43,7 +44,7 @@ class Object {
     void move(Vector2D<int> const& dep);
     void collide(std::function<void(Object*, Object*)> callback, Object* o);
     virtual int getType();
-
+    std::vector<Object*>&  getChild();
 
   public:
     struct ObjectCompare {
