@@ -7,6 +7,7 @@ Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int t
     this->direction = - this->direction;
   }
   this->degre = (rand() % 21 - 15)/10;
+  this->hooked = false;
 }
 
 Fish::~Fish(){
@@ -39,6 +40,10 @@ float Fish::getDegre(){
   return this->degre;
 }
 
+void Fish::setHook(){
+  this->hooked = true;
+}
+
 int Fish::getType() {
   return FISH;
 }
@@ -66,4 +71,8 @@ std::string Fish::getSprite(int type){
       break ;
     }
   return res;
+}
+
+bool const& Fish::isHooked() const{
+  return hooked;
 }

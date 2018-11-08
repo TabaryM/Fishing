@@ -47,6 +47,10 @@ void GameManager::update(){
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
+      
+  for (int i = 0; i < 10; i++) {
+    if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
+      objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()));
     }
   }
 
@@ -63,8 +67,9 @@ void GameManager::update(){
   for (auto& it1 : objets){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
-          if (o1->getType() == HOOK && o2->getType() == FISH) {
+          if (o1->getType() == HOOK && o2->getType() == FISH && !static_cast <Fish*>(o2)->isHooked() ) {
             std::cout << "Catch a fish" << std::endl;
+            static_cast <Fish*>(o2)->setHook();
             o1->link(o2);
           }
         }, it2.second);
@@ -113,7 +118,6 @@ void GameManager::updateControlX(Object* obj) {
   }
 
   obj->move(dep);
-
 }
 void GameManager::updateControlY(Object* obj) {
   Vector2D<int> dep;

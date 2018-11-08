@@ -13,6 +13,7 @@ class Fish : public Object {
     float direction;
     int right;
     float degre;
+    bool hooked;
 
   public:
     /**
@@ -30,6 +31,8 @@ class Fish : public Object {
     int getRight();
     void setDegre(float d);
     float getDegre();
+    void setHook();
+    bool const& isHooked() const ;
     int getType() override;
     void insert(Fish f);
     std::string getSprite(int type) ;
