@@ -25,7 +25,6 @@ void GameManager::create(){
 
 void GameManager::update(){
   for (unsigned int i = 0; i < fishs.size(); i++) {
-
     int timeDegre = rand() % 50 ;
     int timeDirection = rand() % 1000;
     int timeSpeed = rand() % 500;
@@ -47,7 +46,9 @@ void GameManager::update(){
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
-      
+    }
+  }
+
   for (int i = 0; i < 10; i++) {
     if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
       objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()));
@@ -74,7 +75,7 @@ void GameManager::update(){
           }
         }, it2.second);
       }
-    }
+  }
 }
 
 
