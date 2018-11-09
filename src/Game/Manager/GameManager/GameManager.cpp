@@ -149,7 +149,6 @@ std::vector<Fish*>& GameManager::getFishs(){
 }
 
 void GameManager::fillFish(){
-  std::cout << fishs.size() << std::endl;
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets["Fish" + std::to_string(i)] = fishs[i];
   }
