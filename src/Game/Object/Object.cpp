@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(String name,Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
+Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z) {
 }
 
 Object::~Object(){
