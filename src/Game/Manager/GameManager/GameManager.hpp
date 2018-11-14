@@ -1,3 +1,7 @@
+/**
+ * @file GameManager.hpp
+ * @author Paul-Emile Watelot, Christian Vasaune, Mathieu Tabary
+ */
 #pragma once
 
 #include "../../../Texture/Surface/Rectangle/Rectangle.hpp"
@@ -14,6 +18,10 @@
 #include "../../Object/Wave/Wave.hpp"
 #include "../Manager.hpp"
 
+/**
+ * @class GameManager
+ * @brief Camera's Object : Manage and update all Objects in Game
+ */
 class GameManager : public Manager {
   private:
     int speed;
@@ -23,8 +31,20 @@ class GameManager : public Manager {
     std::vector<Fish*> fishs;
 
   public:
+    //## Constructor #//
+      /**
+       * Construct with a stage and an input
+       * @param s the Stage
+       * @param i the Input
+       */
     GameManager(Stage* s, Input* i);
+    //## Deconstructor ##//
+    /**
+     * GameManager Deconstructor
+     */
     ~GameManager() = default;
+    //## Methods ##//
+      
     void create() override;
     void update() override;
     void render() override;
