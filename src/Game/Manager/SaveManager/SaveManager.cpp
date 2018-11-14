@@ -14,7 +14,7 @@ void SaveManager::load(std::vector<Fish*>& fishs) {
     while(std::getline(file, line)) {
       std::stringstream parser(line);
       parser >> x >> trash >> y >> trash >> type;
-      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x * 51,190 + y * 50), 6.0, type)) ;
+      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x *10,190 + y * 10), 6.0, type)) ;
     }
   }
 }
