@@ -80,3 +80,7 @@ void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
 int Object::getType() {
   return OBJECT;
 }
+
+std::vector<Object*>& Object::getChild(){
+  return child;
+}
