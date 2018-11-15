@@ -1,6 +1,6 @@
 #include "Fish.hpp"
 
-Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int type) : Object(r, new Surface(getSprite(type)), coord, z), direction(0.0) {
+Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int typeFish) : Object(r, new Surface(getSprite(typeFish)), coord, z), direction(0.0) {
   this->right = rand() % 2;
   this->direction = rand() % 4 + 1;
   if(right == 1){
@@ -75,4 +75,8 @@ std::string Fish::getSprite(int type){
 
 bool const& Fish::isHooked() const{
   return hooked;
+}
+
+int Fish::getTypeFish() {
+  return typeFish ;
 }

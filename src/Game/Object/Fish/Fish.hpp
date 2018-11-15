@@ -14,12 +14,13 @@ class Fish : public Object {
     int right;
     float degre;
     bool hooked;
+    int typeFish ;
 
   public:
     /**
     * Constructor
     */
-    Fish(Renderer const& r, Vector2D<int> const& coord, float const& z, int type);
+    Fish(Renderer const& r, Vector2D<int> const& coord, float const& z, int typeFish);
     /**
      * Deconstructor
      */
@@ -36,5 +37,6 @@ class Fish : public Object {
     int getType() override;
     void insert(Fish f);
     std::string getSprite(int type) ;
+    int getTypeFish() ;
 
 };

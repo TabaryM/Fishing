@@ -9,6 +9,6 @@ class SaveManager {
     SaveManager(Stage* s);
     ~SaveManager() = default;
 
-    void save(std::vector<Fish*> const& fishs);
+    void save(std::vector<Fish*>& fishs);
     void load(std::vector<Fish*>& fishs);
 };

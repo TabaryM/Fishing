@@ -37,6 +37,7 @@ void Game::launch(){
     s.update();
   }
 
+  //sManager.save(gManager.getFishs()) ;
   gManager.destroy();
   iManager.destroy();
 }

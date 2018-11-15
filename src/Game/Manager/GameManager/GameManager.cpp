@@ -101,6 +101,7 @@ void GameManager::render(){
 }
 
 void GameManager::destroy(){
+  std::vector<Fish*>().swap(fishs);
 }
 
 void GameManager::updateControlX(Object* obj) {
@@ -167,5 +168,4 @@ void GameManager::fillFish(){
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets["Fish" + std::to_string(i)] = fishs[i];
   }
-  std::vector<Fish*>().swap(fishs);
 }
