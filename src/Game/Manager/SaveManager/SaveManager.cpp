@@ -19,7 +19,10 @@ void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
   }
 }
 
-void SaveManager::save(std::vector<Fish*>& fishs) {
-  std::ofstream file("stages/niveau_1.txt");
+void SaveManager::save() {
+  std::ofstream file("Score/score.txt");
 
+  if(file) {
+    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << "score" << "\nDate : " << "date" ;
+  }
 }

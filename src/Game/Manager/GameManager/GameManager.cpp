@@ -59,6 +59,7 @@ void GameManager::update(){
     if(objets["Wave" + std::to_string(i)]->getX() >=1280 ){
       objets["Wave" + std::to_string(i)]->move(Vector2D<int>(-1280-98.5,0));
     }
+    //objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()+focus));
     objets["Wave" + std::to_string(i)]->move(Vector2D<int>(1,0));
   }
 
