@@ -10,5 +10,5 @@ class SaveManager {
     ~SaveManager() = default;
 
     void save(std::vector<Fish*>& fishs);
-    void load(std::vector<Fish*>& fishs);
+    void loadFishs(std::vector<Fish*>& fishs);
 };

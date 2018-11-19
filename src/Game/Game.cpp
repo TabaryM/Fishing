@@ -8,7 +8,7 @@ void Game::launch(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  sManager.load(gManager.getFishs());
+  sManager.loadFishs(gManager.getFishs());
   gManager.fillFish();
 
   gManager.create();
