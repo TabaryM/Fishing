@@ -4,12 +4,20 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <stdio.h>
 
 #include "../Object/Object.hpp"
 #include "../../Stage/Stage.hpp"
 #include "../../Input/Input.hpp"
+#include "../Object/Fish/Fish.hpp"
 
 class Manager {
+  friend class SaveManager;
   protected:
     Stage* s;
     Input* i;
