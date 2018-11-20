@@ -8,13 +8,15 @@ void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
   std::string line;
   int x, y;
   int type;
-  char trash;
+  //char trash;
   if(file){
     std::getline(file, line);
     while(std::getline(file, line)) {
       std::stringstream parser(line);
-      parser >> x >> trash >> y >> trash >> type;
-      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(50 + x *10, 190 + y * 10), 6.0, type)) ;
+      parser >> type;
+      x = rand()%990;
+      y = rand()%550;
+      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x+144, y), 6.0, type)) ;
     }
   }
 }

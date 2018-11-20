@@ -24,6 +24,9 @@ void Stage::draw(Object& o) {
   r.draw(o.getTexture());
 }
 
+void Stage::flip(Object& o) {
+  r.flip(o.getTexture());
+}
 void Stage::update() {
   r.update();
 }

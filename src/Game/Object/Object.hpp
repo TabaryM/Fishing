@@ -17,7 +17,7 @@ class Object {
     Texture graphic;
     float z;
     std::vector<Object*> child;
-
+    bool isFlip;
 
   public:
     /**
@@ -44,7 +44,8 @@ class Object {
     void collide(std::function<void(Object*, Object*)> callback, Object* o);
     virtual int getType();
     std::vector<Object*>&  getChild();
-
+    bool isFliped();
+    void flip();
 
   public:
     struct ObjectCompare {

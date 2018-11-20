@@ -7,7 +7,7 @@ Documentation (via Doxygene) :
 
 TODO LIST :
   - Faire une docu
-  - Vérifier la fonction de collision pointIn() dans Rectangle.cpp
+  - ~~Vérifier la fonction de collision pointIn() dans Rectangle.cpp~~
   - ~~réparer deplacements bateau vitesse~~
 
   - ~~Menu pause~~

@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include "Surface/Rectangle/Rectangle.hpp"
 #include "Surface/Surface.hpp"
+#include "../Stage/Renderer/Renderer.hpp"
 
 class Renderer;
 

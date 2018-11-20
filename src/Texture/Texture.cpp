@@ -1,7 +1,6 @@
 #include "Texture.hpp"
-#include "../Stage/Renderer/Renderer.hpp"
 
-Texture::Texture( Renderer const& r, Surface* s, Vector2D<int> const& coord) : item(0), position(s->getSize(), coord) {
+Texture::Texture(Renderer const& r, Surface* s, Vector2D<int> const& coord) : item(0), position(s->getSize(), coord) {
   item = r.getTexture(s);
 }
 

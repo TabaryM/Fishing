@@ -39,6 +39,11 @@ class Renderer {
      */
     void draw(int const& x1, int const& y1, int const& x2, int const& y2);
     /**
+      * Flip the texture
+      * @param t the texture
+      */
+    void flip(Texture& t);
+    /**
      * Clear the stage
      */
     void clear();

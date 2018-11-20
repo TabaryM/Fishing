@@ -31,10 +31,17 @@ void Renderer::draw(int const& x1, int const& y1, int const& x2, int const& y2){
   assert(err == 0);
 }
 
+void Renderer::flip(Texture& t){
+  SDL_Rect r = t.getPosition().getRect() ;
+  int err = SDL_RenderCopyEx(item, t.getItem(), NULL, &r, 0, 0, SDL_FLIP_HORIZONTAL);
+  assert(err ==0);
+}
+
 void Renderer::clear() {
   int err = SDL_RenderClear(item);
   assert(err == 0);
 }
+
 void Renderer::update() {
   SDL_RenderPresent(item);
 
