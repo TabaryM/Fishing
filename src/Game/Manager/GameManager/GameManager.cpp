@@ -1,14 +1,14 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT), Vector2D<int>(0, 0)) {}
 
 void GameManager::create(){
-  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, 0), 1);
-  objets["Ocean2"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, borders.getSize().getY() *0.8), 1);
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 2);
+  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getW(), borders.getH() - objets["Ciel"]->getH()), 0, 102, 204, 255), Vector2D<int>(borders.getX(), objets["Ciel"]->getH()), 1);
+  //objets["Ocean2"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getCoord().getX(), borders.getCoord().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, borders.getCoord().getY() *0.8), 1);
   objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, 100), 4);
-  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
+  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , objets["Bateau"]->getZ());
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
 
@@ -59,7 +59,6 @@ void GameManager::update(){
     if(objets["Wave" + std::to_string(i)]->getX() >=1280 ){
       objets["Wave" + std::to_string(i)]->move(Vector2D<int>(-1280-98.5,0));
     }
-    //objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()+focus));
     objets["Wave" + std::to_string(i)]->move(Vector2D<int>(1,0));
   }
 

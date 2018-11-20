@@ -3,12 +3,12 @@
 Rectangle::Rectangle(Vector2D<int> const& size, Vector2D<int> const& coord) : size(size), coord(coord) {
 }
 
-Vector2D<int> const& Rectangle::getCoord() const {
-  return coord;
-}
-
 Vector2D<int> const& Rectangle::getSize() const {
   return size;
+}
+
+Vector2D<int> const& Rectangle::getCoord() const {
+  return coord;
 }
 
 int const& Rectangle::getH() const {
@@ -19,16 +19,24 @@ int const& Rectangle::getW() const {
   return size.getX();
 }
 
+int const& Rectangle::getX() const {
+  return coord.getX();
+}
+
+int const& Rectangle::getY() const {
+  return coord.getY();
+}
+
 void Rectangle::setCoord(Vector2D<int> const& coord) {
   this->coord = coord;
 }
 
 SDL_Rect Rectangle::getRect() const {
   SDL_Rect rect;
-  rect.x = coord.getX();
-  rect.y = coord.getY();
-  rect.w = size.getX();
-  rect.h = size.getY();
+  rect.x = getX();
+  rect.y = getY();
+  rect.w = getW();
+  rect.h = getH();
   return rect;
 }
 
@@ -48,5 +56,5 @@ Vector2D<int>* Rectangle::getCorner() const {
 }
 
 bool Rectangle::pointIn(Vector2D<int> const& p) const {
-  return !(p.getX() < coord.getX() || p.getX() > coord.getX() + size.getX() || p.getY() > coord.getY() || p.getY() < coord.getY());
+  return !(p.getX() < coord.getX() || p.getX() > coord.getX() + size.getX() || p.getY() > coord.getY() + size.getY() || p.getY() < coord.getY() );
 }

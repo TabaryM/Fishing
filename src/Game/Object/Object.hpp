@@ -33,11 +33,11 @@ class Object {
     Texture& getTexture();
     void setZ(float const& v);
     Vector2D<int> const& getCoord() const;
+    Vector2D<int> const& getSize() const;
     int const& getX() const;
     int const& getY() const;
     int const& getW() const;
     int const& getH() const;
-    Vector2D<int> const& getSize() const;
     float const& getZ() const;
     float getDepth() const;
     void move(Vector2D<int> const& dep);

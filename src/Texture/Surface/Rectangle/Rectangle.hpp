@@ -12,10 +12,12 @@ class Rectangle {
     Rectangle() = default;
     Rectangle(Vector2D<int> const& size, Vector2D<int> const& coord = Vector2D<int>());
     ~Rectangle() = default;
-    Vector2D<int> const& getCoord() const;
     Vector2D<int> const& getSize() const;
+    Vector2D<int> const& getCoord() const;
     int const& getH() const;
     int const& getW() const;
+    int const& getX() const;
+    int const& getY() const;
     void setCoord(Vector2D<int> const& coord);
     SDL_Rect getRect() const;
     Vector2D<int>* getCorner() const;

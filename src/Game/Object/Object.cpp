@@ -24,11 +24,11 @@ Vector2D<int> const& Object::getCoord() const {
 }
 
 int const& Object::getX() const {
-  return graphic.getCoord().getX();
+  return getCoord().getX();
 }
 
 int const& Object::getY() const {
-  return graphic.getCoord().getY();
+  return getCoord().getY();
 }
 
 Vector2D<int> const& Object::getSize() const {
