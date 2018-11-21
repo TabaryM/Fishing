@@ -1,6 +1,7 @@
 #include "Fish.hpp"
 
 Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int typeFish) : Object(r, new Surface(getSprite(typeFish)), coord, z), direction(0.0) {
+  this->right = rand() % 2;
   this->direction = rand() % 4 + 1;
   if(right == 1){
     this->direction = - this->direction;
@@ -18,6 +19,17 @@ float Fish::getDir(){
 
 void Fish::setDir(float d){
   this->direction = d;
+}
+
+void Fish::setRight(int r){
+  this->right = r;
+  if(r == 1){
+    this->direction = - this->direction;
+  }
+}
+
+int Fish::getRight(){
+  return this->right;
 }
 
 void Fish::setDegre(float d){

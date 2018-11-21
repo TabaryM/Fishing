@@ -15,6 +15,7 @@
 #include "../../Stage/Stage.hpp"
 #include "../../Input/Input.hpp"
 #include "../Object/Fish/Fish.hpp"
+#include "../Object/Score/Score.hpp"
 
 class Manager {
   friend class SaveManager;

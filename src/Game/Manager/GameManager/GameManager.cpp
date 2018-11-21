@@ -11,7 +11,7 @@ void GameManager::create(){
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , objets["Bateau"]->getZ());
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 0), 500);
 
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
@@ -39,9 +39,11 @@ void GameManager::update(){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDir(rand() % 4 );
     }
     if((objets["Fish" + std::to_string(i)]->getX()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) < 0){
+      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
       objets["Fish" + std::to_string(i)]->flip();
     }
     if((objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() ) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) > borders.getW()){
+      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
       objets["Fish" + std::to_string(i)]->flip();
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){

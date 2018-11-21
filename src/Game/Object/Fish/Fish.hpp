@@ -11,6 +11,7 @@
 class Fish : public Object {
   private:
     float direction;
+    int right;
     float degre;
     bool hooked;
     int typeFish ;
@@ -27,6 +28,8 @@ class Fish : public Object {
 
     float getDir();
     void setDir(float d);
+    void setRight(int r);
+    int getRight();
     void setDegre(float d);
     float getDegre();
     void setHook();

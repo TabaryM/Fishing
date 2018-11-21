@@ -8,12 +8,12 @@ export TARGET = debug
 
 export INC =
 export LIBDIR =
-export LIB = -lSDL2 -lSDL2_image
+export LIB = -lSDL2 -lSDL2_image -lSDL_ttf
 
 OBJDIR = obj/
 BIN = bin/
 SOURCE = src
-OBJ = $(OBJDIR)main.o $(OBJDIR)Game/Game.o $(OBJDIR)Game/Manager/Manager.o $(OBJDIR)Game/Manager/InterfaceManager/InterfaceManager.o $(OBJDIR)Game/Manager/SaveManager/SaveManager.o $(OBJDIR)Game/Manager/GameManager/GameManager.o $(OBJDIR)Game/Object/Object.o $(OBJDIR)Game/Object/Fish/Fish.o $(OBJDIR)Game/Object/Fish/NormalFish/NormalFish.o $(OBJDIR)Game/Object/Fish/FastFish/FastFish.o $(OBJDIR)Game/Object/Fish/GoldFish/GoldFish.o $(OBJDIR)Game/Object/Fish/RipFish/RipFish.o $(OBJDIR)Game/Object/Fish/BombFish/BombFish.o $(OBJDIR)Game/Object/Fish/JebaiFish/JebaiFish.o $(OBJDIR)Game/Object/Boat/Boat.o $(OBJDIR)Game/Object/Hook/Hook.o $(OBJDIR)Game/Object/Wave/Wave.o $(OBJDIR)Initializer/Initializer.o $(OBJDIR)Input/Input.o $(OBJDIR)Input/Event/Event.o $(OBJDIR)Input/Key/Key.o $(OBJDIR)Stage/Stage.o $(OBJDIR)Stage/Renderer/Renderer.o $(OBJDIR)Stage/Window/Window.o $(OBJDIR)Texture/Texture.o $(OBJDIR)Texture/Surface/Surface.o $(OBJDIR)Texture/Surface/Rectangle/Rectangle.o
+OBJ = $(OBJDIR)main.o $(OBJDIR)Game/Game.o $(OBJDIR)Game/Manager/Manager.o $(OBJDIR)Game/Manager/InterfaceManager/InterfaceManager.o $(OBJDIR)Game/Manager/SaveManager/SaveManager.o $(OBJDIR)Game/Manager/GameManager/GameManager.o $(OBJDIR)Game/Object/Object.o $(OBJDIR)Game/Object/Fish/Fish.o $(OBJDIR)Game/Object/Fish/NormalFish/NormalFish.o $(OBJDIR)Game/Object/Fish/FastFish/FastFish.o $(OBJDIR)Game/Object/Fish/GoldFish/GoldFish.o $(OBJDIR)Game/Object/Fish/RipFish/RipFish.o $(OBJDIR)Game/Object/Fish/BombFish/BombFish.o $(OBJDIR)Game/Object/Fish/JebaiFish/JebaiFish.o $(OBJDIR)Game/Object/Boat/Boat.o $(OBJDIR)Game/Object/Score/Score.o $(OBJDIR)Game/Object/Hook/Hook.o $(OBJDIR)Game/Object/Wave/Wave.o $(OBJDIR)Initializer/Initializer.o $(OBJDIR)Input/Input.o $(OBJDIR)Input/Event/Event.o $(OBJDIR)Input/Key/Key.o $(OBJDIR)Stage/Stage.o $(OBJDIR)Stage/Renderer/Renderer.o $(OBJDIR)Stage/Window/Window.o $(OBJDIR)Texture/Texture.o $(OBJDIR)Texture/Font/Font.o $(OBJDIR)Texture/Surface/Surface.o $(OBJDIR)Texture/Surface/Rectangle/Rectangle.o
 OUT = Fish
 
 all : before out
@@ -45,6 +45,7 @@ clean :
 	@mkdir obj/Game/Object/Boat
 	@mkdir obj/Game/Object/Hook
 	@mkdir obj/Game/Object/Wave
+	@mkdir obj/Game/Object/Score
 	@mkdir obj/Initializer
 	@mkdir obj/Input
 	@mkdir obj/Input/Event
@@ -53,6 +54,7 @@ clean :
 	@mkdir obj/Stage/Renderer
 	@mkdir obj/Stage/Window
 	@mkdir obj/Texture
+	@mkdir obj/Texture/Font
 	@mkdir obj/Texture/Surface
 	@mkdir obj/Texture/Surface/Rectangle
 	@echo "Jobs done."

@@ -1,6 +1,6 @@
 #include "Initializer.hpp"
 
-Initializer::Initializer(): sdlInit(false){
+Initializer::Initializer(): sdlInit(false),sdl_ttfInit(false){
 }
 
 
@@ -15,5 +15,10 @@ void Initializer::initializeSDL() {
     int err = SDL_Init(SDL_INIT_VIDEO);
     assert(err == 0);
     sdlInit = true;
+  }
+  if (!sdl_ttfInit) {
+    int err = TTF_Init();
+    assert(err == 0);
+    sdl_ttfInit = true;
   }
 }

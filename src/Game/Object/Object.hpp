@@ -9,7 +9,8 @@ enum ObjectType {
   OBJECT,
   FISH,
   HOOK,
-  BOAT
+  BOAT,
+  SCORE
 };
 
 class Object {
