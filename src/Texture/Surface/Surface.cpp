@@ -14,6 +14,10 @@ Surface::Surface(std::string s){
   assert (item != 0);
 }
 
+Surface::Surface(Font* f){
+  item = f->getSurface();
+  assert (item != 0);
+}
 
 Surface::~Surface(){
   SDL_FreeSurface(item);

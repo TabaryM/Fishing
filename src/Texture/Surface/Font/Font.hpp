@@ -9,9 +9,12 @@
 class Font {
   private:
     TTF_Font* font;
+    SDL_Color c;
 
   public:
     Font();
     ~Font();
-    TTF_Font& getFont() const;
+    TTF_Font* getFont();
+    SDL_Color getColor();
+    SDL_Surface* getSurface();
 };

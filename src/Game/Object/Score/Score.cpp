@@ -1,7 +1,8 @@
 #include "Score.hpp"
 
-Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z) : value(0), font(new Font()) {
-  Object(r, new Surface(TTF_RenderText_Solid(font,"Hello World!")),coord, z);
+Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z) : Object(r, new Surface(new Font()),coord, z), value(0), font() {
+  //super(r, new Surface(TTF_RenderText_Solid(font.getFont(),"Hello World!", font.getColor())),coord, z);
+  //TTF_RenderText_Solid(font.getFont(),"Hello World!", font.getColor())
 }
 
 Score::~Score(){

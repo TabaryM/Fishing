@@ -17,6 +17,7 @@ class Surface {
     Surface() = delete;
     Surface(Vector2D<int> const& size, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
     Surface(std::string s);
+    Surface(Font* f);
     ~Surface();
     SDL_Surface* getItem();
     Vector2D<int> getSize();
