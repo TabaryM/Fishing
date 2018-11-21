@@ -16,7 +16,7 @@ void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
       parser >> type;
       x = rand()%990;
       y = rand()%550;
-      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x+144, y), 6.0, type)) ;
+      fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x, y + 170), 6.0, type)) ;
     }
   }
 }
