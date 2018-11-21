@@ -14,7 +14,7 @@ void Manager::create(){
 
 void Manager::render(){
   for (Object* o : draws) {
-    if(o->isFliped()){
+    if(o->isActive()){
       s->flip(*o);
     }else{
       s->draw(*o);

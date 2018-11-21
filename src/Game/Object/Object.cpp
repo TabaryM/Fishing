@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z), isFlip(false) {
+Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z), flip(false) , active(false) {
 }
 
 Object::~Object(){
@@ -55,7 +55,7 @@ float Object::getDepth() const {
 }
 
 void Object::move(Vector2D<int> const& dep) {
-  isFlip = dep.getX() < 0;
+  flip = dep.getX() < 0;
   graphic.setCoord(graphic.getCoord() + dep);
   for (Object* o : child) {
     o->move(dep);
@@ -86,10 +86,14 @@ std::vector<Object*>& Object::getChild(){
   return child;
 }
 
-void Object::flip(){
-  isFlip = !isFlip ;
+void Object::setActive(bool a) {
+  active = a;
 }
 
-bool Object::isFliped(){
-  return isFlip ;
+bool const& Object::isActive() const{
+  return active ;
+}
+
+void Object::isFlip(){
+  flip = true;
 }
