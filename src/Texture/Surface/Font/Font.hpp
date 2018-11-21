@@ -10,6 +10,7 @@ class Font {
   private:
     TTF_Font* font;
     SDL_Color c;
+    char const* text;
 
   public:
     Font();
@@ -17,4 +18,5 @@ class Font {
     TTF_Font* getFont();
     SDL_Color getColor();
     SDL_Surface* getSurface();
+    void setText(char const* c);
 };

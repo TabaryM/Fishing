@@ -94,6 +94,8 @@ void GameManager::update(){
               //    std::vector<Object*> child; d ici
               std::vector<Object*>().swap(o1->getChild());
               // - actualiser score
+              static_cast <Score*>(objets["Score"])->addScore(10);
+              std::cout << static_cast <Score*>(objets["Score"])->getScore() << std::endl;
               //sortObject();
             }
           }

@@ -1,9 +1,10 @@
 #include "Font.hpp"
 
 Font::Font() : font(0) {
-  font = TTF_OpenFont("sprites/04B_30__.TTF",85);
+  font = TTF_OpenFont("sprites/04B_30__.TTF",40);
   assert(font != NULL);
-  c = {200,0,0} ;
+  c = {0,0,0} ;
+  text = "Score: 0";
 }
 
 Font::~Font(){
@@ -19,5 +20,9 @@ SDL_Color Font::getColor(){
 }
 
 SDL_Surface* Font::getSurface(){
-  return TTF_RenderText_Solid(getFont(),"Hello World!", getColor());
+  return TTF_RenderText_Solid(getFont(),text, getColor());
+}
+
+void Font::setText(char const* c){
+  text = c;
 }
