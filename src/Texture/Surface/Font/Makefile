@@ -1,5 +1,5 @@
 OBJ = $(OBJDIR)Font.o
-OBJDIR = ../../../obj/Texture/Font/
+OBJDIR = ../../../../obj/Texture/Surface/Font/
 
 
 all : $(TARGET)

@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include "Surface/Rectangle/Rectangle.hpp"
 #include "Surface/Surface.hpp"
-#include "Font/Font.hpp"
+#include "Surface/Font/Font.hpp"
 #include "../Stage/Renderer/Renderer.hpp"
 
 class Renderer;
