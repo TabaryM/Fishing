@@ -46,9 +46,9 @@ class Object {
     virtual int getType();
     std::vector<Object*>&  getChild();
 
-    void setActive(bool a);
-    bool const& isActive() const ;
-    void isFlip(); 
+    void flipingTo(bool a);
+    bool const& isFliped() const ;
+    void isFlip();
 
   public:
     struct ObjectCompare {

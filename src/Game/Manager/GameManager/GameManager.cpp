@@ -41,15 +41,15 @@ void GameManager::update(){
     if((objets["Fish" + std::to_string(i)]->getX()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) < 0){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
 
-      if(!objets["Fish" + std::to_string(i)]->isActive()) {
-        objets["Fish" + std::to_string(i)]->setActive(false);
+      if(!objets["Fish" + std::to_string(i)]->isFliped()) {
+        objets["Fish" + std::to_string(i)]->flipingTo(false);
       }
 
     }
     if((objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() ) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) > borders.getW()){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
 
-      if(!objets["Fish" + std::to_string(i)]->isActive()) {
+      if(!objets["Fish" + std::to_string(i)]->isFliped()) {
         objets["Fish" + std::to_string(i)]->isFlip();
       } else {
         objets["Fish" + std::to_string(i)]->isFlip() ;

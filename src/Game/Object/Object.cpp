@@ -86,14 +86,14 @@ std::vector<Object*>& Object::getChild(){
   return child;
 }
 
-void Object::setActive(bool a) {
-  active = a;
+void Object::flipingTo(bool a){
+  flip = a;
 }
 
-bool const& Object::isActive() const{
-  return active ;
+bool const& Object::isFliped() const{
+  return flip ;
 }
 
 void Object::isFlip(){
-  flip = true;
+  flip = !flip;
 }
