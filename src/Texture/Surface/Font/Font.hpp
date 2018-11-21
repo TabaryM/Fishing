@@ -13,5 +13,5 @@ class Font {
   public:
     Font();
     ~Font();
-
+    TTF_Font& getFont() const;
 };

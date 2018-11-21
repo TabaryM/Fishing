@@ -7,6 +7,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "Rectangle/Rectangle.hpp"
+#include "Font/Font.hpp"
 
 class Surface {
   private:

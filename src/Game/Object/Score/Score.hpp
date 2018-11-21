@@ -5,7 +5,8 @@
 
 class Score : public Object {
   private:
-    int score;
+    int value;
+    Font font;
 
   public:
     /**

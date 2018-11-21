@@ -5,7 +5,10 @@ Font::Font() : font(0) {
   assert(font != 0);
 }
 
-
 Font::~Font(){
   TTF_CloseFont(font);
+}
+
+TTF_Font& Font::getFont() const {
+  return font;
 }
