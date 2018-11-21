@@ -4,12 +4,12 @@
 GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT), Vector2D<int>(0, 0)) {}
 
 void GameManager::create(){
-  objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 2);
-  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getW(), borders.getH() - objets["Ciel"]->getH()), 0, 102, 204, 255), Vector2D<int>(borders.getX(), objets["Ciel"]->getH()), 1);
+  objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1);
+  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getW(), borders.getH() - objets["Ciel"]->getH()), 0, 102, 204, 255), Vector2D<int>(borders.getX(), objets["Ciel"]->getH()), 2);
   //objets["Ocean2"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getCoord().getX(), borders.getCoord().getY() *0.8), 0, 102, 204, 255), Vector2D<int>(0, borders.getCoord().getY() *0.8), 1);
-  objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, 100), 4);
-  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getX() , objets["Bateau"]->getY() + 60 ),5);
-  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , objets["Bateau"]->getZ());
+  objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, objets["Ciel"]->getH() - 55), 1.5);
+  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 60 ),5);
+  objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
   objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 0), 500);
 
@@ -18,7 +18,7 @@ void GameManager::create(){
   objets["FishPole"]->link(objets["Hook"]);
 
   for (int i = 0; i < 14; i++) {
-    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(-98.5 + 98.5 * i, 143), 3.05);
+    objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(98.5 * (i-1), objets["Ciel"]->getH() - 15), 2.05);
   }
   Manager::create();
 }
@@ -40,11 +40,21 @@ void GameManager::update(){
     }
     if((objets["Fish" + std::to_string(i)]->getX()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) < 0){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
-      objets["Fish" + std::to_string(i)]->flip();
+
+      if(!objets["Fish" + std::to_string(i)]->isFliped()) {
+        objets["Fish" + std::to_string(i)]->flipingTo(false);
+      }
+
     }
     if((objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() ) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) > borders.getW()){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
-      objets["Fish" + std::to_string(i)]->flip();
+
+      if(!objets["Fish" + std::to_string(i)]->isFliped()) {
+        objets["Fish" + std::to_string(i)]->isFlip();
+      } else {
+        objets["Fish" + std::to_string(i)]->isFlip() ;
+      }
+
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
