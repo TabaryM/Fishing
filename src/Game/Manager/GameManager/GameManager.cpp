@@ -39,11 +39,9 @@ void GameManager::update(){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDir(rand() % 4 );
     }
     if((objets["Fish" + std::to_string(i)]->getX()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) < 0){
-      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
       objets["Fish" + std::to_string(i)]->flip();
     }
     if((objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() ) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()) > borders.getW()){
-      static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setRight(1);
       objets["Fish" + std::to_string(i)]->flip();
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
