@@ -70,14 +70,13 @@ void GameManager::update(){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
           if (o1->getType() == HOOK && o2->getType() == FISH && !static_cast <Fish*>(o2)->isHooked() ) {
-            std::cout << "Catch a fish" << std::endl;
             static_cast <Fish*>(o2)->setHook();
             o1->link(o2);
           }
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
             //si o1 (HOOK) possède un enfant de type FISH dont le lequel isHooked = true
-            if(((o1->getChild().size())>0)&& ((o1->getChild()).front()->getType() == FISH) && (!static_cast <Fish*>(o2)->isHooked()) ){
+            if((o1->getChild().size())>0) {
               std::cout << "Fished a fish !" << std::endl;
               //    std::vector<Object*> draws; d ici
 
