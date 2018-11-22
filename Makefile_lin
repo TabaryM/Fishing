@@ -8,7 +8,7 @@ export TARGET = debug
 
 export INC =
 export LIBDIR =
-export LIB = -lSDL2 -lSDL2_image -lSDL_ttf
+export LIB = -lSDL2 -lSDL2_image -lSDL2_ttf
 
 OBJDIR = obj/
 BIN = bin/
