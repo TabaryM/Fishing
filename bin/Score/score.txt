@@ -1,4 +1,4 @@
 
 Joueur : nomJoueur
-Score : score
-Date : date
+Score : 70
+Date : 22/11/2018

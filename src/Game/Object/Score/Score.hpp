@@ -20,6 +20,6 @@ class Score : public Object {
     int getType() override;
 
     void addScore(int s);
-    int getScore();
+    int getValue();
 
 };

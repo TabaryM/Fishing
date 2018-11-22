@@ -12,10 +12,10 @@ int Score::getType() {
 
 void Score::addScore(int s){
   value += s;
-  font.setText("Score: "+getScore());
+  font.setText("Score: "+getValue());
   //refresh surface
 }
 
-int Score::getScore(){
+int Score::getValue(){
   return value;
 }

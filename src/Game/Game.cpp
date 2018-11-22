@@ -37,7 +37,7 @@ void Game::launch(){
     s.update();
   }
 
-  sManager.save() ;
+  sManager.save(gManager.getScore()->getValue()) ;
   gManager.destroy();
   iManager.destroy();
 }

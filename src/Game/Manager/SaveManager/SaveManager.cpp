@@ -21,14 +21,11 @@ void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
   }
 }
 
-void SaveManager::save() {
+void SaveManager::save(int score) {
   std::ofstream file("Score/score.txt");
-
+  time_t now = time(0) ;
+  tm *ltm = localtime(&now) ;
   if(file) {
-    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << getScore() << "\nDate : " << "date" ;
+    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << score << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year ;
   }
-}
-
-int SaveManager::getScore(){
-  return Manager::getScore() ; // TODO: résoudre le problème
 }

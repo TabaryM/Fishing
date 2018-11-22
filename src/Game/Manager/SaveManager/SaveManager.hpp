@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ctime>
 #include "../GameManager/GameManager.hpp"
 
 class SaveManager {
@@ -9,7 +10,6 @@ class SaveManager {
     SaveManager(Stage* s);
     ~SaveManager() = default;
 
-    void save();
+    void save(int score);
     void loadFishs(std::vector<Fish*>& fishs);
-    int getScore();
 };
