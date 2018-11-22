@@ -11,4 +11,5 @@ class SaveManager {
 
     void save();
     void loadFishs(std::vector<Fish*>& fishs);
+    int getScore();
 };

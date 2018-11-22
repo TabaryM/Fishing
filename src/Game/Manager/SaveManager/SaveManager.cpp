@@ -25,6 +25,10 @@ void SaveManager::save() {
   std::ofstream file("Score/score.txt");
 
   if(file) {
-    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << "score" << "\nDate : " << "date" ;
+    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << getScore() << "\nDate : " << "date" ;
   }
+}
+
+int SaveManager::getScore(){
+  return Manager::getScore() ; // TODO: résoudre le problème
 }

@@ -28,3 +28,7 @@ void Manager::sortObject() {
   }
   std::sort(draws.begin(), draws.end(), Object::ObjectCompare());
 }
+
+int Manager::getScore(){
+  return static_cast <Score*>(objets["Score"])->getScore();
+}
