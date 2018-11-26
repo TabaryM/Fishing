@@ -4,7 +4,7 @@ Font::Font() : font(0) {
   font = TTF_OpenFont("sprites/04B_30__.TTF",40);
   assert(font != NULL);
   c = {0,0,0} ;
-  text = "Score : 0";
+  text = "lul";
 }
 
 Font::~Font(){

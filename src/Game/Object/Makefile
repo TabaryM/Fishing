@@ -6,6 +6,7 @@ BOAT = Boat
 HOOK = Hook
 WAVE = Wave
 SCORE = Score
+TIMER = Timer
 
 all : $(TARGET) after
 
@@ -17,6 +18,7 @@ after:
 	@(cd $(HOOK) && $(MAKE))
 	@(cd $(WAVE) && $(MAKE))
 	@(cd $(SCORE) && $(MAKE))
+	@(cd $(TIMER) && $(MAKE))
 
 $(OBJDIR)%.o : %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

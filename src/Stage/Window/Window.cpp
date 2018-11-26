@@ -5,7 +5,7 @@ int Window::HEIGHT = 720;
 
 Window::Window(Initializer & i) : item(0){
   i.initializeSDL();
-  item = SDL_CreateWindow("Titre", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
+  item = SDL_CreateWindow("Nearly Real Fishing Simulator", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
   assert(item != 0);
 }
 

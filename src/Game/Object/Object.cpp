@@ -1,7 +1,6 @@
 #include "Object.hpp"
 
 Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z) : graphic(r, s, coord), z(z), flip(false) , active(false) {
-  //std::cout << "JESAIS PAS QUOI METTRE" << std::endl;
 }
 
 Object::~Object(){
