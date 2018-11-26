@@ -1,4 +1,0 @@
-
-Joueur : nomJoueur
-Score : 240
-Date : 26/11/2018

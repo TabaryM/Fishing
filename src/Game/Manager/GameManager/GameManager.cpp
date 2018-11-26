@@ -18,7 +18,7 @@ void GameManager::create(){
 
   for (int i = 0; i < 14; i++) {
     objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(98.5 * (i-1), objets["Ciel"]->getH() - 15), 1.7);
-    objets["Bateau"]->link(objets["Wave" + std::to_string(i)]);
+    //objets["Bateau"]->link(objets["Wave" + std::to_string(i)]);
   }
   Manager::create();
 }
