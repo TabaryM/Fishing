@@ -1,6 +1,6 @@
 #include "SaveManager.hpp"
 
-SaveManager::SaveManager(Stage* s) : s(s) {}
+SaveManager::SaveManager(Stage* s) : s(s){}
 
 void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
   std::ifstream file("stages/niveau_1.txt");
@@ -21,11 +21,11 @@ void SaveManager::loadFishs(std::vector<Fish*>& fishs) {
   }
 }
 
-void SaveManager::save(int score) {
+void SaveManager::save(Score* sc) {
   std::ofstream file("Score/score.txt");
   time_t now = time(0) ;
   tm *ltm = localtime(&now) ;
   if(file) {
-    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << score << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year ;
+    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << sc->getValue() << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year ;
   }
 }

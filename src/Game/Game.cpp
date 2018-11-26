@@ -22,7 +22,7 @@ void Game::launch(){
     lastTime = actualTime;
 
     i.update();
-    if (i.isActive(SDL_SCANCODE_P)){
+    if (i.isActive(SDL_SCANCODE_P) || gManager.getTimer()->getValue() <= 0 ){
       iManager.update();
     } else {
       gManager.update();
@@ -36,7 +36,7 @@ void Game::launch(){
     s.update();
   }
 
-  sManager.save(gManager.getScore()->getValue()) ;
+  sManager.save(gManager.getScore()) ;
   gManager.destroy();
   iManager.destroy();
 }

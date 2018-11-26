@@ -32,3 +32,7 @@ void Manager::sortObject() {
 Score* Manager::getScore(){
   return static_cast <Score*>(objets["Score"]);
 }
+
+Timer* Manager::getTimer(){
+  return static_cast <Timer*>(objets["Timer"]);
+}

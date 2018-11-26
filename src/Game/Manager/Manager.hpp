@@ -16,6 +16,7 @@
 #include "../../Input/Input.hpp"
 #include "../Object/Fish/Fish.hpp"
 #include "../Object/Score/Score.hpp"
+#include "../Object/Timer/Timer.hpp"
 
 class Manager {
   friend class SaveManager;
@@ -34,4 +35,5 @@ class Manager {
     virtual void destroy() = 0 ;
     void sortObject();
     Score* getScore();
+    Timer* getTimer();
 };
