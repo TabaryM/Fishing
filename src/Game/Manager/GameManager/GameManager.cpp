@@ -62,6 +62,9 @@ void GameManager::update(){
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
     if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
+      if( (objets["Fish" + std::to_string(i)]->getY()) <= 170){
+        static_cast <Fish*>(objets["Fish" + std::to_string(i)])->setDir( - (static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getDir()));
+      }
       objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir()));
     }
   }
@@ -85,13 +88,10 @@ void GameManager::update(){
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
             //si o1 (HOOK) possède un enfant de type FISH dont le lequel isHooked = true
-            if((o1->getChild().size())>0) {
+            if((o1->getChild().size())>0 && o1->getY() <= 100) {
               std::cout << "Fished a fish !" << std::endl;
-              //    std::vector<Object*> draws; d ici
 
-              //    std::map<std::string, Object*> objets; d ici
-
-              //    std::vector<Object*> child; d ici
+              (o1->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
               std::vector<Object*>().swap(o1->getChild());
               // - actualiser score
               static_cast <Score*>(objets["Score"])->addScore(10);
