@@ -10,7 +10,6 @@ void Game::launch(){
 
   sManager.loadFishs(gManager.getFishs());
   gManager.fillFish();
-
   gManager.create();
   iManager.create();
 

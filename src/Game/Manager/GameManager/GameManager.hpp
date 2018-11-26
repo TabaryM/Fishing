@@ -25,8 +25,8 @@
 class GameManager : public Manager {
   private:
     int speed;
-    int focus;
     int profondeur;
+    int focus;
     Rectangle borders;
     std::vector<Fish*> fishs;
 
@@ -44,7 +44,7 @@ class GameManager : public Manager {
      */
     ~GameManager() = default;
     //## Methods ##//
-      
+
     void create() override;
     void update() override;
     void render() override;
