@@ -18,6 +18,7 @@ class Texture {
     * Constructor
     */
     Texture(Renderer const& r, Surface* s, Vector2D<int> const& coords);
+    Texture(Texture& t) ;
     /**
      * Deconstructor
      */

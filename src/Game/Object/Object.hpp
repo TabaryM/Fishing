@@ -33,6 +33,7 @@ class Object {
 
     void link(Object* c);
     Texture& getTexture();
+    void setTexture(Texture& t);
     void setZ(float const& v);
     Vector2D<int> const& getCoord() const;
     Vector2D<int> const& getSize() const;

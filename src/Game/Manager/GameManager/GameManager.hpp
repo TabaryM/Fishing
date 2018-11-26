@@ -37,14 +37,14 @@ class GameManager : public Manager {
        * @param s the Stage
        * @param i the Input
        */
-    GameManager(Stage* s, Input* i);
+    GameManager(Stage* s, Input* i, Font* f);
     //## Deconstructor ##//
     /**
      * GameManager Deconstructor
      */
     ~GameManager() = default;
     //## Methods ##//
-      
+
     void create() override;
     void update() override;
     void render() override;

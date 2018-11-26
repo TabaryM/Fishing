@@ -1,18 +1,18 @@
 #include "Font.hpp"
 
-Font::Font() : font(0) {
-  font = TTF_OpenFont("sprites/04B_30__.TTF",40);
-  assert(font != NULL);
+Font::Font() : item(0) {
+  item = TTF_OpenFont("sprites/04B_30__.TTF",40);
+  assert(item != NULL);
   c = {0,0,0} ;
   text = "Score : 0";
 }
 
 Font::~Font(){
-  TTF_CloseFont(font);
+  TTF_CloseFont(item);
 }
 
 TTF_Font* Font::getFont() {
-  return font;
+  return item;
 }
 
 SDL_Color Font::getColor(){

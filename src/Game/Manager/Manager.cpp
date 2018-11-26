@@ -1,6 +1,6 @@
 #include "Manager.hpp"
 
-Manager::Manager(Stage* s, Input* i) : s(s), i(i) {}
+Manager::Manager(Stage* s, Input* i, Font* f) : s(s), i(i), f() {}
 
 Manager::~Manager(){
   for (auto& o : objets) {
@@ -31,4 +31,8 @@ void Manager::sortObject() {
 
 Score* Manager::getScore(){
   return static_cast <Score*>(objets["Score"]);
+}
+
+Font* Manager::getFont(){
+  return static_cast <Score*>(objets["Score"])->getFont() ;
 }

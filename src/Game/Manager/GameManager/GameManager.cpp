@@ -1,7 +1,7 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT), Vector2D<int>(0, 0)) {}
+GameManager::GameManager(Stage* s, Input* i, Font* f) : Manager(s, i, f), speed(1), borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT), Vector2D<int>(0, 0)) {}
 
 void GameManager::create(){
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1);
@@ -11,7 +11,7 @@ void GameManager::create(){
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getW() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 0), 500);
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 0), 500, f);
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);

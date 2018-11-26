@@ -1,6 +1,7 @@
 #include "Score.hpp"
 
-Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z) : Object(r, new Surface(new Font()),coord, z), value(0), font() {
+Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font const& f) : Object(r, new Surface(f), coord, z), value(0) {
+  font = f ;
 }
 
 Score::~Score(){
@@ -18,4 +19,8 @@ void Score::addScore(int s){
 
 int Score::getValue(){
   return value;
+}
+
+Font Score::getFont() {
+  return font ;
 }
