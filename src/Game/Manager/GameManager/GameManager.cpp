@@ -18,13 +18,13 @@ void GameManager::create(){
 
   for (int i = 0; i < 14; i++) {
     objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(98.5 * (i-1), objets["Ciel"]->getH() - 15), 1.7);
-    //objets["Bateau"]->link(objets["Wave" + std::to_string(i)]);
+    objets["Ciel"]->link(objets["Wave" + std::to_string(i)]);
   }
   Manager::create();
 }
 
 void GameManager::update(){
-  /*
+
   for (unsigned int i = 0; i < fishs.size(); i++) {
     int timeDegre = rand() % 50 ;
     int timeDirection = rand() % 1000;
@@ -61,7 +61,7 @@ void GameManager::update(){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
     }
   }
-*/
+
   for (unsigned int i = 0; i < fishs.size(); i++) {
     if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
       if( (objets["Fish" + std::to_string(i)]->getY()) <= 170){
