@@ -1,10 +1,10 @@
 #include "Font.hpp"
 
-Font::Font() : font(0) {
+Font::Font(char const* s) : font(0) {
   font = TTF_OpenFont("sprites/04B_30__.TTF",40);
   assert(font != NULL);
   c = {0,0,0} ;
-  text = "lul";
+  text = s;
 }
 
 Font::~Font(){

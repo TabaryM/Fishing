@@ -13,7 +13,7 @@ class Font {
     char const* text;
 
   public:
-    Font();
+    Font(char const* s);
     ~Font();
     TTF_Font* getFont();
     SDL_Color getColor();
