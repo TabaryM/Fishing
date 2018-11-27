@@ -26,7 +26,7 @@ class Object {
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z);
+    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload = true);
     /**
      * Deconstructor
      */
@@ -47,6 +47,7 @@ class Object {
     void collide(std::function<void(Object*, Object*)> callback, Object* o);
     virtual int getType();
     std::vector<Object*>&  getChild();
+    void updateTexture(Renderer const& r, Surface* s);
 
     void flipingTo(bool a);
     bool const& isFliped() const ;

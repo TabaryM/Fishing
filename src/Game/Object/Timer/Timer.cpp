@@ -1,6 +1,6 @@
 #include "Timer.hpp"
 
-Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z) : Object(r, new Surface(new Font(" ")),coord, z), value(10), font(" ") {
+Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface() ,coord, z, false), value(10) {
   fps = 0;
 }
 
@@ -11,11 +11,12 @@ int Timer::getType() {
   return TIMER;
 }
 
-void Timer::sec(int s){
+void Timer::sec(Renderer const& r, int s){
   fps ++;
   if(fps == 60){
     value += s;
-    font.setText(getValue()+"");
+    update(r, std::to_string(getValue()));
+    updateTexture(r, getSurface());
     fps = 0;
   }
   //refresh surface

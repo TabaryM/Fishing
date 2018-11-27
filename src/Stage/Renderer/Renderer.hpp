@@ -27,12 +27,12 @@ class Renderer {
      * Getter
      * @param s use to know what surface is used
      */
-    SDL_Texture* getTexture(Surface* s) const;
+    SDL_Texture* getTexture(Surface* s, bool destroyOnload = true) const;
     /**
      * Draw the texture
      * @param t with the SDL Library
      */
-    void draw(Texture & t);
+     void draw(Texture & t);
     /**
      * Draw the line
      * @param x1, x2, y1, y2

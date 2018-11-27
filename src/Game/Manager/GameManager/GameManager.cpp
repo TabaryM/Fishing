@@ -11,8 +11,10 @@ void GameManager::create(){
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 0), 500);
-  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500);
+  std::cout << "begin create Score" << std::endl;
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 200), 500, &f);
+  std::cout << "begin create Timer" << std::endl;
+  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 200), 500, &f);
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
@@ -102,7 +104,7 @@ void GameManager::update(){
               (o1->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
               std::vector<Object*>().swap(o1->getChild());
               // - actualiser score
-              static_cast <Score*>(objets["Score"])->addScore(10);
+              static_cast <Score*>(objets["Score"])->addScore(s->getRenderer(), 10);
               std::cout << static_cast <Score*>(objets["Score"])->getValue() << std::endl;
               //sortObject();
             }

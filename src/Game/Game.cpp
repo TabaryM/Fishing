@@ -10,7 +10,9 @@ void Game::launch(){
 
   sManager.loadFishs(gManager.getFishs());
   gManager.fillFish();
+  std::cout << "create gManagers" << std::endl;
   gManager.create();
+  std::cout << "create iManagers" << std::endl;
   iManager.create();
 
   while(!i.isQuit()){
