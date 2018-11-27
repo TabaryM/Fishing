@@ -27,8 +27,8 @@ void GameManager::create(){
 
 void GameManager::update(){
 
-  static_cast <Timer*>(objets["Timer"])->sec(-1);
-  std::cout << static_cast <Timer*>(objets["Timer"])->getValue() << std::endl;
+  //static_cast <Timer*>(objets["Timer"])->sec(-1);
+  //std::cout << static_cast <Timer*>(objets["Timer"])->getValue() << std::endl;
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
     int timeDegre = rand() % 50 ;
