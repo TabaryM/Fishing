@@ -14,13 +14,18 @@ Surface::Surface(std::string s){
   assert (item != 0);
 }
 
-Surface::Surface(Font* f){
-  item = f->getSurface();
+Surface::Surface(Font* f, std::string const& str){
+  item = TTF_RenderText_Solid(f->getFont(), str.c_str(), f->getColor()) ;
   assert (item != 0);
 }
 
 Surface::~Surface(){
-  SDL_FreeSurface(item);
+  free();
+}
+
+void Surface::loadText(Font* f, std::string const& str) {
+  item = TTF_RenderText_Solid(f->getFont(), str.c_str(), f->getColor()) ;
+  assert (item != 0);
 }
 
 SDL_Surface* Surface::getItem() {
@@ -35,4 +40,8 @@ void Surface::fillRGBA(Rectangle const& rect, unsigned char const& r, unsigned c
   SDL_Rect re = rect.getRect();
   int err = SDL_FillRect(item, &re, SDL_MapRGBA(item->format, r, g ,b, a));
   assert(err == 0);
+}
+
+void Surface::free() {
+  SDL_FreeSurface(item);
 }

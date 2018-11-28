@@ -23,6 +23,7 @@ class Manager {
   protected:
     Stage* s;
     Input* i;
+    Font f;
     std::vector<Object*> draws;
     std::map<std::string, Object*> objets;
 

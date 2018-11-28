@@ -3,12 +3,14 @@ OBJDIR = ../../../obj/Texture/Surface/
 
 RECT = Rectangle
 FONT = Font
+TEXT = Text
 
 all : before $(TARGET)
 
 before :
 	@(cd $(RECT) && $(MAKE))
 	@(cd $(FONT) && $(MAKE))
+	@(cd $(TEXT) && $(MAKE))
 
 debug : $(OBJ)
 

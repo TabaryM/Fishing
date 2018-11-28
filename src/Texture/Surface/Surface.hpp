@@ -17,12 +17,13 @@ class Surface {
     Surface() = delete;
     Surface(Vector2D<int> const& size, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
     Surface(std::string s);
-    Surface(Font* f);
+    Surface(Font* f, std::string const& str);
     ~Surface();
+    void loadText(Font* f, std::string const& str);
     SDL_Surface* getItem();
     Vector2D<int> getSize();
     void fillRGBA(Rectangle const& rect, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
-
+    void free();
 
   private:
     static const int DEPTH;

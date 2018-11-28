@@ -11,14 +11,16 @@ Renderer::~Renderer() {
 
 
 
-SDL_Texture* Renderer::getTexture(Surface* s) const {
+SDL_Texture* Renderer::getTexture(Surface* s, bool destroyOnload) const {
   SDL_Texture* res = SDL_CreateTextureFromSurface(item, s->getItem());
-  delete s;
-  s = 0;
+  if (destroyOnload) {
+    delete s;
+    s = 0;
+  }
   return res;
 }
 
-void Renderer::draw(Texture & t) {
+void Renderer::draw(Texture& t) {
   SDL_Rect r = t.getPosition().getRect();
   int err = SDL_RenderCopy(item, t.getItem(), NULL, &r);
   assert(err == 0);

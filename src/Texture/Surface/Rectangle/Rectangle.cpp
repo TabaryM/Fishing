@@ -31,6 +31,10 @@ void Rectangle::setCoord(Vector2D<int> const& coord) {
   this->coord = coord;
 }
 
+void Rectangle::setSize(Vector2D<int> const& size) {
+  this->size = size;
+}
+
 SDL_Rect Rectangle::getRect() const {
   SDL_Rect rect;
   rect.x = getX();

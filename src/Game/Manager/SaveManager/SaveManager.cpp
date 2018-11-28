@@ -26,6 +26,6 @@ void SaveManager::save(Score* sc) {
   time_t now = time(0) ;
   tm *ltm = localtime(&now) ;
   if(file) {
-    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << sc->getValue() << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year ;
+    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << sc->getValue() << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year << "\nHeure : " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec ;
   }
 }

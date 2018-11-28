@@ -1,6 +1,7 @@
 #include "Score.hpp"
 
-Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z) : Object(r, new Surface(new Font()),coord, z), value(0), font() {
+Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface(), coord, z, false), value(0) {
+  std::cout << "blyat" << std::endl ;
 }
 
 Score::~Score(){
@@ -10,10 +11,10 @@ int Score::getType() {
   return SCORE;
 }
 
-void Score::addScore(int s){
+void Score::addScore(Renderer const& r, int s){
   value += s;
-  font.setText("Score: "+getValue());
-  //refresh surface
+  update(r, "Score : "+std::to_string(getValue()));
+  updateTexture(r, getSurface());
 }
 
 int Score::getValue(){
