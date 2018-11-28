@@ -16,6 +16,7 @@ class Fish : public Object {
     float degre;
     bool hooked;
     int typeFish ;
+    Object* hitbox;
 
   public:
     /**
@@ -40,5 +41,6 @@ class Fish : public Object {
     std::string getSprite(int type) ;
     int getTypeFish() ;
     void getPoints(Renderer const& r, Score* s) ;
+    Texture& getHitbox();
 
 };
