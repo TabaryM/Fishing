@@ -237,3 +237,8 @@ void GameManager::fillFish(){
     objets["Fish" + std::to_string(i)] = fishs[i];
   }
 }
+
+void GameManager::initST() {
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
+  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
+}

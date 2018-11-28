@@ -53,5 +53,6 @@ class GameManager : public Manager {
     void updateControlY(Object* obj);
     std::vector<Fish*>& getFishs();
     void fillFish();
+    void initST();
 
 };
