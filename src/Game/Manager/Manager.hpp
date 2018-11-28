@@ -22,12 +22,11 @@ class Manager {
   protected:
     Stage* s;
     Input* i;
-    Font* f;
     std::vector<Object*> draws;
     std::map<std::string, Object*> objets;
 
   public:
-    Manager(Stage* s, Input* i, Font* f);
+    Manager(Stage* s, Input* i);
     virtual ~Manager();
     virtual void create();
     virtual void update() = 0 ;
@@ -35,5 +34,4 @@ class Manager {
     virtual void destroy() = 0 ;
     void sortObject();
     Score* getScore();
-    Font* getFont();
 };

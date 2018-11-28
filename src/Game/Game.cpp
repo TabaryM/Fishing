@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& init) : s(init), gManager(&s,&i,&f), iManager(&s, &i,&f), sManager(&s) {}
+Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s) {}
 
 void Game::launch(){
   i.isFlip(SDL_SCANCODE_P);

@@ -6,13 +6,13 @@
 class Score : public Object {
   private:
     int value;
-    Font const font;
+    Font font;
 
   public:
     /**
     * Constructor
     */
-    Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font const& f);
+    Score(Renderer const& r, Vector2D<int> const& coord, float const& z);
     /**
      * Deconstructor
      */
@@ -21,6 +21,5 @@ class Score : public Object {
 
     void addScore(int s);
     int getValue();
-    Font* getFont();
 
 };

@@ -5,7 +5,7 @@
 class InterfaceManager : public Manager {
 
   public:
-  InterfaceManager(Stage* s, Input* i, Font* f);
+  InterfaceManager(Stage* s, Input* i);
   ~InterfaceManager() = default;
   void create() override;
   void update() override;

@@ -8,7 +8,7 @@
 
 class Font {
   private:
-    TTF_Font* item;
+    TTF_Font* font;
     SDL_Color c;
     char const* text;
 

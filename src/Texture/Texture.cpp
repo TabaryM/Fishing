@@ -4,10 +4,6 @@ Texture::Texture(Renderer const& r, Surface* s, Vector2D<int> const& coord) : it
   item = r.getTexture(s);
 }
 
-Texture::Texture(Texture& t) {
-  item = t ;
-}
-
 Texture::~Texture() {
   SDL_DestroyTexture(item);
 }
