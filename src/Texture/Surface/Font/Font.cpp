@@ -1,9 +1,6 @@
 #include "Font.hpp"
 
 Font::Font() : font() {
-
-  std::cout << "create FONT" << std::endl;
-
   font = TTF_OpenFont("sprites/04B_30__.TTF",40);
   assert(font != NULL);
   c = {0,0,0} ;

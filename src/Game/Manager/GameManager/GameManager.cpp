@@ -11,10 +11,8 @@ void GameManager::create(){
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-  std::cout << "begin create Score" << std::endl;
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 200), 500, &f);
-  std::cout << "begin create Timer" << std::endl;
-  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 200), 500, &f);
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
+  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
@@ -28,8 +26,8 @@ void GameManager::create(){
 }
 
 void GameManager::update(){
-
-  //static_cast <Timer*>(objets["Timer"])->sec(-1);
+  static_cast <Score*>(objets["Score"])->addScore(s->getRenderer(), 0);
+  static_cast <Timer*>(objets["Timer"])->sec(s->getRenderer(), -1);
   //std::cout << static_cast <Timer*>(objets["Timer"])->getValue() << std::endl;
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
@@ -99,13 +97,10 @@ void GameManager::update(){
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
             //si o1 (HOOK) possède un enfant de type FISH dont le lequel isHooked = true
             if((o1->getChild().size())>0 && o1->getY() <= 100) {
-              std::cout << "Fished a fish !" << std::endl;
-
               (o1->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
               std::vector<Object*>().swap(o1->getChild());
               // - actualiser score
               static_cast <Score*>(objets["Score"])->addScore(s->getRenderer(), 10);
-              std::cout << static_cast <Score*>(objets["Score"])->getValue() << std::endl;
               //sortObject();
             }
           }

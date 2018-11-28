@@ -1,8 +1,6 @@
 #include "Score.hpp"
 
-Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface(), coord, z, false), value(0) {
-  std::cout << "blyat" << std::endl ;
-}
+Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface(), coord, z, false), value(0) {}
 
 Score::~Score(){
 }

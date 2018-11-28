@@ -15,7 +15,7 @@ void Timer::sec(Renderer const& r, int s){
   fps ++;
   if(fps == 60){
     value += s;
-    update(r, std::to_string(getValue()));
+    update(r, "Time left : "+std::to_string(getValue())+" s");
     updateTexture(r, getSurface());
     fps = 0;
   }
