@@ -69,7 +69,7 @@ void GameManager::update(){
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
     if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
-      if( ((objets["Fish" + std::to_string(i)]->getY()) < objets["Bateau"]->getY() + objets["Bateau"]->getH())){
+      if( ((objets["Fish" + std::to_string(i)]->getY()) < objets["Bateau"]->getY() + objets["Bateau"]->getH()) || ((objets["Fish" + std::to_string(i)]->getY() + (objets["Fish" + std::to_string(i)]->getH()) > objets["Seabed"]->getY()))){
         static_cast <Fish*>(objets["Fish" + std::to_string(i)])->setDegre(10 + (static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getDegre()));
         static_cast <Fish*>(objets["Fish" + std::to_string(i)])->setDir( - (static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getDir()));
       }
