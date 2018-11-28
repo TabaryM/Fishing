@@ -6,7 +6,7 @@ GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), profonde
 void GameManager::create(){
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1.2);
   objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY()+2000), (char)0, (char)102, (char)204, (char)255), Vector2D<int>(0, borders.getSize().getY()*0.22), 1);
-  objets["Seabed"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), 100), (char)220, (char)200, (char)100, (char)255), Vector2D<int>(0, 2300), 2);
+  objets["Seabed"] = new Object(s->getRenderer(), new Surface("sprites/Seabed.png"), Vector2D<int>(0, 2300), 2);
   objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, objets["Ciel"]->getH() - 58), 1.5);
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
