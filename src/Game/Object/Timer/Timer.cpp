@@ -25,3 +25,7 @@ void Timer::sec(Renderer const& r, int s){
 int Timer::getValue(){
   return value;
 }
+
+void Timer::setValue(int v){
+  value = v;
+}
