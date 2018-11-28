@@ -11,7 +11,8 @@ enum ObjectType {
   HOOK,
   BOAT,
   SCORE,
-  TIMER
+  TIMER,
+  GAMEOVER
 };
 
 class Object {

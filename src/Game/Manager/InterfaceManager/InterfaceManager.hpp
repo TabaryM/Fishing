@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Manager.hpp"
+#include "../../Object/GameOver/GameOver.hpp"
 
 class InterfaceManager : public Manager {
 
