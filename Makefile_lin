@@ -57,5 +57,6 @@ clean :
 	@mkdir obj/Texture
 	@mkdir obj/Texture/Surface
 	@mkdir obj/Texture/Surface/Font
+	@mkdir obj/Texture/Surface/Text
 	@mkdir obj/Texture/Surface/Rectangle
 	@echo "Jobs done."
