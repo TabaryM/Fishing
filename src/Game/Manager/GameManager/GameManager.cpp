@@ -90,7 +90,7 @@ void GameManager::update(){
   for (auto& it1 : objets){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
-          if (o1->getType() == HOOK && o2->getType() == FISH && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().size() == 0 ) {
+          if (o1->getType() == HOOK && o2->getType() == FISH && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().size() == 0) {
             static_cast <Fish*>(o2)->setHook();
             o1->link(o2);
           }
@@ -115,6 +115,10 @@ void GameManager::render(){
   Manager::render();
   //dessine la ligne
   s->draw(objets["Hook"]->getX() + 0.5*objets["Hook"]->getW() , objets["Hook"]->getY() +0.15*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
+  //dessine hitboxes poisson
+  for (unsigned int i = 0; i < fishs.size(); i++) {
+    s->draw(static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getHitbox());
+  }
 }
 
 void GameManager::destroy(){

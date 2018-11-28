@@ -8,6 +8,7 @@ WAVE = Wave
 SCORE = Score
 TIMER = Timer
 GO = GameOver
+HITBOX = Hitbox
 
 all : $(TARGET) after
 
@@ -21,6 +22,7 @@ after:
 	@(cd $(SCORE) && $(MAKE))
 	@(cd $(TIMER) && $(MAKE))
 	@(cd $(GO) && $(MAKE))
+	@(cd $(HITBOX) && $(MAKE))
 
 $(OBJDIR)%.o : %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

@@ -8,6 +8,8 @@ Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int t
   }
   this->degre = (rand() % 21 - 15)/10;
   this->hooked = false;
+  this->hitbox = new Object(r,new Surface(Vector2D<int>(20,50),(char)0, (char)0, (char)0, (char)255),coord, 10);
+  this->link(hitbox);
 }
 
 Fish::~Fish(){
@@ -79,4 +81,8 @@ bool const& Fish::isHooked() const{
 
 int Fish::getTypeFish() {
   return typeFish ;
+}
+
+Texture& Fish::getHitbox(){
+  return hitbox->getTexture() ;
 }

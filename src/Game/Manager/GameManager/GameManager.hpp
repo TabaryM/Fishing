@@ -16,6 +16,7 @@
 #include "../../Object/Boat/Boat.hpp"
 #include "../../Object/Hook/Hook.hpp"
 #include "../../Object/Wave/Wave.hpp"
+#include "../../Object/Hitbox/Hitbox.hpp"
 #include "../Manager.hpp"
 
 /**
