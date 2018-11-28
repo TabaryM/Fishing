@@ -1,6 +1,6 @@
 #include "Timer.hpp"
 
-Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface() ,coord, z, false), value(10) {
+Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface() ,coord, z, false), value(60) {
   fps = 0;
 }
 
