@@ -8,7 +8,7 @@ Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int t
   }
   this->degre = (rand() % 21 - 15)/10;
   this->hooked = false;
-  this->hitbox = new Object(r,new Surface(Vector2D<int>(20,50),(char)0, (char)0, (char)0, (char)255),coord, 10);
+  this->hitbox = new Object(r,new Surface(Vector2D<int>(20,40),(char)0, (char)0, (char)0, (char)255),Vector2D<int>(coord.getX(),coord.getY()-20+this->getH()/2), 10);
   this->link(hitbox);
 }
 
