@@ -7,6 +7,7 @@
 #include <SDL2/SDL.h>
 #include <algorithm>
 #include "../Object.hpp"
+#include "../Score/Score.hpp"
 
 class Fish : public Object {
   private:
@@ -38,5 +39,6 @@ class Fish : public Object {
     void insert(Fish f);
     std::string getSprite(int type) ;
     int getTypeFish() ;
+    void getPoints(Renderer const& r, Score* s) ;
 
 };

@@ -12,6 +12,7 @@ void Score::addScore(Renderer const& r, int s){
   value += s;
   update(r, "Score : "+std::to_string(getValue()));
   updateTexture(r, getSurface());
+  //std::cout << value << std::endl;
 }
 
 int Score::getValue(){
@@ -23,6 +24,14 @@ int Score::getGoal(){
 }
 
 void Score::setGoal(int g){
-  std::cout << g << std::endl;
   goal = g;
+}
+
+void Score::setMax(int m) {
+  max = m ;
+}
+
+void Score::initScore(Renderer const& r){
+  update(r, "Score : "+std::to_string(0));
+  updateTexture(r, getSurface());
 }

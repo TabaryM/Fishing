@@ -12,17 +12,14 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
     std::getline(file, line);
     std::getline(file, line);
     std::stringstream parserT(line);
-    std::cout << line << " parserT" << std::endl;
     parserT >> t ;
 
     std::getline(file, line);
     std::stringstream parserG(line) ;
-    std::cout << line << " parserG" << std::endl;
     parserG >> g ;
 
     while(std::getline(file, line)) {
       std::stringstream parser(line);
-      std::cout << line << std::endl;
       parser >> type;
       x = rand()%990;
       y = rand()%1600;

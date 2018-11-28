@@ -22,4 +22,5 @@ class Timer : public Text, public Object {
     void sec(Renderer const&r, int s);
     int getValue();
     void setValue(int v);
+    void updateTimer(Renderer const& r) ;
 };

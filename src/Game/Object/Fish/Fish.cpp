@@ -8,6 +8,7 @@ Fish::Fish(Renderer const& r , Vector2D<int> const& coord, float const& z, int t
   }
   this->degre = (rand() % 21 - 15)/10;
   this->hooked = false;
+  this->typeFish = typeFish ;
 }
 
 Fish::~Fish(){
@@ -79,4 +80,32 @@ bool const& Fish::isHooked() const{
 
 int Fish::getTypeFish() {
   return typeFish ;
+}
+
+void Fish::getPoints(Renderer const& r, Score* s){
+  int res = 0 ;
+  int swich = getTypeFish() ;
+  std::cout << swich << std::endl;
+  switch (swich) {
+    case 1 :
+      res = 1 ;
+      break ;
+    case 2 :
+      res = 10 ;
+      break ;
+    case 3 :
+      res = 2 ;
+      break ;
+    case 4 :
+      res = -3 ;
+      break ;
+    case 5 :
+      res = 0 /* TODO: trouver un comportement et une valeur */ ;
+      break ;
+    case 6 :
+      res = 5 ;
+      break ;
+    }
+    std::cout << res << std::endl;
+    s->addScore(r, res) ;
 }

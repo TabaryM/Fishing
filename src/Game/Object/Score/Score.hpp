@@ -8,6 +8,7 @@ class Score : public Text, public Object {
   private:
     int value ;
     int goal ;
+    int max ;
 
   public:
     /**
@@ -23,5 +24,6 @@ class Score : public Text, public Object {
     int getValue();
     int getGoal();
     void setGoal(int g) ;
-
+    void setMax(int m) ;
+    void initScore(Renderer const& r) ;
 };

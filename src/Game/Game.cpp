@@ -24,7 +24,6 @@ void Game::launch(){
       actualTime = SDL_GetTicks();
     }
     lastTime = actualTime;
-
     i.update();
     if (i.isActive(SDL_SCANCODE_P) || gManager.getTimer()->getValue() <= 0 ){
       iManager.update();
