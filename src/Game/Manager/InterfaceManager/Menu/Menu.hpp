@@ -6,4 +6,6 @@ class Menu : public Object {
   public:
     Menu(Renderer const& r, Vector2D<int> const& coord) ;
     ~Menu();
+
+    int getType();
 };

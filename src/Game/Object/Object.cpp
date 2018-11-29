@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload) : graphic(r, s, coord, destroyOnload), z(z), flip(false) , active(false) {
+Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload) : graphic(r, s, coord, destroyOnload), z(z), flip(false) , active(true) {
 }
 
 Object::~Object(){
@@ -107,4 +107,16 @@ void Object::updateTexture(Renderer const& r, Surface* s) {
 
 void Object::isFlip(){
   flip = !flip;
+}
+
+void Object::setActive(bool a) {
+  active = a;
+  for (Object* o : child) {
+    o->setActive(a);
+  }
+}
+
+bool Object::isActive(){
+  return active;
+
 }

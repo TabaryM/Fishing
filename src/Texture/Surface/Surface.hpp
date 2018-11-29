@@ -16,7 +16,6 @@ class Surface {
   public:
     Surface() = delete;
     Surface(Vector2D<int> const& size, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
-    Surface(Vector2D<int> const& size, int const& r, int const& g, int const& b, int const& a);
     Surface(std::string s);
     Surface(Font* f, std::string const& str);
     ~Surface();

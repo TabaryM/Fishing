@@ -11,8 +11,6 @@ void GameManager::create(){
   objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
   objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
-  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);

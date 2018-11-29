@@ -1,6 +1,7 @@
 #include "Score.hpp"
 
-Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface(), coord, z, false), value(0), goal(0) {}
+Score::Score(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface(), coord, z, false), value(0), goal(0) {
+}
 
 Score::~Score(){}
 
