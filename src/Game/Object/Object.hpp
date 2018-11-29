@@ -54,6 +54,8 @@ class Object {
     void flipingTo(bool a);
     bool const& isFliped() const ;
     void isFlip();
+    virtual Vector2D<int>* getCorner();
+    virtual Rectangle getHitbox();
 
   public:
     struct ObjectCompare {

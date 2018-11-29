@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "../Object.hpp"
 #include "../Score/Score.hpp"
+#include "../Hitbox/Hitbox.hpp"
 
 class Fish : public Object {
   private:
@@ -16,7 +17,7 @@ class Fish : public Object {
     float degre;
     bool hooked;
     int typeFish ;
-    Object* hitbox;
+    Hitbox* hitbox;
 
   public:
     /**
@@ -41,6 +42,7 @@ class Fish : public Object {
     std::string getSprite(int type) ;
     int getTypeFish() ;
     void getPoints(Renderer const& r, Score* s) ;
-    Texture& getHitbox();
+    Vector2D<int>* getCorner() override;
+    Rectangle getHitbox() override;
 
 };

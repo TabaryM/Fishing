@@ -63,19 +63,25 @@ void Object::move(Vector2D<int> const& dep) {
 }
 
 void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
-
   bool col = false;
-  Vector2D<int>* corner = graphic.getPosition().getCorner();
+  Vector2D<int>* corner = getCorner();
 
   for (int i = 0; i < 4; i++) {
-    col = col || o->graphic.getPosition().pointIn(corner[i]);
+    col = col || o->getHitbox().pointIn(corner[i]);
   }
   delete[] corner;
-
 
   if (col) {
     callback(this, o);
   }
+}
+
+Vector2D<int>* Object::getCorner() {
+  return graphic.getPosition().getCorner();
+}
+
+Rectangle Object::getHitbox() {
+  return graphic.getPosition();
 }
 
 int Object::getType() {
