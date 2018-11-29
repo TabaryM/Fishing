@@ -1,6 +1,6 @@
 #include "Hitbox.hpp"
 
-Hitbox::Hitbox(Renderer const& r,  Vector2D<int> const& coord, float const& z) : Object(r, new Surface("sprites/Wave.png"), coord, z) {
+Hitbox::Hitbox(Renderer const& r,  Vector2D<int> const& coord, float const& z) : Object(r, new Surface(Vector2D<int>(20,40),(char)0, (char)0, (char)0, (char)255), coord, z) {
 
 }
 
