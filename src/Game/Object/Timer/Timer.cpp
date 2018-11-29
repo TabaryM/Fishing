@@ -12,7 +12,6 @@ int Timer::getType() {
 void Timer::sec(Renderer const& r, int s){
   fps ++;
   if(fps == 60){
-    //std::cout << "(modif)value : " << value << std::endl;
     value += s;
     fps = 0;
     updateTimer(r);
@@ -24,9 +23,7 @@ int Timer::getValue(){
 }
 
 void Timer::setValue(int v){
-  std::cout << "value : " << value << "\nv : " << v << std::endl;
   value = v;
-  std::cout << "value : " << value << std::endl;
 }
 
 void Timer::updateTimer(Renderer const& r) {

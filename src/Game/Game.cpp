@@ -11,11 +11,19 @@ void Game::launch(){
   //Initialize Score and Timer
   gManager.initST() ;
 
+  //Load level information from txt
+  std::cout << "start load" << std::endl;
+  std::cout << "ScoreValue : " << gManager.getScore()->getValue() << " TimerValue : " << gManager.getTimer()->getValue() << std::endl;
   sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer());
+  std::cout << "start fillFish" << std::endl;
   gManager.fillFish();
+  std::cout << "fillFish end" << std::endl;
 
+  std::cout << "creating gManager" << std::endl;
   gManager.create();
+  std::cout << "creating iManager" << std::endl;
   iManager.create();
+  std::cout << "iManager created" << std::endl;
 
   while(!i.isQuit()){
     actualTime = SDL_GetTicks();

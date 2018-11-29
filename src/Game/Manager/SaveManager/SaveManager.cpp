@@ -23,10 +23,13 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
       parser >> type;
       x = rand()%990;
       y = rand()%1600;
+      std::cout << "x : " << x << " y : " << y << std::endl;
       fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x, (y + 180)), 6, type)) ;
+      std::cout << "push back" << std::endl;
     }
     score->setGoal(g) ;
     timer->setValue(t) ;
+    std::cout << "g et t set" << std::endl;
   }
 }
 

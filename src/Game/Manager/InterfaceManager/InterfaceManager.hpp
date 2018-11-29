@@ -2,6 +2,7 @@
 
 #include "../Manager.hpp"
 #include "../../Object/GameOver/GameOver.hpp"
+#include "Menu/Menu.hpp"
 
 class InterfaceManager : public Manager {
 

@@ -12,7 +12,6 @@ void Score::addScore(Renderer const& r, int s){
   value += s;
   update(r, "Score : "+std::to_string(getValue()));
   updateTexture(r, getSurface());
-  //std::cout << value << std::endl;
 }
 
 int Score::getValue(){
