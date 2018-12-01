@@ -64,9 +64,8 @@ void GameManager::update(){
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
     }
-    //mes tests
+    //flip the hitbox
     if(objets["Fish" + std::to_string(i)]->getChild().front()->getX() == objets["Fish" + std::to_string(i)]->getX() && !objets["Fish" + std::to_string(i)]->isFliped()){
-      std::cout << "touche" << std::endl;
       objets["Fish" + std::to_string(i)]->getChild().front()->move(Vector2D<int>(objets["Fish" + std::to_string(i)]->getW() - objets["Fish" + std::to_string(i)]->getChild().front()->getW(),0));
     }
     else if(objets["Fish" + std::to_string(i)]->getChild().front()->getX() == objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() - objets["Fish" + std::to_string(i)]->getChild().front()->getW() && objets["Fish" + std::to_string(i)]->isFliped()){
