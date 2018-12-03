@@ -106,7 +106,7 @@ void GameManager::update(){
             //si o1 (HOOK) possède un enfant de type FISH dont le lequel isHooked = true
             if((o1->getChild().front()->getChild().size())>0 && o1->getY() <= 100) {
               // - actualiser score
-              static_cast <Fish*>(o1->getChild().front())->getPoints(s->getRenderer(), static_cast <Score*>(objets["Score"]));
+              static_cast <Fish*>(o1->getChild().front()->getChild().front())->getPoints(s->getRenderer(), static_cast <Score*>(objets["Score"]));
               //sortObject();
               (o1->getChild().front()->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
               std::vector<Object*>().swap(o1->getChild().front()->getChild());
