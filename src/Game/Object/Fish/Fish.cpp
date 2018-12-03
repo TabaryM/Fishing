@@ -87,6 +87,7 @@ int Fish::getTypeFish() {
 void Fish::getPoints(Renderer const& r, Score* s){
   int res = 0 ;
   int swich = getTypeFish() ;
+  std::cout << "swich = " << swich << std::endl;
   switch (swich) {
     case 1 :
       res = 1 ;
