@@ -25,7 +25,6 @@ void GameManager::create(){
   static_cast <Timer*>(objets["Timer"])->updateTimer(s->getRenderer());
 
   Manager::create();
-
 }
 
 void GameManager::update(){

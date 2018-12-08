@@ -10,7 +10,7 @@ class GameOver : public Text, public Object {
     /**
     * Constructor
     */
-    GameOver(Renderer const& r, Vector2D<int> const& coord, Font* f, std::string s, float const& z = 999);
+    GameOver(Renderer const& r, Vector2D<int> const& coord, Font* f, std::string s, float const& z = 999, bool destroyOnload = false);
     /**
      * Deconstructor
      */

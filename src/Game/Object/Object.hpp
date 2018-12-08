@@ -30,7 +30,7 @@ class Object {
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload = true);
+    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload = true, bool active = true);
     /**
      * Deconstructor
      */

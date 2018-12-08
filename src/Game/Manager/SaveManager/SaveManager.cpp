@@ -27,6 +27,10 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
     }
     score->setGoal(g) ;
     timer->setValue(t) ;
+    int max = 0;
+    for (Fish* f : fishs){
+      max += f->getPoints();
+    }
   }
 }
 

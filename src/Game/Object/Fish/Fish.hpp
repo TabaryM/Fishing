@@ -42,6 +42,8 @@ class Fish : public Object {
     std::string getSprite(int type) ;
     int getTypeFish() ;
     void getPoints(Renderer const& r, Score* s) ;
+    int getPoints();
+
     Vector2D<int>* getCorner() override;
     Rectangle getHitbox() override;
 

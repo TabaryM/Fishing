@@ -26,7 +26,12 @@ void Game::launch(){
     }
     lastTime = actualTime;
     i.update();
-    if (i.isActive(SDL_SCANCODE_P) || gManager.getTimer()->getValue() <= 0 ){
+
+    iManager.setPause(i.isActive(SDL_SCANCODE_P));
+    iManager.setWin((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() <= gManager.getScore()->getValue()));
+    iManager.setLose((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() > gManager.getScore()->getValue()));
+
+    if (iManager.getUpdate()) {
       iManager.update();
     } else {
       gManager.update();
@@ -34,7 +39,7 @@ void Game::launch(){
 
     s.clear();
     gManager.render();
-    if (i.isActive(SDL_SCANCODE_P)){
+    if (iManager.getUpdate()){
       iManager.render();
     }
     s.update();

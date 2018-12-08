@@ -110,6 +110,32 @@ void Fish::getPoints(Renderer const& r, Score* s){
     s->addScore(r, res) ;
 }
 
+int Fish::getPoints(){
+    int res = 0 ;
+    int swich = getTypeFish() ;
+    switch (swich) {
+      case 1 :
+        res = 1 ;
+        break ;
+      case 2 :
+        res = 10 ;
+        break ;
+      case 3 :
+        res = 2 ;
+        break ;
+      case 4 :
+        res = -3 ;
+        break ;
+      case 5 :
+        res = 0 /* TODO: trouver un comportement et une valeur */ ;
+        break ;
+      case 6 :
+        res = 5 ;
+        break ;
+    }
+    return res;
+}
+
 
 Vector2D<int>* Fish::getCorner() {
   return hitbox->getCorner();
