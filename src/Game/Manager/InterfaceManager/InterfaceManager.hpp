@@ -2,7 +2,7 @@
 
 #include "../Manager.hpp"
 #include "../../Object/GameOver/GameOver.hpp"
-#include "Menu/Menu.hpp"
+#include "Bouton/Bouton.hpp"
 
 class InterfaceManager : public Manager {
   protected :

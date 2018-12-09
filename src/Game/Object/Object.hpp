@@ -14,7 +14,7 @@ enum ObjectType {
   TIMER,
   GAMEOVER,
   HITBOX,
-  MENU
+  BOUTON
 };
 
 class Object {

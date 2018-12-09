@@ -3,7 +3,7 @@
 SaveManager::SaveManager(Stage* s) : s(s){}
 
 void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
-  std::ifstream file("stages/niveau_1.txt");
+  std::ifstream file("stages/niveau_3.txt");
 
   std::string line;
   int x, y, t, g;
@@ -17,6 +17,8 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
     std::getline(file, line);
     std::stringstream parserG(line) ;
     parserG >> g ;
+    int max = 0;
+    int neg = 0;
 
     while(std::getline(file, line)) {
       std::stringstream parser(line);
@@ -24,13 +26,17 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
       x = rand()%990;
       y = rand()%1600;
       fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x, (y + 180)), 6, type)) ;
+      if (type != 4){
+        max += fishs.back()->getPoints();
+      } else {
+        neg += fishs.back()->getPoints();
+      }
     }
     score->setGoal(g) ;
     timer->setValue(t) ;
-    int max = 0;
-    for (Fish* f : fishs){
-      max += f->getPoints();
-    }
+    score->setMax(max) ;
+    std::cout << "max : " << max << std::endl;
+    std::cout << "neg : " << neg << std::endl;
   }
 }
 

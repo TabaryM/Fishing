@@ -1,14 +1,14 @@
 OBJ = $(OBJDIR)InterfaceManager.o
 OBJDIR = ../../../../obj/Game/Manager/InterfaceManager/
 
-MENU = Menu
+BOUTON = Bouton
 
-all : $(TARGET) after
+all : before $(TARGET)
 
 debug : $(OBJ)
 
-after:
-	@(cd $(MENU) && $(MAKE))
+before:
+	@(cd $(BOUTON) && $(MAKE))
 
 $(OBJDIR)%.o : %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)

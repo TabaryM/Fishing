@@ -4,14 +4,15 @@
 InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i), pauseActive(true), winActive(false), loseActive(false) {}
 
 void InterfaceManager::create(){
-  objets["MenuPause"] = new Menu(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75)) ;
+  objets["RetourMenu"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 4, Window::HEIGHT / 4), true) ;
+  objets["MenuPause"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), false) ;
   objets["Pause"] = new Object(s->getRenderer(), new Surface("sprites/Pause.png"), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), 999);
   objets["MenuPause"]->link(objets["Pause"]) ;
-  objets["MenuLose"] = new Menu(s->getRenderer(), Vector2D<int>(Window::WIDTH /2, Window::HEIGHT /2)) ;
-  objets["Lose"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /2 - 25), &f, std::string("Defaite")) ;
+  objets["MenuLose"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2, Window::HEIGHT /2), false) ;
+  objets["Lose"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /2 - 25), &f, std::string("Defaite"), false) ;
   objets["MenuLose"]->link(objets["Lose"]) ;
-  objets["MenuWin"] = new Menu(s->getRenderer(), Vector2D<int>(Window::WIDTH /2, Window::HEIGHT /2)) ;
-  objets["Win"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /2 - 25), &f, std::string("Victoire !")) ;
+  objets["MenuWin"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2, Window::HEIGHT /2), false) ;
+  objets["Win"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /2 - 25), &f, std::string("Victoire !"), false) ;
   objets["MenuWin"]->link(objets["Win"]) ;
   Manager::create();
 }

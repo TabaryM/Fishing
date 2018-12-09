@@ -1,5 +1,5 @@
-OBJ = $(OBJDIR)Menu.o
-OBJDIR = ../../../../../obj/Game/Manager/InterfaceManager/Menu/
+OBJ = $(OBJDIR)Bouton.o
+OBJDIR = ../../../../../obj/Game/Manager/InterfaceManager/Bouton/
 
 all : $(TARGET)
 

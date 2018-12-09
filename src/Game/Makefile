@@ -6,11 +6,11 @@ MANAGER = Manager
 
 all : before $(TARGET)
 
+debug : $(OBJ)
+
 before :
 	@(cd $(OBJECT) && $(MAKE))
 	@(cd $(MANAGER) && $(MAKE))
-
-debug : $(OBJ)
 
 $(OBJDIR)%.o : %.cpp %.hpp
 	@$(CXX) -o $@ -c $< $(CFLAGS) $(INC)
