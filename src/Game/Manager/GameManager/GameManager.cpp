@@ -1,7 +1,7 @@
 #include "GameManager.hpp"
 
 
-GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), profondeur(150), focus(0) , borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
+GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(7), profondeur(150), focus(0) , borders(Vector2D<int>(Window::WIDTH, Window::HEIGHT)) {}
 
 void GameManager::create(){
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1.2);
@@ -149,7 +149,9 @@ void GameManager::updateControlX(Object* obj) {
   }
 
   if (i->isActive(SDL_SCANCODE_E)) {
-    speed++;
+    if (speed < 15) {
+      speed++;
+    }
   }
   if (i->isActive(SDL_SCANCODE_R)) {
     if (speed > 1) {
