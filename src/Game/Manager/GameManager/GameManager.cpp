@@ -16,6 +16,7 @@ void GameManager::create(){
   objets["FishPole"]->link(objets["Hook"]);
   objets["HookHitbox"] = objets["Hook"]->getChild().front();
 
+
   for (int i = 0; i < 14; i++) {
     objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(98.5 * (i-1), objets["Ciel"]->getH() - 15), 1.7);
     objets["Ciel"]->link(objets["Wave" + std::to_string(i)]);
@@ -23,6 +24,8 @@ void GameManager::create(){
 
   static_cast <Score*>(objets["Score"])->initScore(s->getRenderer());
   static_cast <Timer*>(objets["Timer"])->updateTimer(s->getRenderer());
+
+  objets["Objectif"] = new Object(s->getRenderer(), new Surface(&f, "/" + std::to_string(static_cast <Score*>(objets["Score"])->getGoal())), Vector2D<int>(1140, 0), objets["Score"]->getZ()) ;
 
   Manager::create();
 }
@@ -248,6 +251,6 @@ void GameManager::fillFish(){
 }
 
 void GameManager::initST() {
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(810, 0), 500, &f);
   objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
 }
