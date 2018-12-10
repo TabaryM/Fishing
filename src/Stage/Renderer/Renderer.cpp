@@ -3,6 +3,8 @@
 Renderer::Renderer(Window const& w) : item(0) {
   item = w.getRenderer(-1, SDL_RENDERER_TARGETTEXTURE);
   assert(item != 0);
+  int err = SDL_SetRenderDrawBlendMode(item, SDL_BLENDMODE_BLEND) ;
+  assert(err == 0);
 }
 
 Renderer::~Renderer() {

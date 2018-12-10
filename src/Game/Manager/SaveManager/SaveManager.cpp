@@ -22,7 +22,7 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
     while(std::getline(file, line)) {
       std::stringstream parser(line);
       parser >> type;
-      x = rand()%990;
+      x = rand()%990 + 1;
       y = rand()%1600;
       fishs.push_back(new Fish(s->getRenderer(), Vector2D<int>(x, (y + 180)), 6, type)) ;
       if (type != 4){

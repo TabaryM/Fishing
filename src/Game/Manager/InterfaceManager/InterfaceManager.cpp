@@ -4,7 +4,7 @@
 InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i), pauseActive(true), winActive(false), loseActive(false) {}
 
 void InterfaceManager::create(){
-  objets["RetourMenu"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 4, Window::HEIGHT / 4), true) ;
+  objets["RetourMenu"] = new Bouton(s->getRenderer(), Vector2D<int>(1, 1), true) ;
   objets["MenuPause"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), false) ;
   objets["Pause"] = new Object(s->getRenderer(), new Surface("sprites/Pause.png"), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), 999);
   objets["MenuPause"]->link(objets["Pause"]) ;
@@ -20,6 +20,9 @@ void InterfaceManager::create(){
 void InterfaceManager::update(){
   objets["MenuLose"]->setActive(loseActive);
   objets["MenuWin"]->setActive(winActive);
+  if(winActive || loseActive){
+    pauseActive = false;
+  }
   objets["MenuPause"]->setActive(pauseActive);
 }
 
