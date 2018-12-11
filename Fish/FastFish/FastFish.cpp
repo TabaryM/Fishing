@@ -1,7 +1,7 @@
 #include "FastFish.hpp"
 
 FastFish::FastFish(Renderer const& r, Vector2D<int> coord, float const& z) : Fish(r, coord, z, 3) {
-  this->valeur = 2;
+  this->valeur = 4;
   this->speedX = Fish::getSpeedX();
   this->speedY = Fish::getSpeedY();
   this->right = Fish::getRight();

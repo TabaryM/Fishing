@@ -11,6 +11,10 @@
 class JebaiFish : public Fish {
   private:
     int valeur;
+    bool right;
+    int speedX;
+    int speedY;
+    int timeDir;
 
   public:
     /**
@@ -22,10 +26,16 @@ class JebaiFish : public Fish {
      */
     ~JebaiFish();
 
-    float getDir();
-    void setDir(float d);
+    int getSpeedX();
+    void setSpeedX(int dx);
     int getValue();
-    void setDegre(float d);
-    float getDegre();
+    void setSpeedY(int dy);
+    int getSpeedY();
+    void setRight(bool r);
+    bool getRight();
+    void Brain(int br, int bd, int px,int py);
+    int collision(int br, int bd, int px,int py);
+    void dirChange(int time,int cas);
+    void goUpDown();
 
 };
