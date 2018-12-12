@@ -24,6 +24,9 @@ void InterfaceManager::update(){
     pauseActive = false;
   }
   objets["MenuPause"]->setActive(pauseActive);
+  if(i->isActive(SDL_BUTTON_LEFT)){
+    std::cout << "Petite victoire" << std::endl;
+  }
 }
 
 void InterfaceManager::render(){

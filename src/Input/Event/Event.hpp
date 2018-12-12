@@ -11,6 +11,7 @@ class Event {
     ~Event();
     int const getType() const;
     SDL_Scancode const getScancode() const;
+    Uint8 const getButton() const;
     void poll();
-
+    
 };

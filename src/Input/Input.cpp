@@ -29,6 +29,12 @@ void Input::update() {
        keyKB[e.getScancode()].keyUp();
        break;
      }
+     case SDL_MOUSEBUTTONUP: {
+       keyMouse[e.getButton()].keyUp();
+     }
+     case SDL_MOUSEBUTTONDOWN : {
+       keyMouse[e.getButton()].keyDown();
+     }
     default: {
     }
   }
@@ -38,6 +44,14 @@ bool const& Input::isActive(SDL_Scancode const& i){
   return keyKB[i].isActive();
 }
 
+bool const& Input::isActive(Uint8 const& i){
+  return keyMouse[i].isActive();
+}
+
 void Input::isFlip(SDL_Scancode const& i){
   keyKB[i].isFlip();
+}
+
+Vector2D<int>* Input::getPos(){
+  return NULL;
 }
