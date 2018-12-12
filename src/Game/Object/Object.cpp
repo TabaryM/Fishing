@@ -54,7 +54,9 @@ float Object::getDepth() const {
 }
 
 void Object::move(Vector2D<int> const& dep) {
-  flip = dep.getX() < 0;
+  if(getType()==FISH){
+    flip = dep.getX() < 0;
+  }
   graphic.setCoord(graphic.getCoord() + dep);
   for (Object* o : child) {
     o->move(dep);

@@ -102,6 +102,7 @@ void GameManager::update(){
           if (o1->getType() == HOOK && o2->getType() == FISH  && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().front()->getChild().size() == 0) {
             static_cast <Fish*>(o2)->setHook();
             o1->getChild().front()->link(o2);
+            o2->move(Vector2D<int>(-1,0));
           }
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
@@ -123,7 +124,11 @@ void GameManager::update(){
 void GameManager::render(){
   Manager::render();
   //dessine la ligne
-  s->draw(objets["Hook"]->getX() + objets["Hook"]->getW() -2.5, objets["Hook"]->getY() +0.05*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
+  if(!objets["Hook"]->isFliped()){
+    s->draw(objets["Hook"]->getX() + objets["Hook"]->getW() -2.5, objets["Hook"]->getY() +0.05*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
+  }else{
+    s->draw(objets["Hook"]->getX() +2.5, objets["Hook"]->getY() +0.05*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
+  }
 }
 
 void GameManager::destroy(){
@@ -140,6 +145,10 @@ void GameManager::updateControlX(Object* obj) {
     else{
       dep.setX(dep.getX() - speed);
     }
+    if(objets["Hook"]->isFliped()){
+      objets["Hook"]->isFlip();
+      objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getW() +3.5,0));
+    }
   }
 
   if (i->isActive(SDL_SCANCODE_D)) {
@@ -148,6 +157,10 @@ void GameManager::updateControlX(Object* obj) {
     }
     else{
       dep.setX(dep.getX() + speed);
+    }
+    if(!objets["Hook"]->isFliped()){
+      objets["Hook"]->isFlip();
+      objets["Hook"]->move(Vector2D<int>(objets["Hook"]->getW() -3.5,0));
     }
   }
 
@@ -161,7 +174,6 @@ void GameManager::updateControlX(Object* obj) {
       speed--;
     }
   }
-
   obj->move(dep);
 }
 void GameManager::updateControlY(Object* obj) {
