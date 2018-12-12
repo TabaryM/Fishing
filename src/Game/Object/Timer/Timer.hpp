@@ -21,4 +21,6 @@ class Timer : public Text, public Object {
     int getType() override;
     void sec(Renderer const&r, int s);
     int getValue();
+    void setValue(int v);
+    void updateTimer(Renderer const& r) ;
 };

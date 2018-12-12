@@ -11,7 +11,10 @@ enum ObjectType {
   HOOK,
   BOAT,
   SCORE,
-  TIMER
+  TIMER,
+  GAMEOVER,
+  HITBOX,
+  MENU
 };
 
 class Object {
@@ -20,13 +23,14 @@ class Object {
     float z;
     std::vector<Object*> child;
     bool flip;
+  protected:
     bool active;
 
   public:
     /**
     * Constructor
     */
-    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload = true);
+    Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload = true, bool active = true);
     /**
      * Deconstructor
      */
@@ -48,10 +52,13 @@ class Object {
     virtual int getType();
     std::vector<Object*>&  getChild();
     void updateTexture(Renderer const& r, Surface* s);
-
+    void setActive(bool a);
     void flipingTo(bool a);
     bool const& isFliped() const ;
     void isFlip();
+    virtual Vector2D<int>* getCorner();
+    virtual Rectangle getHitbox();
+    bool isActive();
 
   public:
     struct ObjectCompare {

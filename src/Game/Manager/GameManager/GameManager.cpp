@@ -5,35 +5,34 @@ GameManager::GameManager(Stage* s, Input* i) : Manager(s, i), speed(1), profonde
 
 void GameManager::create(){
   objets["Ciel"] = new Object(s->getRenderer(), new Surface("sprites/Sky.png"), Vector2D<int>(0, 0), 1.2);
-  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY()), (char)0, (char)102, (char)204, (char)255), Vector2D<int>(0, borders.getSize().getY()*0.22), 1);
-  objets["Ocean2"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(),borders.getSize().getY()), (char)0, (char)102, (char)204, (char)255), Vector2D<int>(0, borders.getSize().getY()+borders.getSize().getY()*0.22), 1);
+  objets["Ocean"] = new Object(s->getRenderer(), new Surface(Vector2D<int>(borders.getSize().getX(), borders.getSize().getY()+2000), 0, 102, 204, 255), Vector2D<int>(0, borders.getSize().getY()*0.22), 1);
+  objets["Seabed"] = new Object(s->getRenderer(), new Surface("sprites/Seabed.png"), Vector2D<int>(0, 2300), 2);
   objets["Bateau"] = new Boat(s->getRenderer(), Vector2D<int>(500, objets["Ciel"]->getH() - 58), 1.5);
-  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() , objets["Bateau"]->getY() + 60 ),5);
+  objets["Hook"] = new Hook(s->getRenderer(), Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() +6 , objets["Bateau"]->getY() + 60 ),5);
   objets["Kappa"] = new Object(s->getRenderer(), new Surface("sprites/Kappa.png"), Vector2D<int>(objets["Bateau"]->getX() + 0.82 * objets["Bateau"]->getSize().getX(), objets["Bateau"]->getY() - 46) , 3);
-  objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-98, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
-  std::cout << "begin create Score" << std::endl;
-  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(1000, 200), 500, &f);
-  std::cout << "begin create Timer" << std::endl;
-  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 200), 500, &f);
+  objets["FishPole"] = new Object(s->getRenderer(), new Surface("sprites/FishPole.png"), Vector2D<int>(objets["Kappa"]->getX()-97, objets["Kappa"]->getY()-50) , objets["Bateau"]->getZ());
   objets["Bateau"]->link(objets["Kappa"]);
   objets["Kappa"]->link(objets["FishPole"]);
   objets["FishPole"]->link(objets["Hook"]);
+  objets["HookHitbox"] = objets["Hook"]->getChild().front();
 
   for (int i = 0; i < 14; i++) {
     objets["Wave" + std::to_string(i)] = new Wave(s->getRenderer(), Vector2D<int>(98.5 * (i-1), objets["Ciel"]->getH() - 15), 1.7);
     objets["Ciel"]->link(objets["Wave" + std::to_string(i)]);
   }
-  Manager::create();
 
+  static_cast <Score*>(objets["Score"])->initScore(s->getRenderer());
+  static_cast <Timer*>(objets["Timer"])->updateTimer(s->getRenderer());
+
+  Manager::create();
 }
 
 void GameManager::update(){
-
-  //static_cast <Timer*>(objets["Timer"])->sec(-1);
-  //std::cout << static_cast <Timer*>(objets["Timer"])->getValue() << std::endl;
+  static_cast <Score*>(objets["Score"])->addScore(s->getRenderer(), 0);
+  static_cast <Timer*>(objets["Timer"])->sec(s->getRenderer(), -1);
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
-    int timeDegre = rand() % 50 ;
+    /*int timeDegre = rand() % 50 ;
     int timeDirection = rand() % 1000;
     int timeSpeed = rand() % 500;
 
@@ -59,23 +58,37 @@ void GameManager::update(){
 
       if(!objets["Fish" + std::to_string(i)]->isFliped()) {
         objets["Fish" + std::to_string(i)]->isFlip();
-      } else {
-        objets["Fish" + std::to_string(i)]->isFlip() ;
       }
 
     }
     if((objets["Fish" + std::to_string(i)]->getY()) + (1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDegre()) < borders.getH()*0.3 - profondeur){
       static_cast <Fish*> (objets["Fish" + std::to_string(i)])->setDegre(0);
     }
+    //flip the hitbox
+    if(objets["Fish" + std::to_string(i)]->getChild().front()->getX() == objets["Fish" + std::to_string(i)]->getX() && !objets["Fish" + std::to_string(i)]->isFliped()){
+      objets["Fish" + std::to_string(i)]->getChild().front()->move(Vector2D<int>(objets["Fish" + std::to_string(i)]->getW() - objets["Fish" + std::to_string(i)]->getChild().front()->getW(),0));
+    }
+    else if(objets["Fish" + std::to_string(i)]->getChild().front()->getX() == objets["Fish" + std::to_string(i)]->getX() + objets["Fish" + std::to_string(i)]->getW() - objets["Fish" + std::to_string(i)]->getChild().front()->getW() && objets["Fish" + std::to_string(i)]->isFliped()){
+      objets["Fish" + std::to_string(i)]->getChild().front()->move(Vector2D<int>(-objets["Fish" + std::to_string(i)]->getW()+ objets["Fish" + std::to_string(i)]->getChild().front()->getW(),0));
+    }
   }
 
   for (unsigned int i = 0; i < fishs.size(); i++) {
     if(!static_cast <Fish*>(objets["Fish" + std::to_string(i)])->isHooked()){
-      if( (objets["Fish" + std::to_string(i)]->getY()) <= 170){
+      if( ((objets["Fish" + std::to_string(i)]->getY()) < objets["Bateau"]->getY() + objets["Bateau"]->getH()) || ((objets["Fish" + std::to_string(i)]->getY() + (objets["Fish" + std::to_string(i)]->getH()) > objets["Seabed"]->getY()))){
+        static_cast <Fish*>(objets["Fish" + std::to_string(i)])->setDegre(10 + (static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getDegre()));
         static_cast <Fish*>(objets["Fish" + std::to_string(i)])->setDir( - (static_cast <Fish*>(objets["Fish" + std::to_string(i)])->getDir()));
       }
       objets["Fish" + std::to_string(i)]->move(Vector2D<int>(1 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir(), 0.5 * static_cast <Fish*> (objets["Fish" + std::to_string(i)])->getDir() + focus));
     }
+  }*/
+    
+    
+    Vector2D<int> dep;
+    dep = static_cast <Fish*>(objets["Fish" + std::to_string(i)])->Brain(borders.getW(), 2500,objets["Hook"]->getX(),objets["Hook"]->getY(),objets["Hook"]->getW(),objets["Hook"]->getH());
+    dep.setY(dep.getY() + focus);
+    objets["Fish" + std::to_string(i)]->move(dep);
+    
   }
 
   for (int i = 0; i < 14; i++) {
@@ -91,22 +104,19 @@ void GameManager::update(){
   for (auto& it1 : objets){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
-          if (o1->getType() == HOOK && o2->getType() == FISH && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().size() == 0 ) {
+          if (o1->getType() == HOOK && o2->getType() == FISH  && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().front()->getChild().size() == 0) {
             static_cast <Fish*>(o2)->setHook();
-            o1->link(o2);
+            o1->getChild().front()->link(o2);
           }
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
             //si o1 (HOOK) possède un enfant de type FISH dont le lequel isHooked = true
-            if((o1->getChild().size())>0 && o1->getY() <= 100) {
-              std::cout << "Fished a fish !" << std::endl;
-
-              (o1->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
-              std::vector<Object*>().swap(o1->getChild());
+            if((o1->getChild().front()->getChild().size())>0 && o1->getY() <= 100) {
               // - actualiser score
-              static_cast <Score*>(objets["Score"])->addScore(s->getRenderer(), 10);
-              std::cout << static_cast <Score*>(objets["Score"])->getValue() << std::endl;
+              static_cast <Fish*>(o1->getChild().front()->getChild().front())->getPoints(s->getRenderer(), static_cast <Score*>(objets["Score"]));
               //sortObject();
+              (o1->getChild().front()->getChild().front())->move(Vector2D<int>(-5000,0));//"remove" fishes
+              std::vector<Object*>().swap(o1->getChild().front()->getChild());
             }
           }
         }, it2.second);
@@ -118,7 +128,7 @@ void GameManager::update(){
 void GameManager::render(){
   Manager::render();
   //dessine la ligne
-  s->draw(objets["Hook"]->getX() + 0.5*objets["Hook"]->getW() , objets["Hook"]->getY() +0.15*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
+  s->draw(objets["Hook"]->getX() + objets["Hook"]->getW() -2.5, objets["Hook"]->getY() +0.05*objets["Hook"]->getH(), objets["FishPole"]->getX(), objets["FishPole"]->getY());
 }
 
 void GameManager::destroy(){
@@ -166,7 +176,7 @@ void GameManager::updateControlY(Object* obj) {
   bool dirDown = false;
   bool dirUp = false;
   focus = 0;
-  if(profondeur >= borders.getH() * 0.5 && profondeur < fondMarin  ){
+  if(profondeur >= borders.getH() * 0.5 && profondeur < fondMarin ){
     hookFocus = true;
   }
 
@@ -195,7 +205,7 @@ void GameManager::updateControlY(Object* obj) {
   if (i->isActive(SDL_SCANCODE_S)) {
     dirDown = true;
     if (!hookFocus){
-      if (profondeur + obj->getH() + speed <= fondMarin + borders.getH() * 0.5) {
+      if (profondeur+obj->getH() + 80 + speed <= fondMarin + borders.getH() * 0.5) {
       	dep.setY(speed);
       }
       profondeur += speed;
@@ -225,23 +235,11 @@ void GameManager::updateControlY(Object* obj) {
     objets["Ocean"]->move(Vector2D<int>(0,2 * objets["Ocean2"]->getH()));
   }
 
-  if(objets["Ocean2"]->getY() < -objets["Ocean2"]->getH() && dirDown){
-    objets["Ocean2"]->move(Vector2D<int>(0,2 * objets["Ocean"]->getH()));
-  }
-
-  if(objets["Ocean"]->getY() > borders.getH() && dirUp){
-    objets["Ocean"]->move(Vector2D<int>(0,-2 * objets["Ocean2"]->getH()));
-  }
-
-  if(objets["Ocean2"]->getY() > borders.getH() && dirUp){
-    objets["Ocean2"]->move(Vector2D<int>(0,-2  * objets["Ocean"]->getH()));
-  }
-
   obj->move(dep);
   objets["Ciel"]->move(dep2);
+  objets["Seabed"]->move(dep2);
   objets["Bateau"]->move(dep2);
   objets["Ocean"]->move(dep2);
-  objets["Ocean2"]->move(dep2);
 }
 
 std::vector<Fish*>& GameManager::getFishs(){
@@ -251,5 +249,23 @@ std::vector<Fish*>& GameManager::getFishs(){
 void GameManager::fillFish(){
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets["Fish" + std::to_string(i)] = fishs[i];
+    objets["Hitbox" + std::to_string(i)] = objets["Fish" + std::to_string(i)]->getChild().front();
   }
 }
+
+void GameManager::initST() {
+  objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
+  objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

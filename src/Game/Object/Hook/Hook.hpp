@@ -2,10 +2,11 @@
 
 #include <SDL2/SDL.h>
 #include "../Object.hpp"
+#include "../Hitbox/Hitbox.hpp"
 
 class Hook : public Object {
   private:
-
+    Hitbox* hitbox;
   public:
     /**
     * Constructor
@@ -16,5 +17,5 @@ class Hook : public Object {
      */
     ~Hook();
     int getType() override;
-
+    Rectangle getHitbox() override;
 };
