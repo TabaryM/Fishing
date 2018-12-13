@@ -25,6 +25,7 @@ class Object {
     bool flip;
   protected:
     bool active;
+    bool dependant;
 
   public:
     /**
@@ -59,6 +60,8 @@ class Object {
     virtual Vector2D<int>* getCorner();
     virtual Rectangle getHitbox();
     bool isActive();
+    void depend();
+    bool isDependant();
 
   public:
     struct ObjectCompare {
