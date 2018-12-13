@@ -88,6 +88,10 @@ void GameManager::update(){
     dep = static_cast <Fish*>(objets["Fish" + std::to_string(i)])->Brain(borders.getW(), 2500,objets["Hook"]->getX(),objets["Hook"]->getY(),objets["Hook"]->getW(),objets["Hook"]->getH());
     dep.setY(dep.getY() + focus);
     objets["Fish" + std::to_string(i)]->move(dep);
+    //flip the hitbox
+    if(objets["Fish" + std::to_string(i)]->getChild().front()->getX() == objets["Fish" + std::to_string(i)]->getX() && !objets["Fish" + std::to_string(i)]->!isFliped()){
+      objets["Fish" + std::to_string(i)]->getChild().front()->move(Vector2D<int>(objets["Fish" + std::to_string(i)]->getW() - objets["Fish" + std::to_string(i)]->getChild().front()->getW(),0));
+    }
     
   }
 
@@ -170,18 +174,19 @@ void GameManager::updateControlX(Object* obj) {
 void GameManager::updateControlY(Object* obj) {
   Vector2D<int> dep;
   Vector2D<int> dep2;
-  int fondMarin = 2000;
+  int fondMarin = 2500;
   bool fond = false;
   bool hookFocus = false;
   bool dirDown = false;
   bool dirUp = false;
   focus = 0;
-  if(profondeur >= borders.getH() * 0.5 && profondeur < fondMarin ){
+  if(profondeur >= borders.getH() * 0.5){
     hookFocus = true;
   }
 
   if(profondeur > fondMarin ){
     fond = true;
+    hookFocus = false;
   }
 
   if (i->isActive(SDL_SCANCODE_W)) {
@@ -205,10 +210,12 @@ void GameManager::updateControlY(Object* obj) {
   if (i->isActive(SDL_SCANCODE_S)) {
     dirDown = true;
     if (!hookFocus){
-      if (profondeur+obj->getH() + 80 + speed <= fondMarin + borders.getH() * 0.5) {
-      	dep.setY(speed);
+      if(profondeur < fondMarin + borders.getH() * 0.5){
+	if (obj->getH() + obj->getH() + speed <=  borders.getH()) {
+	  dep.setY(speed);
+	  profondeur += speed;
+	}
       }
-      profondeur += speed;
     }else{
       focus -= speed;
       dep2.setY(focus);
@@ -224,11 +231,6 @@ void GameManager::updateControlY(Object* obj) {
   }
   if(hookFocus && dirUp){
     dep.setY(-speed);
-  }
-
-  if(!hookFocus && !fond){
-    dep2.setY(-objets["Ciel"]->getY());
-    focus = -objets["Ciel"]->getY();
   }
 
   if(objets["Ocean"]->getY() < -objets["Ocean"]->getH() && dirDown){
@@ -257,15 +259,3 @@ void GameManager::initST() {
   objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(900, 0), 500, &f);
   objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
 }
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  

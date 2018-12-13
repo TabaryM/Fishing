@@ -208,6 +208,72 @@ Vector2D<int> Fish::Brain(int br, int bd, int hx, int hy, int hw, int hh){
     return Vector2D<int>(getSpeedX(),0.5 * getSpeedY());
   }
   
+  if(cas == 5){
+    
+    if(!this->getRight()){
+      if(typeFish == 3){
+      this->speedChange(this->timeSpeed);
+    }
+    this->upDownChange(this->timeupdown);
+    this->dirChange(this->timeDir,1);
+    this->setSpeedX(6);
+    return Vector2D<int>(getSpeedX() ,getSpeedY());
+    
+    }
+  }
+  
+  if(cas == 6){
+    
+    if(this->getRight()){
+      if(typeFish == 3){
+      this->speedChange(this->timeSpeed);
+    }
+    this->upDownChange(this->timeupdown);
+    this->setSpeedX(-6);
+    this->dirChange(this->timeDir,1);
+    return Vector2D<int>(getSpeedX(),getSpeedY());
+    
+    }
+  }
+  
+  if(cas == 7){
+    
+    if(typeFish == 3){
+      this->speedChange(this->timeSpeed);
+    }
+      if(getSpeedY() > 0){
+      this->upDownChange(this->timeupdown);
+      if(hx + hw < this->getX()){
+	this->setSpeedX(6);
+      }else{
+	this->setSpeedX(-6);
+      }
+      this->dirChange(this->timeDir,0);
+      this->setSpeedY(this->getSpeedY() * 4);
+      }
+    return Vector2D<int>(getSpeedX(),getSpeedY());
+  }
+  
+  if(cas == 8){
+    
+    if(typeFish == 3){
+      this->speedChange(this->timeSpeed);
+    }
+    if(getSpeedY() < 0){
+      this->upDownChange(this->timeupdown);
+      if(hx + hw < this->getX()){
+	this->setSpeedX(6);
+      }else{
+	this->setSpeedX(-6);
+      }
+      this->dirChange(this->timeDir,0);
+      this->setSpeedY(this->getSpeedY() * 4);
+    }
+    return Vector2D<int>(getSpeedX(),getSpeedY());
+  }
+
+  
+  
   if(typeFish == 3){
       this->speedChange(this->timeSpeed);
   }
@@ -221,15 +287,6 @@ int Fish::collision(int br, int bd, int hx, int hy, int hw, int hh){
   
   if(isHooked()){return 0;}
   
-  if(typeFish == 6){
-    
-    if(hx + hw < this->getX() && this->getX() < hx + hw + 50){return 1;}
-    if(hx - 50 < this->getX() && this->getX() + this->getW() < hx){return 1;}
-    if(hy + hh < this->getY() && this->getY() + this->getW() < hy + hw + 50){return 2;}
-    if(hy - 50 < this->getY() && this->getY() < hy){return 2;}
-    
-  }
-  
   if(this->getX() + getSpeedX() + this->getW() > br ){return 1;}
   if(this->getX() + getSpeedX() < 0 ){return 1;}
   if(this->getY() + getSpeedY() + this->getH() > bd){return 2;}
@@ -240,8 +297,27 @@ int Fish::collision(int br, int bd, int hx, int hy, int hw, int hh){
   if(this->getY() + getSpeedY() + this->getH() > bd - 50){return 4;}
   if(this->getY() + getSpeedY() < 250){return 4;}
   
-  return -1;
+  if(typeFish == 6){
+    int detec = 100;
+    
+    if(hx - detec < this->getX() + this->getW() +150 && this->getX() < hx + hw + detec && hy + hh + detec > this->getY() && this->getY() + 150> hy - detec ){
+      
+      int difx = this->getX() - hx;
+      int dify = this->getY() - hy;
+      this->setSpeedX(2);
+      if(this->getSpeedY() < -1 ||this->getSpeedY() > 1){
+	this->setSpeedY(this->getSpeedY()/4);
+      }
+      
+      if(abs(difx) < abs(dify)){
+	if(difx < 0){return 6;}else{return 5;}
+      }else{
+	if(dify < 0){;return 8;}else{return 7;}
+      }
+    }
+  }
   
+  return -1;
 }
 
 void Fish::dirChange(int time,int cas){
