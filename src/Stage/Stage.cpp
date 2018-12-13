@@ -21,9 +21,7 @@ void Stage::draw(int const& x1, int const& y1, int const& x2, int const& y2){
 }
 
 void Stage::draw(Object& o) {
-  if(o.isActive()){
-    r.draw(o.getTexture());
-  }
+  r.draw(o.getTexture());
 }
 
 void Stage::flip(Object& o) {

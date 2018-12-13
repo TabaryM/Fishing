@@ -8,14 +8,11 @@ void Game::launch(){
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
-  //Initialize Score and Timer
-  gManager.initST() ;
-
-  //Load level information from txt
-  sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer());
+  sManager.loadFishs(gManager.getFishs());
   gManager.fillFish();
-
+  std::cout << "create gManagers" << std::endl;
   gManager.create();
+  std::cout << "create iManagers" << std::endl;
   iManager.create();
 
   while(!i.isQuit()){
@@ -25,13 +22,9 @@ void Game::launch(){
       actualTime = SDL_GetTicks();
     }
     lastTime = actualTime;
+
     i.update();
-
-    iManager.setPause(i.isActive(SDL_SCANCODE_P));
-    iManager.setWin((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() <= gManager.getScore()->getValue()));
-    iManager.setLose((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() > gManager.getScore()->getValue()));
-
-    if (iManager.getUpdate()) {
+    if (i.isActive(SDL_SCANCODE_P) || gManager.getTimer()->getValue() <= 0 ){
       iManager.update();
     } else {
       gManager.update();
@@ -39,7 +32,7 @@ void Game::launch(){
 
     s.clear();
     gManager.render();
-    if (iManager.getUpdate()){
+    if (i.isActive(SDL_SCANCODE_P)){
       iManager.render();
     }
     s.update();

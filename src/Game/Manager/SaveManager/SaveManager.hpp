@@ -11,5 +11,5 @@ class SaveManager {
     ~SaveManager() = default;
 
     void save(Score* sc);
-    void load(std::vector<Fish*>& fishs, Score* score, Timer* timer);
+    void loadFishs(std::vector<Fish*>& fishs);
 };

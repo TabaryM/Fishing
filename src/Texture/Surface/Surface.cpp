@@ -8,6 +8,7 @@ Surface::Surface(Vector2D<int> const& size, unsigned char const& r, unsigned cha
   fillRGBA(Rectangle(size), r, g, b, a);
 }
 
+
 Surface::Surface(std::string s){
   item = IMG_Load(s.c_str());
   assert (item != 0);

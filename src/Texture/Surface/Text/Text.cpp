@@ -1,7 +1,9 @@
 #include "Text.hpp"
 #include "../../../Stage/Renderer/Renderer.hpp"
 
-Text::Text(Font* f, std::string const& str) : s(f, str), str(str), f(f) {}
+Text::Text(Font* f, std::string const& str) : s(f, str), str(str), f(f) {
+  std::cout << "create text" << std::endl;
+}
 
 Text::~Text() {}
 

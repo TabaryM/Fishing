@@ -14,12 +14,10 @@ void Manager::create(){
 
 void Manager::render(){
   for (Object* o : draws) {
-    if(o->isActive()){
-      if(o->isFliped() && (o->getType() == FISH)){
-        s->flip(*o);
-      }else{
-        s->draw(*o);
-      }
+    if(o->isFliped() && (o->getType() == FISH)){
+      s->flip(*o);
+    }else{
+      s->draw(*o);
     }
   }
 }

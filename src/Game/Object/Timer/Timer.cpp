@@ -1,6 +1,8 @@
 #include "Timer.hpp"
 
-Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface() ,coord, z, false), value(60), fps(0) {}
+Timer::Timer(Renderer const& r, Vector2D<int> const& coord, float const& z, Font* f) : Text(f, " "), Object(r, getSurface() ,coord, z, false), value(10) {
+  fps = 0;
+}
 
 Timer::~Timer(){
 }
@@ -13,20 +15,13 @@ void Timer::sec(Renderer const& r, int s){
   fps ++;
   if(fps == 60){
     value += s;
+    update(r, std::to_string(getValue()));
+    updateTexture(r, getSurface());
     fps = 0;
-    updateTimer(r);
   }
+  //refresh surface
 }
 
 int Timer::getValue(){
   return value;
-}
-
-void Timer::setValue(int v){
-  value = v;
-}
-
-void Timer::updateTimer(Renderer const& r) {
-  update(r, "Time left : "+std::to_string(getValue())+" s");
-  updateTexture(r, getSurface());
 }
