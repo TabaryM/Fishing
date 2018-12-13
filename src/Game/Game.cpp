@@ -12,7 +12,7 @@ void Game::launch(){
   gManager.initST() ;
 
   //Load level information from txt
-  sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer());
+  sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer(), "stages/niveau_"+std::to_string(lvl)+".txt");
   gManager.fillFish();
 
   gManager.create();
