@@ -33,6 +33,14 @@ void Game::launch(){
 
     if (iManager.getUpdate()) {
       iManager.update();
+      reload = iManager.doReload();
+      if(reload){
+        gManager.cleanOld();
+        sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer(), "stages/niveau_"+std::to_string(lvl)+".txt");
+        gManager.fillFish();
+        gManager.sort();
+        reload = false;
+      }
     } else {
       gManager.update();
     }

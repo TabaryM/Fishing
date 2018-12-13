@@ -119,7 +119,6 @@ void GameManager::update(){
   }
 }
 
-
 void GameManager::render(){
   Manager::render();
   //dessine la ligne
@@ -127,8 +126,7 @@ void GameManager::render(){
 }
 
 void GameManager::destroy(){
-  objets.clear();
-  std::vector<Fish*>().swap(fishs);
+  std::vector<Fish*>().swap(fishs);   //clear all Fish in vector fishs
 }
 
 void GameManager::updateControlX(Object* obj) {
@@ -254,4 +252,21 @@ void GameManager::fillFish(){
 void GameManager::initST() {
   objets["Score"] = new Score(s->getRenderer(), Vector2D<int>(810, 0), 500, &f);
   objets["Timer"] = new Timer(s->getRenderer(), Vector2D<int>(0, 0), 500, &f);
+}
+
+void GameManager::cleanOld(){
+  for (unsigned int i = 0; i < fishs.size(); i++) {
+    objets.erase("Fish" + std::to_string(i)); // On retire de la hash map d'objets
+  }
+  for (Fish* f : fishs) {
+    delete f;    // Delete les fishs
+  }
+  destroy();
+  static_cast<Score*>(objets["Score"])->reset();
+  // TODO: Reset Hook position;
+  objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getX(), -objets["Hook"]->getY()) + Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() +6 , objets["Bateau"]->getY() + 60 ));
+}
+
+void GameManager::sort(){
+  Manager::sortObject();
 }

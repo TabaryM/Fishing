@@ -26,4 +26,5 @@ class Score : public Text, public Object {
     void setGoal(int g) ;
     void setMax(int m) ;
     void initScore(Renderer const& r) ;
+    void reset();
 };
