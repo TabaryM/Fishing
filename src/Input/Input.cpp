@@ -23,7 +23,7 @@ void Input::update() {
     }
     case SDL_KEYDOWN:{
       keyKB[e.getScancode()].keyDown();
-     break;
+      break;
      }
      case SDL_KEYUP: {
        keyKB[e.getScancode()].keyUp();
@@ -31,12 +31,13 @@ void Input::update() {
      }
      case SDL_MOUSEBUTTONUP: {
        keyMouse[e.getButton()].keyUp();
+       break;
      }
      case SDL_MOUSEBUTTONDOWN : {
        keyMouse[e.getButton()].keyDown();
+       break;
      }
-    default: {
-    }
+    default: {}
   }
 }
 
@@ -52,6 +53,6 @@ void Input::isFlip(SDL_Scancode const& i){
   keyKB[i].isFlip();
 }
 
-Vector2D<int>* Input::getPos(){
-  return NULL;
+Vector2D<int> Input::getMousePos(){
+  return e.getMousePos();
 }

@@ -3,7 +3,6 @@
 #include <SDL2/SDL.h>
 #include "Event/Event.hpp"
 #include "Key/Key.hpp"
-#include "../Math/Vector2D.hpp"
 
 class Input {
   private:
@@ -20,6 +19,6 @@ class Input {
     bool const& isActive(SDL_Scancode const& i);
     bool const& isActive(Uint8 const& i);
     void isFlip(SDL_Scancode const& i);
-    Vector2D<int>* getPos();
+    Vector2D<int> getMousePos();
 
 };

@@ -25,7 +25,9 @@ void InterfaceManager::update(){
   }
   objets["MenuPause"]->setActive(pauseActive);
   if(i->isActive(SDL_BUTTON_LEFT)){
-    std::cout << "Petite victoire" << std::endl;
+    if(static_cast<Bouton*>(objets["RetourMenu"])->isHit(i->getMousePos())){
+      std::cout << "Yay" << std::endl;
+    }
   }
 }
 
