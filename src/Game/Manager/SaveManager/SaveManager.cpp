@@ -2,8 +2,8 @@
 
 SaveManager::SaveManager(Stage* s) : s(s){}
 
-void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
-  std::ifstream file("stages/niveau_0.txt");
+void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer, std::string lvl) {
+  std::ifstream file(lvl);
 
   std::string line;
   int x, y, t, g;
@@ -32,7 +32,6 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer) {
     score->setGoal(g) ;
     timer->setValue(t) ;
     score->setMax(max) ;
-    std::cout << "max : " << max << std::endl;
   }
 }
 

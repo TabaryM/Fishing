@@ -127,6 +127,7 @@ void GameManager::render(){
 }
 
 void GameManager::destroy(){
+  objets.clear();
   std::vector<Fish*>().swap(fishs);
 }
 

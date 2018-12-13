@@ -15,6 +15,8 @@ class Game{
     GameManager gManager;
     InterfaceManager iManager;
     SaveManager sManager;
+    int lvl;
+    bool reload;
 
   public:
     Game(Initializer & init);
