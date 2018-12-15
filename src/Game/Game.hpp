@@ -16,11 +16,11 @@ class Game{
     InterfaceManager iManager;
     SaveManager sManager;
     int lvl;
-    bool reload;
 
   public:
     Game(Initializer & init);
     ~Game() = default ;
     void launch();
-
+    void reloadLvl();
+    void resetIManagerBool();
 };

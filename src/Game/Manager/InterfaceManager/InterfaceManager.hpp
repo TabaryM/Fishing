@@ -9,8 +9,8 @@ class InterfaceManager : public Manager {
   bool pauseActive;
   bool winActive;
   bool loseActive;
-  int nxtLvl;
-  bool reload;
+  bool nxtLvl;
+  bool reloadLvl;
 
   public:
   InterfaceManager(Stage* s, Input* i);
@@ -23,6 +23,7 @@ class InterfaceManager : public Manager {
   void setWin(bool b);
   void setPause(bool b);
   void setLose(bool b);
-  int changeLvl();
-  bool doReload();
+  bool nextLvl();
+  bool doReloadLvl();
+  void resetBool();
 };

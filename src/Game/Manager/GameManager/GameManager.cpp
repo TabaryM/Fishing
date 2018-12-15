@@ -263,8 +263,9 @@ void GameManager::cleanOld(){
   }
   destroy();
   static_cast<Score*>(objets["Score"])->reset();
-  // TODO: Reset Hook position;
+  objets["Objectif"] = new Object(s->getRenderer(), new Surface(&f, "/" + std::to_string(static_cast <Score*>(objets["Score"])->getGoal())), Vector2D<int>(1140, 0), objets["Score"]->getZ()) ;
   objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getX(), -objets["Hook"]->getY()) + Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() +6 , objets["Bateau"]->getY() + 60 ));
+  // TODO: Reset Camera position;
 }
 
 void GameManager::sort(){

@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s), lvl(0), reload(false) {}
+Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s), lvl(0) {}
 
 void Game::launch(){
   i.isFlip(SDL_SCANCODE_P);
@@ -27,19 +27,16 @@ void Game::launch(){
     lastTime = actualTime;
     i.update();
 
-    iManager.setPause(i.isActive(SDL_SCANCODE_P));
-    iManager.setWin((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() <= gManager.getScore()->getValue()));
-    iManager.setLose((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() > gManager.getScore()->getValue()));
+    resetIManagerBool();
 
     if (iManager.getUpdate()) {
       iManager.update();
-      reload = iManager.doReload();
-      if(reload){
-        gManager.cleanOld();
-        sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer(), "stages/niveau_"+std::to_string(lvl)+".txt");
-        gManager.fillFish();
-        gManager.sort();
-        reload = false;
+      if(iManager.doReloadLvl()){
+        reloadLvl();
+      }
+      if(iManager.nextLvl()){
+        if(lvl < 5)lvl++;
+        reloadLvl();
       }
     } else {
       gManager.update();
@@ -56,4 +53,21 @@ void Game::launch(){
   sManager.save(gManager.getScore()) ;
   gManager.destroy();
   iManager.destroy();
+}
+
+void Game::reloadLvl(){
+  gManager.cleanOld();
+  sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer(), "stages/niveau_"+std::to_string(lvl)+".txt");
+  gManager.fillFish();
+  gManager.sort();
+  gManager.getScore()->initScore(s.getRenderer());
+  gManager.getTimer()->updateTimer(s.getRenderer());
+  resetIManagerBool();
+}
+
+void Game::resetIManagerBool(){
+  iManager.setPause(i.isActive(SDL_SCANCODE_P));
+  iManager.setWin((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() <= gManager.getScore()->getValue()));
+  iManager.setLose((gManager.getTimer()->getValue() <= 0) && (gManager.getScore()->getGoal() > gManager.getScore()->getValue()));
+  iManager.resetBool();
 }

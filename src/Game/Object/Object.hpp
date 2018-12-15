@@ -50,7 +50,7 @@ class Object {
     void move(Vector2D<int> const& dep);
     void collide(std::function<void(Object*, Object*)> callback, Object* o);
     virtual int getType();
-    std::vector<Object*>&  getChild();
+    std::vector<Object*>& getChild();
     void updateTexture(Renderer const& r, Surface* s);
     void setActive(bool a);
     void flipingTo(bool a);
