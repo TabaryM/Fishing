@@ -163,6 +163,7 @@ void GameManager::updateControlX(Object* obj) {
 
   obj->move(dep);
 }
+
 void GameManager::updateControlY(Object* obj) {
   Vector2D<int> dep;
   Vector2D<int> dep2;
@@ -242,6 +243,21 @@ std::vector<Fish*>& GameManager::getFishs(){
   return fishs;
 }
 
+void GameManager::resetCamera(){
+  Vector2D<int> dep;
+  dep.setY(-profondeur);
+  if (profondeur >= Window::WIDTH/2){
+    for (unsigned int i = 0; i < fishs.size(); i++){
+      objets["Fish"+std::to_string(i)]->move(dep);
+    }
+    objets["Ciel"]->move(dep);
+    objets["Seabed"]->move(dep);
+    objets["Bateau"]->move(dep);
+    objets["Ocean"]->move(dep);
+    profondeur = 150;
+  }
+}
+
 void GameManager::fillFish(){
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets["Fish" + std::to_string(i)] = fishs[i];
@@ -255,6 +271,7 @@ void GameManager::initST() {
 }
 
 void GameManager::cleanOld(){
+  resetCamera();
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets.erase("Fish" + std::to_string(i)); // On retire de la hash map d'objets
   }
@@ -263,9 +280,10 @@ void GameManager::cleanOld(){
   }
   destroy();
   static_cast<Score*>(objets["Score"])->reset();
+}
+
+void GameManager::setObjectif(){
   objets["Objectif"] = new Object(s->getRenderer(), new Surface(&f, "/" + std::to_string(static_cast <Score*>(objets["Score"])->getGoal())), Vector2D<int>(1140, 0), objets["Score"]->getZ()) ;
-  objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getX(), -objets["Hook"]->getY()) + Vector2D<int>(objets["Bateau"]->getX() + 0.5 * objets["Bateau"]->getSize().getX() +6 , objets["Bateau"]->getY() + 60 ));
-  // TODO: Reset Camera position;
 }
 
 void GameManager::sort(){

@@ -4,7 +4,7 @@
 InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i), pauseActive(true), winActive(false), loseActive(false), nxtLvl(false), reloadLvl(false) {}
 
 void InterfaceManager::create(){
-  objets["MenuPause"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), new Surface(Vector2D<int> (100, 100), 100, 100, 100, 100)) ;
+  objets["MenuPause"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), new Surface(Vector2D<int> (1, 1), 0, 0, 0, 0)) ;
   objets["Pause"] = new Object(s->getRenderer(), new Surface("sprites/Pause.png"), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), 999);
   objets["MenuPause"]->link(objets["Pause"]) ;
 
@@ -35,6 +35,8 @@ void InterfaceManager::update(){
   static_cast<Bouton*>(objets["MenuPause"])->setActive(pauseActive);
   if(objets["MenuWin"]->isActive()){
     static_cast<Bouton*>(objets["ReloadLvl"])->setActive(false);
+  } else {
+    static_cast<Bouton*>(objets["ReloadLvl"])->setActive(true);
   }
   if(i->isActive(SDL_BUTTON_LEFT)){
     if(static_cast<Bouton*>(objets["ReloadLvl"])->isHit(i->getMousePos())){

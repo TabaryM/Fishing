@@ -53,6 +53,10 @@ void Input::isFlip(SDL_Scancode const& i){
   keyKB[i].isFlip();
 }
 
+void Input::isFlip(Uint8 const& i){
+  keyMouse[i].isFlip();
+}
+
 Vector2D<int> Input::getMousePos(){
   return e.getMousePos();
 }

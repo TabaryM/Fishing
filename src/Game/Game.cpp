@@ -4,7 +4,7 @@ Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sMan
 
 void Game::launch(){
   i.isFlip(SDL_SCANCODE_P);
-  srand (time(NULL));
+  srand(time(NULL));
   double actualTime = SDL_GetTicks();
   double lastTime = actualTime;
 
@@ -59,6 +59,7 @@ void Game::reloadLvl(){
   gManager.cleanOld();
   sManager.load(gManager.getFishs(), gManager.getScore(), gManager.getTimer(), "stages/niveau_"+std::to_string(lvl)+".txt");
   gManager.fillFish();
+  gManager.setObjectif();
   gManager.sort();
   gManager.getScore()->initScore(s.getRenderer());
   gManager.getTimer()->updateTimer(s.getRenderer());

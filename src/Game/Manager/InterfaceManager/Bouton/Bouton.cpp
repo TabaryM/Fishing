@@ -10,7 +10,6 @@ int Bouton::getType(){
 
 bool Bouton::isHit(Vector2D<int> hit){
   if(cliquable){
-    std::cout << "is cliquable " << std::endl;
     return getTexture().getPosition().pointIn(hit);
   } else {
     return false;

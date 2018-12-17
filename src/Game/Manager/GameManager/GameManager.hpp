@@ -51,5 +51,7 @@ class GameManager : public Manager {
     void initST();
     void cleanOld();
     void sort();
+    void setObjectif();
+    void resetCamera();
 
 };

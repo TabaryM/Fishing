@@ -19,6 +19,7 @@ class Input {
     bool const& isActive(SDL_Scancode const& i);
     bool const& isActive(Uint8 const& i);
     void isFlip(SDL_Scancode const& i);
+    void isFlip(Uint8 const& i);
     Vector2D<int> getMousePos();
 
 };
