@@ -100,11 +100,9 @@ void GameManager::update(){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
           if (o1->getType() == HOOK && o2->getType() == FISH  && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().front()->getChild().size() == 0) {
-            if((o1->isFliped() && o2->isFliped()) || (!o1->isFliped() && !o2->isFliped())){
-              static_cast <Fish*>(o2)->setHook();
-              o2->depend();
-              o1->getChild().front()->link(o2);
-            }
+            static_cast <Fish*>(o2)->setHook();
+            o1->getChild().front()->link(o2);
+            o2->move(Vector2D<int>(-1,0));
           }
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
@@ -146,7 +144,7 @@ void GameManager::updateControlX(Object* obj) {
     else{
       dep.setX(dep.getX() - speed);
     }
-    if(objets["Hook"]->isFliped() && objets["Hook"]->getChild().front()->getChild().size() == 0){
+    if(objets["Hook"]->isFliped()){
       objets["Hook"]->isFlip();
       objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getW() +3.5,0));
     }
@@ -159,7 +157,7 @@ void GameManager::updateControlX(Object* obj) {
     else{
       dep.setX(dep.getX() + speed);
     }
-    if(!objets["Hook"]->isFliped() && objets["Hook"]->getChild().front()->getChild().size() == 0){
+    if(!objets["Hook"]->isFliped()){
       objets["Hook"]->isFlip();
       objets["Hook"]->move(Vector2D<int>(objets["Hook"]->getW() -3.5,0));
     }
