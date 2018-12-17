@@ -121,3 +121,12 @@ bool Object::isActive(){
   return active;
 
 }
+
+void Object::depend(){
+  dependant = !dependant;
+}
+
+bool Object::isDependant(){
+  return dependant;
+
+}

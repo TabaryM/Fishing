@@ -25,8 +25,9 @@ void Manager::render(){
 }
 
 void Manager::sortObject() {
+  std::vector<Object*>().swap(draws);
   for (auto& o : objets) {
-      draws.push_back(o.second);
+    draws.push_back(o.second);
   }
   std::sort(draws.begin(), draws.end(), Object::ObjectCompare());
 }

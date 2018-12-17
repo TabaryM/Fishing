@@ -4,10 +4,12 @@
 
 class Bouton : public Object {
   private:
-    bool cliquable ;
+    bool cliquable;
   public:
-    Bouton(Renderer const& r, Vector2D<int> const& coord, bool cliquable) ;
+    Bouton(Renderer const& r, Vector2D<int> const& coord, Surface* s) ;
     ~Bouton();
+    bool isHit(Vector2D<int>);
+    void setActive(bool a);
 
     int getType();
 };

@@ -15,10 +15,12 @@ class Game{
     GameManager gManager;
     InterfaceManager iManager;
     SaveManager sManager;
+    int lvl;
 
   public:
     Game(Initializer & init);
     ~Game() = default ;
     void launch();
-
+    void reloadLvl();
+    void resetIManagerBool();
 };

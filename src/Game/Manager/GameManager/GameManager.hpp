@@ -49,5 +49,9 @@ class GameManager : public Manager {
     std::vector<Fish*>& getFishs();
     void fillFish();
     void initST();
+    void cleanOld();
+    void sort();
+    void setObjectif();
+    void resetCamera();
 
 };

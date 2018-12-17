@@ -31,6 +31,10 @@ void Score::setMax(int m) {
   max = m ;
 }
 
+void Score::reset(){
+  value = 0;
+}
+
 void Score::initScore(Renderer const& r){
   update(r, "Score : "+std::to_string(0));
   updateTexture(r, getSurface());
