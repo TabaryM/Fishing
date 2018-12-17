@@ -23,30 +23,19 @@ void Input::update() {
     }
     case SDL_KEYDOWN:{
       keyKB[e.getScancode()].keyDown();
-      break;
+     break;
      }
      case SDL_KEYUP: {
        keyKB[e.getScancode()].keyUp();
        break;
      }
-     case SDL_MOUSEBUTTONUP: {
-       keyMouse[e.getButton()].keyUp();
-       break;
-     }
-     case SDL_MOUSEBUTTONDOWN : {
-       keyMouse[e.getButton()].keyDown();
-       break;
-     }
-    default: {}
+    default: {
+    }
   }
 }
 
 bool const& Input::isActive(SDL_Scancode const& i){
   return keyKB[i].isActive();
-}
-
-bool const& Input::isActive(Uint8 const& i){
-  return keyMouse[i].isActive();
 }
 
 void Input::isFlip(SDL_Scancode const& i){

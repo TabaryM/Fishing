@@ -24,11 +24,9 @@ class Vector2D {
     void setX(T const& x) {
       this->x = x;
     }
-    
     void setY(T const& y) {
       this->y = y;
     }
-    
     T const& getX() const {
       return x;
     }
