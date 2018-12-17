@@ -35,8 +35,14 @@ void Game::launch(){
         reloadLvl();
       }
       if(iManager.nextLvl()){
-        if(lvl < 5)lvl++;
-        reloadLvl();
+        if(lvl < 5){ //Remember to set it to the nr of lvl
+          lvl++;
+          reloadLvl();
+        } else {
+          // TODO : Find a better way to quit the game
+          std::cout << "\t\tCongratulation you've beat all the levels !" << std::endl;
+          break;
+        }
       }
     } else {
       gManager.update();
