@@ -29,8 +29,15 @@ void Input::update() {
        keyKB[e.getScancode()].keyUp();
        break;
      }
-    default: {
-    }
+     case SDL_MOUSEBUTTONUP: {
+       keyMouse[e.getButton()].keyUp();
+       break;
+     }
+     case SDL_MOUSEBUTTONDOWN : {
+       keyMouse[e.getButton()].keyDown();
+       break;
+     }
+    default: {}
   }
 }
 

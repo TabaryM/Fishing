@@ -41,11 +41,9 @@ void InterfaceManager::update(){
   if(i->isActive(SDL_BUTTON_LEFT)){
     if(static_cast<Bouton*>(objets["ReloadLvl"])->isHit(i->getMousePos())){
       reloadLvl = true;
-      std::cout << "ReloadLvl get Clicked" << std::endl;
     }
     if(static_cast<Bouton*>(objets["NextLvl"])->isHit(i->getMousePos())){
       nxtLvl = true;
-      std::cout << "NextLvl get Clicked" << std::endl;
     }
   }
 }

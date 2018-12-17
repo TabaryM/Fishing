@@ -32,7 +32,6 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer, st
     score->setGoal(g) ;
     timer->setValue(t) ;
     score->setMax(max) ;
-    std::cout << "Goal :\t" << g << std::endl;
   }
 }
 
