@@ -38,6 +38,10 @@ bool const& Input::isActive(SDL_Scancode const& i){
   return keyKB[i].isActive();
 }
 
+bool const& Input::isActive(Uint8 const& i){
+  return keyMouse[i].isActive();
+}
+
 void Input::isFlip(SDL_Scancode const& i){
   keyKB[i].isFlip();
 }
