@@ -35,11 +35,11 @@ void SaveManager::load(std::vector<Fish*>& fishs, Score* score, Timer* timer, st
   }
 }
 
-void SaveManager::save(Score* sc) {
-  std::ofstream file("scores/score.txt");
+void SaveManager::save(Score* sc, std::string lvl) {
+  std::ofstream file(lvl);
   time_t now = time(0) ;
   tm *ltm = localtime(&now) ;
   if(file) {
-    file << "\nJoueur : " << "nomJoueur" << "\nScore : " << sc->getValue() << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year << "\nHeure : " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec ;
+    file << "\n\t\t\tDernier score enregistré" << "\nScore : " << sc->getValue() << "\nDate : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year << "\nHeure : " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec ;
   }
 }

@@ -16,9 +16,9 @@ void InterfaceManager::create(){
   objets["Win"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /3 - 25), &f, std::string("Victoire !"), false) ;
   objets["MenuWin"]->link(objets["Win"]) ;
 
-  objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 10, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 255, 0, 0, 255));
-  //objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3, Window::HEIGHT * 2 / 3), new Surface("sprites/ReloadLvl.png"));
-  objets["NextLvl"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3 + 10, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 0, 255, 0, 255));
+  //objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 10, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 255, 0, 0, 255));
+  objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 10, Window::HEIGHT * 2 / 3), new Surface("sprites/Reload.png"));
+  objets["NextLvl"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3 + 10, Window::HEIGHT * 2 / 3), new Surface("sprites/Next.png"));
   objets["MenuWin"]->link(objets["NextLvl"]);
   //objets["RetourMenu"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 100, 100, 100, 100)) ;
 

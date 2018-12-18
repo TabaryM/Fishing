@@ -10,6 +10,6 @@ class SaveManager {
     SaveManager(Stage* s);
     ~SaveManager() = default;
 
-    void save(Score* sc);
+    void save(Score* sc, std::string lvl);
     void load(std::vector<Fish*>& fishs, Score* score, Timer* timer, std::string lvl);
 };

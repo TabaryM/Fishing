@@ -100,9 +100,11 @@ void GameManager::update(){
     for (auto& it2 : objets) {
         it1.second->collide([&](Object* o1, Object* o2) {
           if (o1->getType() == HOOK && o2->getType() == FISH  && !static_cast <Fish*>(o2)->isHooked() && o1->getChild().front()->getChild().size() == 0) {
-            static_cast <Fish*>(o2)->setHook();
-            o1->getChild().front()->link(o2);
-            o2->move(Vector2D<int>(-1,0));
+            if((o1->isFliped() && o2->isFliped()) || (!o1->isFliped() && !o2->isFliped())){
+              static_cast <Fish*>(o2)->setHook();
+              o2->depend();
+              o1->getChild().front()->link(o2);
+            }
           }
           //check if you scored a FISH
           if (o1->getType() == HOOK && o2->getType() == BOAT) {
@@ -284,6 +286,10 @@ void GameManager::initST() {
 
 void GameManager::cleanOld(){
   resetCamera();
+  if(static_cast<Object*>(objets["Hook"])->getChild().front()->getChild().size() > 0){
+    (static_cast<Object*>(objets["Hook"])->getChild().front()->getChild().front())->move(Vector2D<int>(-5000,0)); //"remove" fish from hook
+    std::vector<Object*>().swap(static_cast<Object*>(objets["Hook"])->getChild().front()->getChild());
+  }
   for (unsigned int i = 0; i < fishs.size(); i++) {
     objets.erase("Fish" + std::to_string(i)); // On retire de la hash map d'objets
   }

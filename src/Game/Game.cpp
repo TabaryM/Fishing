@@ -36,9 +36,9 @@ void Game::launch(){
       }
       if(iManager.nextLvl()){
         if(lvl < 4){ //Remember to set it to the nr of lvl
+          sManager.save(gManager.getScore(), "scores/niveau_"+std::to_string(lvl)+".txt") ;
           lvl++;
           reloadLvl();
-          std::cout << "Next lvl" << std::endl;
         } else {
           // TODO : Find a better way to quit the game
           std::cout << "\t\tCongratulation you've beat all the levels !" << std::endl;
@@ -57,7 +57,6 @@ void Game::launch(){
     s.update();
   }
 
-  sManager.save(gManager.getScore()) ;
   gManager.destroy();
   iManager.destroy();
 }
