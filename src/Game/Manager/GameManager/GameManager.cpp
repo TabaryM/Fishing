@@ -146,7 +146,7 @@ void GameManager::updateControlX(Object* obj) {
     else{
       dep.setX(dep.getX() - speed);
     }
-    if(objets["Hook"]->isFliped()){
+    if(objets["Hook"]->isFliped() && objets["Hook"]->getChild().front()->getChild().size() ==0){
       objets["Hook"]->isFlip();
       objets["Hook"]->move(Vector2D<int>(-objets["Hook"]->getW() +3.5,0));
     }
@@ -159,7 +159,7 @@ void GameManager::updateControlX(Object* obj) {
     else{
       dep.setX(dep.getX() + speed);
     }
-    if(!objets["Hook"]->isFliped()){
+    if(!objets["Hook"]->isFliped() && objets["Hook"]->getChild().front()->getChild().size() ==0 ){
       objets["Hook"]->isFlip();
       objets["Hook"]->move(Vector2D<int>(objets["Hook"]->getW() -3.5,0));
     }

@@ -1,6 +1,6 @@
 #include "Object.hpp"
 
-Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload, bool active) : graphic(r, s, coord, destroyOnload), z(z), flip(false), active(active) {
+Object::Object(Renderer const& r, Surface* s, Vector2D<int> const& coord, float const& z, bool destroyOnload, bool active) : graphic(r, s, coord, destroyOnload), z(z), flip(false), active(active), dependant(false) {
 }
 
 Object::~Object(){
@@ -54,7 +54,7 @@ float Object::getDepth() const {
 }
 
 void Object::move(Vector2D<int> const& dep) {
-  if(getType()==FISH){
+  if(getType()==FISH && !isDependant()){
     flip = dep.getX() < 0;
   }
   graphic.setCoord(graphic.getCoord() + dep);
