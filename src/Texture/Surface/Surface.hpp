@@ -12,7 +12,7 @@
 class Surface {
   private:
     SDL_Surface* item;
-    int alpha = 255;
+    unsigned char alpha = 255;
 
   public:
     Surface() = delete;
@@ -25,7 +25,7 @@ class Surface {
     Vector2D<int> getSize();
     void fillRGBA(Rectangle const& rect, unsigned char const& r, unsigned char const& g, unsigned char const& b, unsigned char const& a);
     void free();
-    int getAlpha();
+    unsigned char getAlpha();
 
   private:
     static const int DEPTH;

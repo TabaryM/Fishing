@@ -2,10 +2,10 @@
 #include "../Stage/Renderer/Renderer.hpp"
 
 Texture::Texture(Renderer const& r, Surface* s, Vector2D<int> const& coord, bool destroyOnload) : item(0), position(s->getSize(), coord) {
+  int alpha = s->getAlpha();
   item = r.getTexture(s, destroyOnload);
   int err = SDL_SetTextureBlendMode(item, SDL_BLENDMODE_BLEND);
   assert(err == 0);
-  int alpha = s->getAlpha();
   err = SDL_SetTextureAlphaMod(item, alpha);
   assert(err == 0);
 }
@@ -17,6 +17,7 @@ Texture::~Texture() {
 void Texture::free() {
   if (item != 0) {
       SDL_DestroyTexture(item);
+      item = nullptr;
   }
 }
 

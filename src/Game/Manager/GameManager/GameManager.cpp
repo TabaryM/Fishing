@@ -133,7 +133,8 @@ void GameManager::render(){
 }
 
 void GameManager::destroy(){
-  std::vector<Fish*>().swap(fishs);   //clear all Fish in vector fishs
+  removeFishs();
+  Manager::destroy();
 }
 
 void GameManager::updateControlX(Object* obj) {
@@ -285,25 +286,33 @@ void GameManager::initST() {
 }
 
 void GameManager::cleanOld(){
-  resetCamera();
-  if(static_cast<Object*>(objets["Hook"])->getChild().front()->getChild().size() > 0){
-    (static_cast<Object*>(objets["Hook"])->getChild().front()->getChild().front())->move(Vector2D<int>(-5000,0)); //"remove" fish from hook
-    std::vector<Object*>().swap(static_cast<Object*>(objets["Hook"])->getChild().front()->getChild());
-  }
-  for (unsigned int i = 0; i < fishs.size(); i++) {
-    objets.erase("Fish" + std::to_string(i)); // On retire de la hash map d'objets
-  }
-  for (Fish* f : fishs) {
-    delete f;    // Delete les fishs
-  }
-  destroy();
-  static_cast<Score*>(objets["Score"])->reset();
+    resetCamera();
+    emptyHook();
+    removeFishs();
+    static_cast <Score*> (objets["Score"])->reset();
 }
 
 void GameManager::setObjectif(){
+  delete objets["Objectif"];
   objets["Objectif"] = new Object(s->getRenderer(), new Surface(&f, "/" + std::to_string(static_cast <Score*>(objets["Score"])->getGoal())), Vector2D<int>(1140, 0), objets["Score"]->getZ()) ;
 }
 
 void GameManager::sort(){
   Manager::sortObject();
+}
+
+void GameManager::emptyHook(){
+  std::vector<Object*>().swap(objets["Hook"]->getChild().front()->getChild());
+}
+
+void GameManager::removeFishs(){
+  for (auto i = 0u; i < fishs.size(); i++) {
+      objets.erase("Fish" + std::to_string(i));      // On retire le poisson de la map
+      objets.erase("Hitbox" + std::to_string(i)); // On retire sa hit box
+      delete fishs[i]->getChild().front(); // On delete sa hitbox
+      fishs[i]->getChild().front() = nullptr;
+      delete fishs[i]; // On delete le fish
+      fishs[i] = nullptr;
+  }
+  std::vector<Fish*>().swap(fishs); // On vide le vecteur
 }

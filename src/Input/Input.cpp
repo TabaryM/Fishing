@@ -7,7 +7,9 @@ Input::Input() : quit(false) {
 
 Input::~Input() {
   delete[] keyKB;
+  keyKB = nullptr;
   delete[] keyMouse;
+  keyMouse = nullptr;
 }
 
 bool const& Input::isQuit() const {

@@ -48,9 +48,12 @@ void Surface::fillRGBA(Rectangle const& rect, unsigned char const& r, unsigned c
 }
 
 void Surface::free() {
-  SDL_FreeSurface(item);
+  if(item != nullptr){
+    SDL_FreeSurface(item);
+    item = nullptr;
+  }
 }
 
-int Surface::getAlpha(){
+unsigned char Surface::getAlpha(){
   return alpha;
 }

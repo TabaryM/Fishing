@@ -53,5 +53,7 @@ class GameManager : public Manager {
     void sort();
     void setObjectif();
     void resetCamera();
+    void emptyHook();
+    void removeFishs();
 
 };

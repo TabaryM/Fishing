@@ -3,13 +3,18 @@
 Manager::Manager(Stage* s, Input* i) : s(s), i(i), f() {}
 
 Manager::~Manager(){
-  for (auto& o : objets) {
-    delete o.second;
-  }
+  destroy();
 }
 
 void Manager::create(){
   sortObject();
+}
+
+void Manager::destroy(){
+    for (auto& it : objets) {
+        delete it.second;
+        it.second = nullptr;
+    }
 }
 
 void Manager::render(){
@@ -25,7 +30,8 @@ void Manager::render(){
 }
 
 void Manager::sortObject() {
-  std::vector<Object*>().swap(draws);
+  empty(draws);
+  //std::vector<Object*>().swap(draws);
   for (auto& o : objets) {
     draws.push_back(o.second);
   }

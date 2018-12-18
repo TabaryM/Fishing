@@ -71,6 +71,7 @@ void Object::collide(std::function<void(Object*, Object*)> callback, Object* o){
     col = col || o->getHitbox().pointIn(corner[i]);
   }
   delete[] corner;
+  corner = nullptr;
 
   if (col) {
     callback(this, o);

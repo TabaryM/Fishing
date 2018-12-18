@@ -18,7 +18,6 @@ class InterfaceManager : public Manager {
   void create() override;
   void update() override;
   void render() override;
-  void destroy() override;
   bool getUpdate();
   void setWin(bool b);
   void setPause(bool b);

@@ -8,7 +8,10 @@ Renderer::Renderer(Window const& w) : item(0) {
 }
 
 Renderer::~Renderer() {
-  SDL_DestroyRenderer(item);
+  if(item != nullptr){
+    SDL_DestroyRenderer(item);
+    item = nullptr;
+  }
 }
 
 
@@ -17,7 +20,7 @@ SDL_Texture* Renderer::getTexture(Surface* s, bool destroyOnload) const {
   SDL_Texture* res = SDL_CreateTextureFromSurface(item, s->getItem());
   if (destroyOnload) {
     delete s;
-    s = 0;
+    s = nullptr;
   }
   return res;
 }

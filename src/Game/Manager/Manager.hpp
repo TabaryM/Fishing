@@ -33,8 +33,13 @@ class Manager {
     virtual void create();
     virtual void update() = 0 ;
     virtual void render() ;
-    virtual void destroy() = 0 ;
+    virtual void destroy();
     void sortObject();
     Score* getScore();
     Timer* getTimer();
 };
+
+template <class Conteneur>
+void empty(Conteneur& c) {
+    Conteneur().swap(c);
+}

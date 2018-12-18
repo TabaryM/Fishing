@@ -52,8 +52,6 @@ void InterfaceManager::render(){
   Manager::render();
 }
 
-void InterfaceManager::destroy(){}
-
 void InterfaceManager::setWin(bool b){
   winActive = b ;
 }

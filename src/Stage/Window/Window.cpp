@@ -10,7 +10,10 @@ Window::Window(Initializer & i) : item(0){
 }
 
 Window::~Window() {
-  SDL_DestroyWindow(item);
+  if(item != nullptr){
+    SDL_DestroyWindow(item);
+    item = nullptr;
+  }
 }
 
 SDL_Renderer* Window::getRenderer(int const& index, int const& flags) const{
