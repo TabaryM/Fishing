@@ -1,46 +1,30 @@
 # Fishing
 
-Documentation (via Doxygene) :
-  - Installer la dernière version de Doxygene : https://sourceforge.net/projects/doxygen/files/latest/download
-  - Lancer l'installateur
-  - utilisez les paramètre dans le fichier Doxyfile
+Pour compiler :
+  - Tout d'abord il faut créer un repertoir "obj" au même niveau que les repertoir "src" et "bin"
+  - Si vous êtes sous Linux : renommez le fichier "Makefile_lin" en "Makefile" puis entrez la commande "make clean all" dans un terminal
+  - Si vous êtes sous Windows :
+    - Renommez le fichier "Makefile_win" en "Makefile"
+    - Vérifiez que vous disposez bien des fichiers désigné par les variables INC, LIBBIR et LIB (ainsi que les fichiers lié), si vous ne les avez pas, veuillez télécharger mingw32, SDL2, SDL2_ttf et SDL2 image (le tout en version développeur) et les mettre aux chemin désigné.
+    - Enfin, entrez la commande "make clean all"
 
-TODO LIST :
-  - Faire une docu
-  - ~~Vérifier la fonction de collision pointIn() dans Rectangle.cpp~~
-  - ~~réparer deplacements bateau vitesse~~
-
-  - ~~Menu pause~~
-  - ~~Dessiner ligne Hameçon-Bateau~~
-  - ~~Trouver/implémenter images ciel, Ocean (https://www.color-hex.com/color-palette/35102)~~, vagues
-  - Animations canne-à-peche
-
-  - Animations poissons
-  - Système de scrolling vertical (complet, ciel disparait)
-
-  - Système de score
-  - Système de niveau  : {
-    - x temps pour faire y score / lvl (tps, score victoire : défini dans un fichier txt)
-    - temps libre pour faire max score
-    - survie (nb hameçon limité <=> vies)
-  }
-
-  - ~~Sprites poisson de base~~
-  - Mécaniques des poissons : {
-    - poisson classique (vitesse faible et constante) : 1 pts
-    - poisson sprinteur (vitesse faible mais qui sprint de manière aléatoire) : 2 pts
-    - poisson rapide (vitesse constante mais plus rapide que classique) : 2 pts
-    - poisson jebaited (s'approche de l'hameçon mais fuis si l'hameçon s'approche de lui quand il s'approche aussi) : 5 pts
-    - poisson très rare (hérite de classique) : 10 pts
-    - ...
-  }
+Pour executer :
+  Vous pouvez executer le jeu comme vous le souhaitez, il n'y a pas d'arguments d'execution à saisir.
 
 
-  - Menu (Jouer (mode temps, mode libre), option (musique on/off), quitter)
+Les inputs :
+  - Déplacements avec W, A, S, D
+  - mise en pause avec P
+  - Vous pouvez interagir avec les boutons à l'écran (dans le menu de Pause et à la fin de niveau) avec votre curseur.
 
-  - Si tout ça fait : {
-    - Cinématique d'intro au menu
-    - Events con (météors, volcans... etc)
-    - Menu option assignation touches
-    - Sons ?
-  }
+
+Level Design :
+  Il est tout à fait possible de créer de nouveaux niveaux selon vos goûts en quelques étapes :
+  - Dans le repertoir "bin/stages", créez un fichier au format .txt
+  - Le premier caractère du fichier doit être un retour à la ligne
+  - Ensuite veuillez renseigner (dans cet ordre) :
+    - Le Score minimum pour gagner le niveaux
+    - Le temps du niveau
+    - Les poissons à créer en indiquant le type du poisson (un entier de 1 à 6). Un poisson par ligne
+
+Nous vous souhaitons de passer de bons moments sur notre jeu !

@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s), lvl(0) {}
+Game::Game(Initializer& init) : s(init), gManager(&s,&i), iManager(&s, &i), sManager(&s), lvl(1) {}
 
 void Game::launch(){
   i.isFlip(SDL_SCANCODE_P);
@@ -18,7 +18,7 @@ void Game::launch(){
   gManager.create();
   iManager.create();
 
-  while(!i.isQuit()){
+  while(!i.isQuit() && !iManager.doQuit()){
     actualTime = SDL_GetTicks();
     if (actualTime - lastTime <= 1000.0 / 60.0){
       SDL_Delay(1000.0 / 60.0 - (actualTime - lastTime));

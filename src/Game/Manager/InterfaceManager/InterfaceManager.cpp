@@ -1,7 +1,7 @@
 #include "InterfaceManager.hpp"
 
 
-InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i), pauseActive(true), winActive(false), loseActive(false), nxtLvl(false), reloadLvl(false) {}
+InterfaceManager::InterfaceManager(Stage* s, Input* i) : Manager(s, i), pauseActive(true), winActive(false), loseActive(false), nxtLvl(false), reloadLvl(false), quit(false) {}
 
 void InterfaceManager::create(){
   objets["MenuPause"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 -305, Window::HEIGHT /2 -75), new Surface(Vector2D<int> (1, 1), 0, 0, 0, 0)) ;
@@ -16,11 +16,10 @@ void InterfaceManager::create(){
   objets["Win"] = new GameOver(s->getRenderer(), Vector2D<int>(Window::WIDTH /2 - 138, Window::HEIGHT /3 - 25), &f, std::string("Victoire !"), false) ;
   objets["MenuWin"]->link(objets["Win"]) ;
 
-  //objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 10, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 255, 0, 0, 255));
-  objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 10, Window::HEIGHT * 2 / 3), new Surface("sprites/Reload.png"));
-  objets["NextLvl"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3 + 10, Window::HEIGHT * 2 / 3), new Surface("sprites/Next.png"));
+  objets["ReloadLvl"] = new Bouton(s->getRenderer(),Vector2D<int>(Window::WIDTH / 3 - 80, Window::HEIGHT * 2 / 3), new Surface("sprites/Reload.png"));
+  objets["NextLvl"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3 - 80, Window::HEIGHT * 2 / 3), new Surface("sprites/Next.png"));
   objets["MenuWin"]->link(objets["NextLvl"]);
-  //objets["RetourMenu"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH / 3, Window::HEIGHT * 2 / 3), new Surface(Vector2D<int> (100, 100), 100, 100, 100, 100)) ;
+  objets["Quit"] = new Bouton(s->getRenderer(), Vector2D<int>(Window::WIDTH * 2 / 3 - 20, Window::HEIGHT * 2 / 3), new Surface("sprites/Exit.png"));
 
   Manager::create();
 }
@@ -44,6 +43,9 @@ void InterfaceManager::update(){
     }
     if(static_cast<Bouton*>(objets["NextLvl"])->isHit(i->getMousePos())){
       nxtLvl = true;
+    }
+    if(static_cast<Bouton*>(objets["Quit"])->isHit(i->getMousePos())){
+      quit = true;
     }
   }
 }
@@ -76,7 +78,12 @@ bool InterfaceManager::doReloadLvl(){
   return reloadLvl;
 }
 
+bool InterfaceManager::doQuit(){
+  return quit;
+}
+
 void InterfaceManager::resetBool(){
   reloadLvl = false;
   nxtLvl = false;
+  quit = false;
 }

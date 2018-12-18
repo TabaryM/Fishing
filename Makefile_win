@@ -1,7 +1,7 @@
 export CXX = g++.exe
 export LD = g++.exe
 
-export CFLAGS = -Wall -std=c++11
+export CFLAGS = -Wall -std=c++11 -O3 -DNDEBUG
 export LDFLAGS =
 
 export TARGET = debug

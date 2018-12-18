@@ -11,6 +11,7 @@ class InterfaceManager : public Manager {
   bool loseActive;
   bool nxtLvl;
   bool reloadLvl;
+  bool quit;
 
   public:
   InterfaceManager(Stage* s, Input* i);
@@ -25,4 +26,5 @@ class InterfaceManager : public Manager {
   bool nextLvl();
   bool doReloadLvl();
   void resetBool();
+  bool doQuit();
 };
