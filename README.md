@@ -13,7 +13,7 @@ Pour executer :
 
 
 Les inputs :
-  - Déplacements avec W, A, S, D
+  - Déplacements avec W, A, S, D (ou Z, Q, S, D si vous utilisez un clavier AZERTY)
   - mise en pause avec P
   - Vous pouvez interagir avec les boutons à l'écran (dans le menu de Pause et à la fin de niveau) avec votre curseur.
 
